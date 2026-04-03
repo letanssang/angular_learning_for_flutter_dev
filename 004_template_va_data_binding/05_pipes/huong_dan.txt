@@ -2,8 +2,8 @@
   TEMPLATE - PIPES (BIẾN ĐỔI DỮ LIỆU HIỂN THỊ)
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 15-20 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 15-20 phút
 
 📌 MỤC TIÊU:
   - Hiểu pipes = format hiển thị (KHÔNG thay đổi data gốc)

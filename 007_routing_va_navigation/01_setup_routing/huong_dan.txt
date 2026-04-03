@@ -2,8 +2,8 @@
   ROUTING VÀ NAVIGATION - SETUP ROUTING
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 25-35 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 25-35 phút
 
 📌 MỤC TIÊU:
   - Cấu hình routing = GoRouter setup

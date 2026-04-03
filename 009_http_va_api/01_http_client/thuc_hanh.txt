@@ -1,24 +1,24 @@
 ================================================================================
-  THUC HANH - HTTP + INTERCEPTOR + ERROR STATE CHECKPOINT
+  THỰC HÀNH - HTTP + INTERCEPTOR + ERROR STATE CHECKPOINT
 ================================================================================
 
-MUC TIEU:
-- Goi API bang HttpClient
-- Them functional interceptor
-- Bieu dien loading/error/data ro rang
+MỤC TIÊU:
+- Gọi API bằng HttpClient
+- Thêm functional interceptor
+- Biểu diễn loading/error/data rõ ràng
 
-THOI LUONG UOC TINH:
-- 30-40 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+- 30-40 phút
 
 TASK:
-1. Tao ProductService voi method getProducts()
-2. Goi fake API:
-   - json-server neu ban co mock data
-   - hoac https://fakestoreapi.com/products
-3. Tao 1 functional interceptor:
-   - them header x-demo-token
-   - hoac log method + URL
-4. O component, tao products$ hoac view model state gom:
+1. Tạo ProductService với method getProducts()
+2. Gọi fake API:
+   - json-server nếu bạn có mock data
+   - hoặc https://fakestoreapi.com/products
+3. Tạo 1 functional interceptor:
+   - thêm header x-demo-token
+   - hoặc log method + URL
+4. Ở component, tạo products$ hoặc view model state gồm:
    - loading
    - data
    - error
@@ -26,18 +26,18 @@ TASK:
    - loading spinner/text
    - error message
    - data list
-6. Thu mo phong 1 request loi de xem error path
+6. Thử mô phỏng 1 request lỗi để xem error path
 
 EXPECTED RESULT:
-- Data load duoc tu API
-- Interceptor duoc goi
-- UI khong o trang thai "im lang" khi loi
+- Data load được từ API
+- Interceptor được gọi
+- UI không ở trạng thái "im lặng" khi lỗi
 
 SELF-CHECK:
-- Ban co biet interceptor dung o layer nao khong?
-- Ban co biet khi nao nen map response thanh view model state khong?
-- Ban co tranh duoc pattern subscribe trong subscribe khong?
+- Bạn có biết interceptor dùng ở layer nào không?
+- Bạn có biết khi nào nên map response thành view model state không?
+- Bạn có tránh được pattern subscribe trong subscribe không?
 
 DONE KHI:
-- Ban co 1 list page hien loading, error, data ro rang
+- Bạn có 1 list page hiện loading, error, data rõ ràng
 ================================================================================

@@ -2,7 +2,7 @@
   ANGULAR JSON VÀ CẤU HÌNH PROJECT
 ================================================================================
 
-THOI LUONG UOC TINH:
+THỜI LƯỢNG ƯỚC TÍNH:
   - 15-25 phut
 
 📌 MỤC TIÊU:

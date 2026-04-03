@@ -2,8 +2,8 @@
   COMPONENT CƠ BẢN - INPUT VÀ OUTPUT
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 25-35 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 25-35 phút
 
 📌 MỤC TIÊU:
   - Hiểu @Input() = widget parameter

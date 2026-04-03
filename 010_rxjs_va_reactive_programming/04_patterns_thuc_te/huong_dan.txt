@@ -2,8 +2,8 @@
   RXJS - PATTERNS THỰC TẾ
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 15-20 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 15-20 phút
 
 📌 Các patterns RxJS phổ biến trong Angular projects
 ================================================================================

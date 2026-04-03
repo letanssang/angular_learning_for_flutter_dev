@@ -2,8 +2,8 @@
   TEMPLATE - EVENT BINDING
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 15-20 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 15-20 phút
 
 📌 MỤC TIÊU:
   - Xử lý sự kiện user trong Angular

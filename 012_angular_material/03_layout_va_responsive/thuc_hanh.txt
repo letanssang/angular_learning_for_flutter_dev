@@ -2,8 +2,8 @@
   ANGULAR MATERIAL - LAYOUT VÀ RESPONSIVE
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 25-35 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 25-35 phút
 
   CSS Flexbox = Row/Column/Expanded trong Flutter
   CSS Grid = GridView

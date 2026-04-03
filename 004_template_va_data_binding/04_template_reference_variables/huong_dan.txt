@@ -2,8 +2,8 @@
   TEMPLATE - TEMPLATE REFERENCE VARIABLES
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 10-15 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 10-15 phút
 
 📌 MỤC TIÊU:
   - Hiểu #ref syntax (giống GlobalKey trong Flutter)

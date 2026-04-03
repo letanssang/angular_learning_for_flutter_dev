@@ -2,8 +2,8 @@
   TEMPLATE - TWO-WAY BINDING
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 20-25 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 20-25 phút
 
 📌 MỤC TIÊU:
   - Hiểu [(ngModel)] = TextEditingController

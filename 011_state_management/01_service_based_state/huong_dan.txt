@@ -1,17 +1,17 @@
 ================================================================================
-  STATE MANAGEMENT - SERVICE-BASED STATE VOI RXJS (OPTIONAL)
+  STATE MANAGEMENT - SERVICE-BASED STATE VỚI RXJS (OPTIONAL)
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 15-20 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 15-20 phút
 
-📌 MUC TIEU:
-  - Doc duoc pattern service + BehaviorSubject trong codebase cu/hien co
-  - Hieu no giong ChangeNotifier/StateNotifier + Provider
-  - Biet vi sao lo trinh nay uu tien signal service truoc
+📌 MỤC TIÊU:
+  - Đọc được pattern service + BehaviorSubject trong codebase cũ/hiện có
+  - Hiểu nó giống ChangeNotifier/StateNotifier + Provider
+  - Biết vì sao lộ trình này ưu tiên signal service trước
 
 ================================================================================
-  1. SERVICE-BASED STATE VOI BEHAVIORSUBJECT
+  1. SERVICE-BASED STATE VỚI BEHAVIORSUBJECT
 ================================================================================
 
   @Injectable({ providedIn: 'root' })
@@ -33,7 +33,7 @@ THOI LUONG UOC TINH:
   }
 
 ================================================================================
-  2. CACH DOC TRONG COMPONENT
+  2. CÁCH ĐỌC TRONG COMPONENT
 ================================================================================
 
   @Component({
@@ -48,20 +48,20 @@ THOI LUONG UOC TINH:
   }
 
 ================================================================================
-  3. KHI NAO DUNG PATTERN NAY?
+  3. KHI NÀO DÙNG PATTERN NÀY?
 ================================================================================
 
-  Hop ly khi:
-  - codebase da theo Observable-first
-  - can interop nhieu voi RxJS pipelines
-  - team quen async pipe + selectors tu stream
+  Hợp lý khi:
+  - codebase đã theo Observable-first
+  - cần interop nhiều với RxJS pipelines
+  - team quen async pipe + selectors từ stream
 
-  Khong phai default lo trinh 2 tuan vi:
-  - signal() ro hon cho nguoi tu Flutter sang
-  - state don gian khong can Observable o moi cho
+  Không phải default lộ trình 2 tuần vì:
+  - signal() rõ hơn cho người từ Flutter sang
+  - state đơn giản không cần Observable ở mọi chỗ
 
 ================================================================================
-  ✅ TOM LAI:
-  - Doc duoc pattern nay la can thiet
-  - Mac dinh cua lo trinh nay van la Signals
+  ✅ TÓM LẠI:
+  - Đọc được pattern này là cần thiết
+  - Mặc định của lộ trình này vẫn là Signals
 ================================================================================

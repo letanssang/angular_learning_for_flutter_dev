@@ -2,12 +2,12 @@
   FORMS - TEMPLATE-DRIVEN FORMS (OPTIONAL)
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 10-15 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 10-15 phút
 
-📌 MUC TIEU:
-  - Hieu ngModel va template-driven form de doc code nho/code cu
-  - Biet vi sao lo trinh nay uu tien Reactive Forms
+📌 MỤC TIÊU:
+  - Hiểu ngModel và template-driven form để đọc code nhỏ/code cũ
+  - Biết vì sao lộ trình này ưu tiên Reactive Forms
 
 ================================================================================
   1. TEMPLATE-DRIVEN FORM
@@ -24,21 +24,21 @@ THOI LUONG UOC TINH:
   }
 
 ================================================================================
-  2. KHI NAO DUNG?
+  2. KHI NÀO DÙNG?
 ================================================================================
 
-  Hop ly khi:
-  - form rat nho
-  - validation don gian
-  - du an da dung ngModel san
+  Hợp lý khi:
+  - form rất nhỏ
+  - validation đơn giản
+  - dự án đã dùng ngModel sẵn
 
-  Khong phai default path cho lo trinh nay vi:
-  - reactive forms de scale hon
-  - typed forms/doc code tot hon
-  - phu hop hon voi app feature-rich
+  Không phải default path cho lộ trình này vì:
+  - reactive forms dễ scale hơn
+  - typed forms/đọc code tốt hơn
+  - phù hợp hơn với app feature-rich
 
 ================================================================================
-  ✅ TOM LAI:
-  - Biet doc template-driven form la du
-  - Form hoc thuc te trong 2 tuan nay = Reactive Forms
+  ✅ TÓM LẠI:
+  - Biết đọc template-driven form là đủ
+  - Form học thực tế trong 2 tuần này = Reactive Forms
 ================================================================================

@@ -1,19 +1,19 @@
 ================================================================================
-  RXJS - OBSERVABLE CO BAN
+  RXJS - OBSERVABLE CƠ BẢN
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 25-35 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 25-35 phút
 
-📌 MUC TIEU:
+📌 MỤC TIÊU:
   - Observable = Stream trong Dart
-  - Hieu subscribe, async pipe, unsubscribe
-  - Biet RxJS du de doc HTTP/UI flow trong Angular
+  - Hiểu subscribe, async pipe, unsubscribe
+  - Biết RxJS đủ để đọc HTTP/UI flow trong Angular
 
-  ⚠️ Dinh huong trong lo trinh 2 tuan:
-  - RxJS rat quan trong cho async flows
-  - Nhung khong can hoc no truoc component/template/signals
-  - Muc tieu la "du dung", khong phai hoc het he sinh thai RxJS
+  ⚠️ Định hướng trong lộ trình 2 tuần:
+  - RxJS rất quan trọng cho async flows
+  - Nhưng không cần học nó trước component/template/signals
+  - Mục tiêu là "đủ dùng", không phải học hết hệ sinh thái RxJS
 
 ================================================================================
   1. OBSERVABLE VS STREAM (DART)
@@ -32,7 +32,7 @@ THOI LUONG UOC TINH:
   └──────────────────────────┴──────────────────────────────┘
 
 ================================================================================
-  2. TAO OBSERVABLE
+  2. TẠO OBSERVABLE
 ================================================================================
 
   import { Observable, of, from, interval } from 'rxjs';
@@ -47,7 +47,7 @@ THOI LUONG UOC TINH:
   });
 
 ================================================================================
-  3. SUBSCRIBE VA ASYNC PIPE
+  3. SUBSCRIBE VÀ ASYNC PIPE
 ================================================================================
 
   // Subscribe:
@@ -62,9 +62,9 @@ THOI LUONG UOC TINH:
   // Template:
   // {{ user$ | async }}
 
-  Quy tac thuc te:
-  - Neu data chi de render template -> uu tien async pipe
-  - Neu can side effect / imperative flow -> subscribe co kiem soat
+  Quy tắc thực tế:
+  - Nếu data chỉ để render template -> ưu tiên async pipe
+  - Nếu cần side effect / imperative flow -> subscribe có kiểm soát
 
 ================================================================================
   4. UNSUBSCRIBE PATTERNS
@@ -84,26 +84,26 @@ THOI LUONG UOC TINH:
     }
   }
 
-  ⚠️ Khong mac dinh subscribe o moi noi roi quen cleanup.
+  ⚠️ Không mặc định subscribe ở mọi nơi rồi quên cleanup.
 
 ================================================================================
-  5. KHI NAO DUNG OBSERVABLE, KHI NAO DUNG SIGNAL?
+  5. KHI NÀO DÙNG OBSERVABLE, KHI NÀO DÙNG SIGNAL?
 ================================================================================
 
-  Observable phu hop cho:
+  Observable phù hợp cho:
   - HTTP calls
   - search/debounce
   - route params
-  - event streams va combine flows
+  - event streams và combine flows
 
-  Signal phu hop cho:
+  Signal phù hợp cho:
   - local UI state
-  - service-level state don gian
+  - service-level state đơn giản
   - derived state trong component
 
 ================================================================================
-  ✅ SAU BAI NAY:
+  ✅ SAU BÀI NÀY:
   - Observable = Stream, subscribe = listen
-  - Biet uu tien async pipe va takeUntilDestroyed
-  - Xem RxJS la cong cu xu ly async flows, khong phai buc tuong ly thuyet
+  - Biết ưu tiên async pipe và takeUntilDestroyed
+  - Xem RxJS là công cụ xử lý async flows, không phải bức tường lý thuyết
 ================================================================================

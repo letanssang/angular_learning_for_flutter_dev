@@ -1,36 +1,36 @@
 ================================================================================
-  THUC HANH - RXJS SEARCH FLOW CHECKPOINT
+  THỰC HÀNH - RXJS SEARCH FLOW CHECKPOINT
 ================================================================================
 
-MUC TIEU:
-- Dung RxJS cho UI stream thuc te: search + debounce + switchMap + error handling
+MỤC TIÊU:
+- Dùng RxJS cho UI stream thực tế: search + debounce + switchMap + error handling
 
-THOI LUONG UOC TINH:
-- 30-40 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+- 30-40 phút
 
 TASK:
-1. Tao 1 input search
-2. Tao searchTerm$ bang Subject<string> hoac FormControl.valueChanges
-3. Pipe chain gom:
+1. Tạo 1 input search
+2. Tạo searchTerm$ bằng Subject<string> hoặc FormControl.valueChanges
+3. Pipe chain gồm:
    - debounceTime(300)
    - distinctUntilChanged()
    - switchMap(...)
    - catchError(...)
-4. Goi ProductService.search(term)
-5. Them 1 bo loc phu category$ hoac sort$
-6. Neu them bo loc phu, dung combineLatest de tao request state cuoi cung
-7. Render ket qua qua async pipe
+4. Gọi ProductService.search(term)
+5. Thêm 1 bộ lọc phụ category$ hoặc sort$
+6. Nếu thêm bộ lọc phụ, dùng combineLatest để tạo request state cuối cùng
+7. Render kết quả qua async pipe
 
 EXPECTED RESULT:
-- Typing nhanh khong spam request
-- Request cu bi huy khi request moi bat dau
-- Loi khong lam vo stream hoan toan
+- Typing nhanh không spam request
+- Request cũ bị hủy khi request mới bắt đầu
+- Lỗi không làm vỡ stream hoàn toàn
 
 SELF-CHECK:
-- Ban co giai thich duoc vi sao switchMap hop hon mergeMap trong search khong?
-- Ban co biet async pipe giup tranh unsubscribe thu cong o case nay khong?
-- Ban co hieu Observable dang dai dien cho event stream nao khong?
+- Bạn có giải thích được vì sao switchMap hợp hơn mergeMap trong search không?
+- Bạn có biết async pipe giúp tránh unsubscribe thủ công ở case này không?
+- Bạn có hiểu Observable đang đại diện cho event stream nào không?
 
 DONE KHI:
-- Ban co 1 search/list flow dung duoc trong app thuc
+- Bạn có 1 search/list flow dùng được trong app thực
 ================================================================================

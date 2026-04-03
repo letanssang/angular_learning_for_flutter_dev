@@ -2,8 +2,8 @@
   DIRECTIVES - CUSTOM DIRECTIVE
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 20-30 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 20-30 phút
 
 📌 MỤC TIÊU:
   - Tạo directive tùy chỉnh

@@ -2,12 +2,12 @@
   STATE MANAGEMENT - SIGNALS (MỚI! Angular 16+)
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 25-35 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 25-35 phút
 
-  ⚠️ THU TU HOC: Bai nay nen hoc o NGAY 2 trong lo trinh 14 ngay
-  (xem README.txt), khong doi den chuong 011. Ban can signals som
-  de hieu component state truoc khi hoc forms, HTTP, RxJS.
+  ⚠️ THỨ TỰ HỌC: Bài này nên học ở NGÀY 2 trong lộ trình 14 ngày
+  (xem README.txt), không đợi đến chương 011. Bạn cần signals sớm
+  để hiểu component state trước khi học forms, HTTP, RxJS.
 
 📌 MỤC TIÊU:
   - Signal = ValueNotifier trong Flutter

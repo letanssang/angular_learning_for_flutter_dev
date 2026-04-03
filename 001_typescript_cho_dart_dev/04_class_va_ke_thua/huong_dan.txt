@@ -2,8 +2,8 @@
   TYPESCRIPT CHO DART DEV - CLASS VÀ KẾ THỪA
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 25-35 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 25-35 phút
 
 📌 MỤC TIÊU:
   - So sánh class Dart vs TypeScript

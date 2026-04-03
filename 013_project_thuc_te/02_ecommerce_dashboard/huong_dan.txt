@@ -2,8 +2,8 @@
   PROJECT THỰC TẾ 2: E-COMMERCE DASHBOARD
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 6-10 gio (stretch project)
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 6-10 giờ (stretch project)
 
 📌 MỤC TIÊU: Xây dựng dashboard quản lý sản phẩm
    Project nâng cao, áp dụng toàn bộ kiến thức!

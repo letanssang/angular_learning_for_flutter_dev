@@ -1,48 +1,48 @@
 ================================================================================
-  APPENDIX - DECORATORS DE DOC ANGULAR CODE
+  APPENDIX - DECORATORS ĐỂ ĐỌC ANGULAR CODE
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 10-15 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 10-15 phút
 
-📌 MUC TIEU:
-  - Chi du mental model de doc @Component, @Injectable, @Input, @Output
-  - Biet decorators trong Angular dung de gan metadata vao class/member
-  - Khong sa vao viet custom decorators qua som
+📌 MỤC TIÊU:
+  - Chỉ đủ mental model để đọc @Component, @Injectable, @Input, @Output
+  - Biết decorators trong Angular dùng để gắn metadata vào class/member
+  - Không sa vào viết custom decorators quá sớm
 
-  ⚠️ Trong lo trinh 2 tuan:
-  - Bai nay la OPTIONAL
-  - Ban khong can tu viet decorator de lam feature Angular thong thuong
+  ⚠️ Trong lộ trình 2 tuần:
+  - Bài này là OPTIONAL
+  - Bạn không cần tự viết decorator để làm feature Angular thông thường
 
 ================================================================================
-  1. DECORATOR LA GI?
+  1. DECORATOR LÀ GÌ?
 ================================================================================
 
-  // Angular se gap rat nhieu:
+  // Angular sẽ gặp rất nhiều:
   @Component({...})
   @Injectable({...})
   @Input()
   @Output()
 
-  Cach hieu de doc code:
-  - @Component: day la component va cau hinh template/styles/imports
-  - @Injectable: day la service co the inject
-  - @Input/@Output: contract giao tiep parent <-> child
+  Cách hiểu để đọc code:
+  - @Component: đây là component và cấu hình template/styles/imports
+  - @Injectable: đây là service có thể inject
+  - @Input/@Output: contract giao tiếp parent <-> child
 
 ================================================================================
-  2. SO SANH NHANH VOI FLUTTER
+  2. SO SÁNH NHANH VỚI FLUTTER
 ================================================================================
 
   Flutter:
-  - annotation thuong la metadata cho analyzer/codegen
-  - vi du: @override, @deprecated, @riverpod, @freezed
+  - annotation thường là metadata cho analyzer/codegen
+  - ví dụ: @override, @deprecated, @riverpod, @freezed
 
   Angular:
-  - decorator la API framework de dang ky metadata
-  - ban doc decorator de biet class nay dong vai tro gi trong app
+  - decorator là API framework để đăng ký metadata
+  - bạn đọc decorator để biết class này đóng vai trò gì trong app
 
 ================================================================================
-  3. NHUNG DECORATOR CAN DOC TRONG 2 TUAN DAU
+  3. NHỮNG DECORATOR CẦN ĐỌC TRONG 2 TUẦN ĐẦU
 ================================================================================
 
   @Component({
@@ -61,28 +61,28 @@ THOI LUONG UOC TINH:
     @Output() selected = new EventEmitter<void>();
   }
 
-  Ban khong can nho co che runtime ben duoi.
-  Ban chi can doc ra:
-  - component nao render UI
-  - service nao co the inject
-  - component nhan/emit du lieu gi
+  Bạn không cần nhớ cơ chế runtime bên dưới.
+  Bạn chỉ cần đọc ra:
+  - component nào render UI
+  - service nào có thể inject
+  - component nhận/emit dữ liệu gì
 
 ================================================================================
-  4. NOTE CHO ANGULAR MOI
+  4. NOTE CHO ANGULAR MỚI
 ================================================================================
 
-  Trong Angular moi, ban co the thay them function APIs nhu:
+  Trong Angular mới, bạn có thể thấy thêm function APIs như:
   - input()
   - output()
   - inject()
 
-  Nghia la:
-  - khong phai moi thu deu phai hoc qua custom decorator examples
-  - uu tien hieu public API framework va vai tro cua tung file
+  Nghĩa là:
+  - không phải mọi thứ đều phải học qua custom decorator examples
+  - ưu tiên hiểu public API framework và vai trò của từng file
 
 ================================================================================
-  ✅ SAU BAI NAY:
-  - Doc duoc decorators pho bien trong Angular
-  - Khong con xem decorators la chu de bat buoc phai hoc sau
-  - Tap trung vao component, service, router, forms, HTTP, signals truoc
+  ✅ SAU BÀI NÀY:
+  - Đọc được decorators phổ biến trong Angular
+  - Không còn xem decorators là chủ đề bắt buộc phải học sâu
+  - Tập trung vào component, service, router, forms, HTTP, signals trước
 ================================================================================

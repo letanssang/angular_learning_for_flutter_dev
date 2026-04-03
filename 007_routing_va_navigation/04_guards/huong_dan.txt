@@ -2,8 +2,8 @@
   ROUTING - GUARDS (BẢO VỆ ROUTE)
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 15-20 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 15-20 phút
 
 📌 MỤC TIÊU:
   - Guards = redirect logic trong GoRouter

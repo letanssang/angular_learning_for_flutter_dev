@@ -2,8 +2,8 @@
   TYPESCRIPT CHO DART DEV - SETUP MÔI TRƯỜNG
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 20-30 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 20-30 phút
 
 📌 MỤC TIÊU:
   - Cài đặt Node.js, npm, TypeScript

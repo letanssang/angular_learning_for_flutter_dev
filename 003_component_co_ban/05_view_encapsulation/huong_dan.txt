@@ -2,8 +2,8 @@
   COMPONENT CƠ BẢN - VIEW ENCAPSULATION
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 10-15 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 10-15 phút
 
 📌 MỤC TIÊU:
   - Hiểu CSS scope trong Angular (giống Theme scope Flutter)

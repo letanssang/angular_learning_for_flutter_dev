@@ -1,26 +1,26 @@
 ================================================================================
-  ANGULAR CLI VA PROJECT SETUP - CAI DAT ANGULAR CLI
+  ANGULAR CLI VÀ PROJECT SETUP - CÀI ĐẶT ANGULAR CLI
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 20-30 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 20-30 phút
 
-📌 MUC TIEU:
-  - Cai dat Angular CLI
-  - Tao project Angular dau tien
-  - Hieu nhung lenh toi thieu de vao codebase nhanh
+📌 MỤC TIÊU:
+  - Cài đặt Angular CLI
+  - Tạo project Angular đầu tiên
+  - Hiểu những lệnh tối thiểu để vào codebase nhanh
 
 ================================================================================
-  1. CAI DAT ANGULAR CLI
+  1. CÀI ĐẶT ANGULAR CLI
 ================================================================================
 
-  # Cai dat global:
+  # Cài đặt global:
   npm install -g @angular/cli
 
-  # Kiem tra:
+  # Kiểm tra:
   ng version
 
-  💡 SO SANH NHANH:
+  💡 SO SÁNH NHANH:
   ┌──────────────────────┬────────────────────────────────────┐
   │ Flutter              │ Angular                            │
   ├──────────────────────┼────────────────────────────────────┤
@@ -30,27 +30,27 @@ THOI LUONG UOC TINH:
   │ flutter test         │ ng test                            │
   │ flutter pub get      │ npm install                        │
   │ flutter doctor       │ ng version                         │
-  │ dart analyze         │ ng lint (neu workspace co lint)    │
+  │ dart analyze         │ ng lint (nếu workspace có lint)    │
   └──────────────────────┴────────────────────────────────────┘
 
 ================================================================================
-  2. TAO PROJECT MOI
+  2. TẠO PROJECT MỚI
 ================================================================================
 
-  # Tao project:
+  # Tạo project:
   ng new my-angular-app
 
-  # Option huu ich:
+  # Option hữu ích:
   ng new my-app --routing
   ng new my-app --style=scss
   ng new my-app --standalone
 
-  💡 Ghi chu:
-  - Khi hoc, cu viet ro --standalone de khoa mindset Angular moi
-  - Codebase moi uu tien standalone components va app config gọn hon
+  💡 Ghi chú:
+  - Khi học, cứ viết rõ --standalone để khóa mindset Angular mới
+  - Codebase mới ưu tiên standalone components và app config gọn hơn
 
 ================================================================================
-  3. CHAY PROJECT
+  3. CHẠY PROJECT
 ================================================================================
 
   cd my-angular-app
@@ -59,16 +59,16 @@ THOI LUONG UOC TINH:
   ng serve
   # -> http://localhost:4200
 
-  # Chi dinh port:
+  # Chỉ định port:
   ng serve --port 3000
 
   # Build production:
   ng build --configuration production
 
-  ⚠️ So voi Flutter:
+  ⚠️ So với Flutter:
   - feedback nhanh
-  - tu dong refresh
-  - nhung khong giu state nhu hot reload cua Flutter
+  - tự động refresh
+  - nhưng không giữ state như hot reload của Flutter
 
 ================================================================================
   4. ANGULAR CLI GENERATORS
@@ -89,13 +89,13 @@ THOI LUONG UOC TINH:
   # Tạo directive:
   ng g d tooltip
 
-  💡 Trong lo trinh cap toc:
-  - dung generator de theo convention nhanh
-  - khong can tu tao tay tung file neu chua quen codebase
+  💡 Trong lộ trình cấp tốc:
+  - dùng generator để theo convention nhanh
+  - không cần tự tạo tay từng file nếu chưa quen codebase
 
 ================================================================================
-  ✅ SAU BAI NAY BAN CAN BIET:
-  - ng new, ng serve, ng build, ng test la bo lenh toi thieu
-  - standalone la default mindset can dung cho lo trinh nay
-  - ng lint khong phai workspace nao cung co san neu chua them angular-eslint
+  ✅ SAU BÀI NÀY BẠN CẦN BIẾT:
+  - ng new, ng serve, ng build, ng test là bộ lệnh tối thiểu
+  - standalone là default mindset cần dùng cho lộ trình này
+  - ng lint không phải workspace nào cũng có sẵn nếu chưa thêm angular-eslint
 ================================================================================

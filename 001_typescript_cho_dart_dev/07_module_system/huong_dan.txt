@@ -1,21 +1,21 @@
 ================================================================================
-  TYPESCRIPT CHO DART DEV - IMPORT/EXPORT VA DOC TYPE ERRORS
+  TYPESCRIPT CHO DART DEV - IMPORT/EXPORT VÀ ĐỌC TYPE ERRORS
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 20-30 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 20-30 phút
 
-📌 MUC TIEU:
-  - Hieu import/export de lan theo code Angular nhanh
-  - Doc file structure ma khong bi roi
-  - Nhan ra mot so loi TypeScript pho bien khi sua code
+📌 MỤC TIÊU:
+  - Hiểu import/export để lần theo code Angular nhanh
+  - Đọc file structure mà không bị rối
+  - Nhận ra một số lỗi TypeScript phổ biến khi sửa code
 
-  ⚠️ Trong lo trinh 2 tuan:
-  - Bai nay la CORE
-  - Trong code Angular moi, standalone quan trong hon viec hoc sau ve NgModule
+  ⚠️ Trong lộ trình 2 tuần:
+  - Bài này là CORE
+  - Trong code Angular mới, standalone quan trọng hơn việc học sâu về NgModule
 
 ================================================================================
-  1. EXPORT VA IMPORT
+  1. EXPORT VÀ IMPORT
 ================================================================================
 
   // user.model.ts
@@ -30,15 +30,15 @@ THOI LUONG UOC TINH:
     }
   }
 
-  // file khac
+  // file khác
   import { User, UserService } from './user.model';
 
-  Ban can doc nhu sau:
-  - export = file nay cong khai type/class/function nay
-  - import = file kia dang dung lai no
+  Bạn cần đọc như sau:
+  - export = file này công khai type/class/function này
+  - import = file kia đang dùng lại nó
 
 ================================================================================
-  2. NAMED EXPORT LA MAC DINH NEN DUNG
+  2. NAMED EXPORT LÀ MẶC ĐỊNH NÊN DÙNG
 ================================================================================
 
   // logger.ts
@@ -48,13 +48,13 @@ THOI LUONG UOC TINH:
     }
   }
 
-  // file khac
+  // file khác
   import { Logger } from './logger';
 
-  Thuc te Angular:
-  - thuong dung named export
-  - giam nham lan khi rename/symbol search
-  - de lan theo component/service/model hon
+  Thực tế Angular:
+  - thường dùng named export
+  - giảm nhầm lẫn khi rename/symbol search
+  - dễ lần theo component/service/model hơn
 
 ================================================================================
   3. BARREL EXPORTS (INDEX FILES)
@@ -67,13 +67,13 @@ THOI LUONG UOC TINH:
   // usage
   import { User, Product } from './models';
 
-  Ban se gap trong codebase lon:
+  Bạn sẽ gặp trong codebase lớn:
   - shared models
   - shared UI exports
   - feature public API
 
 ================================================================================
-  4. DOC CAU TRUC FILE ANGULAR HIEN DAI
+  4. ĐỌC CẤU TRÚC FILE ANGULAR HIỆN ĐẠI
 ================================================================================
 
   src/app/
@@ -88,39 +88,39 @@ THOI LUONG UOC TINH:
   ├── app.config.ts
   └── app.routes.ts
 
-  Cach lan code:
+  Cách lần code:
   - route -> component
   - component -> service
   - service -> model / HttpClient
   - form / template -> event -> state update
 
-  ⚠️ NgModule co the van xuat hien trong code cu, nhung khong phai diem vao
-  codebase nhanh cho lo trinh nay.
+  ⚠️ NgModule có thể vẫn xuất hiện trong code cũ, nhưng không phải điểm vào
+  codebase nhanh cho lộ trình này.
 
 ================================================================================
-  5. 4 LOI TYPE THUONG GAP KHI SUA CODE
+  5. 4 LỖI TYPE THƯỜNG GẶP KHI SỬA CODE
 ================================================================================
 
-  Loi 1:
+  Lỗi 1:
   Cannot find name 'X'
-  -> thieu import, go sai ten, hoac file chua export symbol nay
+  -> thiếu import, gõ sai tên, hoặc file chưa export symbol này
 
-  Loi 2:
+  Lỗi 2:
   Module has no exported member 'X'
-  -> import sai symbol, hoac barrel file chua re-export
+  -> import sai symbol, hoặc barrel file chưa re-export
 
-  Loi 3:
+  Lỗi 3:
   Object is possibly 'undefined'
-  -> can null check, default value, hoac doi flow control
+  -> cần null check, default value, hoặc đổi flow control
 
-  Loi 4:
+  Lỗi 4:
   Type 'A' is not assignable to type 'B'
-  -> payload/response/state shape dang sai contract
+  -> payload/response/state shape đang sai contract
 
 ================================================================================
-  ✅ SAU BAI NAY BAN CAN BIET:
-  - lan theo import/export de doc feature nhanh
-  - doc barrel file ma khong bi roi
-  - khong can hoc NgModule truoc khi lam app Angular moi
-  - xu ly duoc nhung type errors co ban nhat
+  ✅ SAU BÀI NÀY BẠN CẦN BIẾT:
+  - Lần theo import/export để đọc feature nhanh
+  - Đọc barrel file mà không bị rối
+  - Không cần học NgModule trước khi làm app Angular mới
+  - Xử lý được những type errors cơ bản nhất
 ================================================================================

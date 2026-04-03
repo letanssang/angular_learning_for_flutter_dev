@@ -2,8 +2,8 @@
   COMPONENT CƠ BẢN - TẠO COMPONENT
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 35-45 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 35-45 phút
 
 📌 MỤC TIÊU:
   - Hiểu Angular Component = Flutter Widget

@@ -2,8 +2,8 @@
   COMPONENT CƠ BẢN - LIFECYCLE HOOKS
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 20-30 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 20-30 phút
 
 📌 MỤC TIÊU:
   - Hiểu lifecycle hooks Angular vs Flutter State lifecycle

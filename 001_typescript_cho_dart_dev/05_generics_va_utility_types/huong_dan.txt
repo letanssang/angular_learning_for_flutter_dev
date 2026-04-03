@@ -1,22 +1,22 @@
 ================================================================================
-  APPENDIX - GENERICS VA UTILITY TYPES NANG CAO
+  APPENDIX - GENERICS VÀ UTILITY TYPES NÂNG CAO
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 20-30 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 20-30 phút
 
-📌 MUC TIEU:
-  - Mo rong sau khi ban da xong core 2 tuan
-  - Hieu them ve utility types nang cao trong codebase lon
-  - Biet doc mapped types va conditional types ma khong can thuoc long
+📌 MỤC TIÊU:
+  - Mở rộng sau khi bạn đã xong core 2 tuần
+  - Hiểu thêm về utility types nâng cao trong codebase lớn
+  - Biết đọc mapped types và conditional types mà không cần thuộc lòng
 
-  ⚠️ KHONG BAT BUOC de:
-  - tao feature CRUD co ban
-  - dung router, forms, HTTP, signals
-  - hoan thanh Todo app trong lo trinh cap toc
+  ⚠️ KHÔNG BẮT BUỘC để:
+  - tạo feature CRUD cơ bản
+  - dùng router, forms, HTTP, signals
+  - hoàn thành Todo app trong lộ trình cấp tốc
 
 ================================================================================
-  1. NHUNG THU GIAI QUYET DUOC VIEC NGAY
+  1. NHỮNG THỨ GIẢI QUYẾT ĐƯỢC VIỆC NGAY
 ================================================================================
 
   interface User {
@@ -32,15 +32,15 @@ THOI LUONG UOC TINH:
   type UserMap = Record<string, User>;
   type FrozenUser = Readonly<User>;
 
-  💡 Neu ban thay nhung type nay trong codebase, chi can doc nhu sau:
-  - Partial<T> = tat ca field thanh optional
-  - Pick<T, K> = lay mot vai field
-  - Omit<T, K> = bo mot vai field
+  💡 Nếu bạn thấy những type này trong codebase, chỉ cần đọc như sau:
+  - Partial<T> = tất cả field thành optional
+  - Pick<T, K> = lấy một vài field
+  - Omit<T, K> = bỏ một vài field
   - Record<K, V> = object map
-  - Readonly<T> = khong cho sua
+  - Readonly<T> = không cho sửa
 
 ================================================================================
-  2. CONDITIONAL TYPES - DOC DUOC LA DU
+  2. CONDITIONAL TYPES - ĐỌC ĐƯỢC LÀ ĐỦ
 ================================================================================
 
   type IsString<T> = T extends string ? 'yes' : 'no';
@@ -48,13 +48,13 @@ THOI LUONG UOC TINH:
   type A = IsString<string>;  // 'yes'
   type B = IsString<number>;  // 'no'
 
-  Khi gap loai nay trong du an:
-  - dung hoang
-  - doc tu trong ra ngoai
-  - thu thay T bang type cu the de hieu ket qua
+  Khi gặp loại này trong dự án:
+  - đừng hoảng
+  - đọc từ trong ra ngoài
+  - thử thay T bằng type cụ thể để hiểu kết quả
 
 ================================================================================
-  3. MAPPED TYPES - BIEN DOI HANG LOAT
+  3. MAPPED TYPES - BIẾN ĐỔI HÀNG LOẠT
 ================================================================================
 
   type Optional<T> = {
@@ -69,26 +69,26 @@ THOI LUONG UOC TINH:
     };
   };
 
-  Ung dung thuc te:
-  - tao wrapper state cho model
-  - tao helper types cho form va cache layer
+  Ứng dụng thực tế:
+  - tạo wrapper state cho model
+  - tạo helper types cho form và cache layer
 
 ================================================================================
-  4. KHI NAO NEN HOC KY
+  4. KHI NÀO NÊN HỌC KỸ
 ================================================================================
 
-  Hoc ky hon neu:
-  - ban bat dau lam shared libraries
-  - du an co typed API client / generic data-table / form builder
-  - review PR gap nhieu type infer phuc tap
+  Học kỹ hơn nếu:
+  - bạn bắt đầu làm shared libraries
+  - dự án có typed API client / generic data-table / form builder
+  - review PR gặp nhiều type infer phức tạp
 
-  Tam de sau neu:
-  - muc tieu hien tai la vao codebase nhanh
-  - ban van dang hoc router/forms/HTTP/signals
+  Tạm để sau nếu:
+  - mục tiêu hiện tại là vào codebase nhanh
+  - bạn vẫn đang học router/forms/HTTP/signals
 
 ================================================================================
-  ✅ TOM LAI:
-  - Core 2 tuan chi can Partial / Pick / Omit
-  - Phan con lai la appendix de doc codebase lon tot hon
-  - Khong can hoc ky truoc khi lam feature flow dau tien
+  ✅ TÓM LẠI:
+  - Core 2 tuần chỉ cần Partial / Pick / Omit
+  - Phần còn lại là appendix để đọc codebase lớn tốt hơn
+  - Không cần học kỹ trước khi làm feature flow đầu tiên
 ================================================================================

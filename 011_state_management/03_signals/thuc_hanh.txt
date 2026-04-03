@@ -1,41 +1,41 @@
 ================================================================================
-  THUC HANH - SIGNAL SERVICE CHECKPOINT
+  THỰC HÀNH - SIGNAL SERVICE CHECKPOINT
 ================================================================================
 
-MUC TIEU:
-- Tao 1 service dung signals lam source of truth
-- Dung computed() cho derived state
-- Co persistence localStorage
+MỤC TIÊU:
+- Tạo 1 service dùng signals làm source of truth
+- Dùng computed() cho derived state
+- Có persistence localStorage
 
-THOI LUONG UOC TINH:
-- 30-40 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+- 30-40 phút
 
 TASK:
-1. Tao PreferencesService hoac TodoService
-2. Trong service, tao:
+1. Tạo PreferencesService hoặc TodoService
+2. Trong service, tạo:
    - items = signal<Item[]>([])
    - filter = signal<'all' | 'active' | 'done'>('all')
    - filteredItems = computed(...)
    - remainingCount = computed(...)
-3. Viet methods:
+3. Viết methods:
    - addItem()
    - toggleItem()
    - removeItem()
    - clearDone()
-4. Luu state vao localStorage moi lan thay doi
-5. Load state tu localStorage khi app bat dau
-6. O component, chi doc signal va goi methods cua service
+4. Lưu state vào localStorage mỗi lần thay đổi
+5. Load state từ localStorage khi app bắt đầu
+6. Ở component, chỉ đọc signal và gọi methods của service
 
 EXPECTED RESULT:
-- Service la noi giu state trung tam
-- Component khong can tu quan ly business state trung lap
-- Reload trang van giu duoc data
+- Service là nơi giữ state trung tâm
+- Component không cần tự quản lý business state trùng lặp
+- Reload trang vẫn giữ được data
 
 SELF-CHECK:
-- Ban co giai thich duoc vi sao filteredItems la computed thay vi mang duoc update tay khong?
-- Ban co biet khi nao nen doi sang Observable khong? Goi y: HTTP, route params, search stream
-- Ban co giu UI logic o component va business logic o service khong?
+- Bạn có giải thích được vì sao filteredItems là computed thay vì mảng được update tay không?
+- Bạn có biết khi nào nên đổi sang Observable không? Gợi ý: HTTP, route params, search stream
+- Bạn có giữ UI logic ở component và business logic ở service không?
 
 DONE KHI:
-- Ban co 1 signal service hoat dong giong source of truth thuc te
+- Bạn có 1 signal service hoạt động giống source of truth thực tế
 ================================================================================

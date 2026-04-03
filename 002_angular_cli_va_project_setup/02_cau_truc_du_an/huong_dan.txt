@@ -2,8 +2,8 @@
   ANGULAR CLI VÀ PROJECT SETUP - CẤU TRÚC DỰ ÁN
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 20-30 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 20-30 phút
 
 📌 MỤC TIÊU:
   - Hiểu cấu trúc thư mục Angular project

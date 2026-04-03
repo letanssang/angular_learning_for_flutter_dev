@@ -2,8 +2,8 @@
   SERVICES VÀ DEPENDENCY INJECTION - TẠO SERVICE
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 25-35 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 25-35 phút
 
 📌 MỤC TIÊU:
   - Hiểu Service = Repository/Provider/UseCase pattern Flutter

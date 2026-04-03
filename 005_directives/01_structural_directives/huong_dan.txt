@@ -2,8 +2,8 @@
   DIRECTIVES - STRUCTURAL DIRECTIVES
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 25-35 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 25-35 phút
 
 📌 MỤC TIÊU:
   - *ngIf = Visibility/if-else trong Flutter

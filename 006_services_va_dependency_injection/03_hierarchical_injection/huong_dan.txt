@@ -2,8 +2,8 @@
   SERVICES - HIERARCHICAL INJECTION CHI TIẾT
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 10-15 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 10-15 phút
 
 📌 Scope DI giống widget tree trong Flutter
 ================================================================================

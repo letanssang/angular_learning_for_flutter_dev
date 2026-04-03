@@ -1,19 +1,19 @@
 ================================================================================
-  TYPESCRIPT CHO DART DEV - INTERFACE, TYPE VA GENERICS CO BAN
+  TYPESCRIPT CHO DART DEV - INTERFACE, TYPE VÀ GENERICS CƠ BẢN
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 30-40 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 30-40 phút
 
-📌 MUC TIEU:
-  - Hieu interface va type de doc model/service/component Angular
-  - Biet 3 utility thuc dung nhat: Partial, Pick, Omit
-  - Nam generics co ban de doc HttpClient va reusable helpers
+📌 MỤC TIÊU:
+  - Hiểu interface và type để đọc model/service/component Angular
+  - Biết 3 utility thực dụng nhất: Partial, Pick, Omit
+  - Nắm generics cơ bản để đọc HttpClient và reusable helpers
 
-  ⚠️ Trong lo trinh 2 tuan:
-  - Bai nay la CORE
-  - Chi can du de doc va sua code Angular thuc
-  - Utility types nang cao, conditional types, mapped types de sau
+  ⚠️ Trong lộ trình 2 tuần:
+  - Bài này là CORE
+  - Chỉ cần đủ để đọc và sửa code Angular thực tế
+  - Utility types nâng cao, conditional types, mapped types để sau
 
 ================================================================================
   1. INTERFACE TRONG TYPESCRIPT
@@ -31,10 +31,10 @@ THOI LUONG UOC TINH:
     speak(): void;
   }
 
-  ⚠️ KHAC BIET QUAN TRONG:
-  - TS interface chi ton tai o compile-time, runtime se bi xoa
-  - Interface dung de mo ta "shape" cua object
-  - Angular dung no rat nhieu cho models, API contracts, DTOs
+  ⚠️ KHÁC BIỆT QUAN TRỌNG:
+  - TS interface chỉ tồn tại ở compile-time, runtime sẽ bị xóa
+  - Interface dùng để mô tả "shape" của object
+  - Angular dùng nó rất nhiều cho models, API contracts, DTOs
 
   class Dog implements Animal {
     name: string;
@@ -60,7 +60,7 @@ THOI LUONG UOC TINH:
   type ID = string | number;
   type Callback = (data: string) => void;
 
-  Khi nao dung gi?
+  Khi nào dùng gì?
   - interface: model object, API response, public contract
   - type: union, function type, alias nhanh, utility type
 
@@ -84,13 +84,13 @@ THOI LUONG UOC TINH:
   user.name = 'Binh';   // OK
   user.id = 2;          // ERROR
 
-  So sanh Flutter:
-  - union type = cai Dart khong co san
+  So sánh Flutter:
+  - union type = cái Dart không có sẵn
   - readonly ~ final
   - optional property ~ String? email
 
 ================================================================================
-  4. GENERICS CO BAN
+  4. GENERICS CƠ BẢN
 ================================================================================
 
   interface ApiResponse<T> {
@@ -111,17 +111,17 @@ THOI LUONG UOC TINH:
     message: 'OK',
   };
 
-  // Angular se gap rat nhieu:
+  // Angular sẽ gặp rất nhiều:
   // http.get<Product[]>('/api/products')
   // signal<Todo[]>([])
   // input<User>()
 
-  💡 Cach doc:
-  - <T> = cho type vao
-  - ApiResponse<Product[]> = response co data la danh sach Product
+  💡 Cách đọc:
+  - <T> = cho type vào
+  - ApiResponse<Product[]> = response có data là danh sách Product
 
 ================================================================================
-  5. 3 UTILITY TYPES DU DUNG NHAT
+  5. 3 UTILITY TYPES ĐỦ DÙNG NHẤT
 ================================================================================
 
   interface Product {
@@ -135,44 +135,44 @@ THOI LUONG UOC TINH:
   type UpdateProduct = Partial<Product>;
   type ProductPreview = Pick<Product, 'id' | 'name' | 'price'>;
 
-  Thuc te trong app:
-  - Omit: payload tao moi
-  - Partial: payload cap nhat
-  - Pick: data nhe cho list/card
+  Thực tế trong app:
+  - Omit: payload tạo mới
+  - Partial: payload cập nhật
+  - Pick: data nhẹ cho list/card
 
 ================================================================================
-  6. DOC TYPE ERROR THUONG GAP
+  6. ĐỌC TYPE ERROR THƯỜNG GẶP
 ================================================================================
 
   Error 1:
   Type 'string | undefined' is not assignable to type 'string'
 
-  Nghia la:
-  - gia tri co the undefined
-  - nhung noi dang dung chi chap nhan string
+  Nghĩa là:
+  - giá trị có thể undefined
+  - nhưng nơi đang dùng chỉ chấp nhận string
 
-  Cach xu ly:
-  - check if truoc
-  - dat default value
-  - doi type neu domain thuc su cho phep undefined
+  Cách xử lý:
+  - check if trước
+  - đặt default value
+  - đổi type nếu domain thực sự cho phép undefined
 
   Error 2:
   Property 'x' does not exist on type 'Y'
 
-  Nghia la:
-  - ban dang doc sai shape cua object
-  - can kiem tra interface/type cua data
+  Nghĩa là:
+  - bạn đang đọc sai shape của object
+  - cần kiểm tra interface/type của data
 
   Error 3:
   Type 'A' is not assignable to type 'B'
 
-  Nghia la:
-  - payload, model hoac response dang khong dung contract
+  Nghĩa là:
+  - payload, model hoặc response đang không đúng contract
 
 ================================================================================
-  ✅ SAU BAI NAY BAN CAN BIET:
-  - interface va type khac nhau o muc do nao
-  - union, optional, readonly de doc model thuc
-  - generics co ban de doc HttpClient/signals/helpers
-  - Partial / Pick / Omit la du cho lo trinh 2 tuan
+  ✅ SAU BÀI NÀY BẠN CẦN BIẾT:
+  - interface và type khác nhau ở mức độ nào
+  - union, optional, readonly để đọc model thực tế
+  - generics cơ bản để đọc HttpClient/signals/helpers
+  - Partial / Pick / Omit là đủ cho lộ trình 2 tuần
 ================================================================================

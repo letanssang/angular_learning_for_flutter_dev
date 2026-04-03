@@ -1,14 +1,14 @@
 ================================================================================
-  APPENDIX - SUBJECT VA BEHAVIORSUBJECT
+  APPENDIX - SUBJECT VÀ BEHAVIORSUBJECT
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 15-20 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 15-20 phút
 
-📌 MUC TIEU:
-  - Hieu Subject/BehaviorSubject de doc code cu hoac codebase RxJS-heavy
-  - Biet tai sao nhieu app Angular cu dung no cho service state
-  - Biet vi sao lo trinh nay KHONG chon no lam default path
+📌 MỤC TIÊU:
+  - Hiểu Subject/BehaviorSubject để đọc code cũ hoặc codebase RxJS-heavy
+  - Biết tại sao nhiều app Angular cũ dùng nó cho service state
+  - Biết vì sao lộ trình này KHÔNG chọn nó làm default path
 
 ================================================================================
   1. SUBJECT TYPES
@@ -19,7 +19,7 @@ THOI LUONG UOC TINH:
   ├─────────────────────────┼──────────────────────────────┤
   │ StreamController<T>     │ Subject<T>                   │
   │ ValueNotifier<T>        │ BehaviorSubject<T>           │
-  │ (ko co tuong duong)     │ ReplaySubject<T>             │
+  │ (không có tương đương)  │ ReplaySubject<T>             │
   └─────────────────────────┴──────────────────────────────┘
 
 ================================================================================
@@ -41,27 +41,27 @@ THOI LUONG UOC TINH:
   console.log(counter$.value);
   counter$.next(1);
 
-  BehaviorSubject co:
-  - gia tri khoi tao
-  - gia tri hien tai
-  - kha nang stream hoa state
+  BehaviorSubject có:
+  - giá trị khởi tạo
+  - giá trị hiện tại
+  - khả năng stream hóa state
 
 ================================================================================
-  4. VI SAO KHONG CHON LAM MAC DINH CHO LO TRINH NAY?
+  4. VÌ SAO KHÔNG CHỌN LÀM MẶC ĐỊNH CHO LỘ TRÌNH NÀY?
 ================================================================================
 
-  Vi voi Angular moi:
-  - signal() ro mental model hon cho nguoi tu Flutter sang
-  - computed() de doc hon selector tu pipe(map(...))
-  - local/service state don gian khong can Observable everywhere
+  Vì với Angular mới:
+  - signal() rõ mental model hơn cho người từ Flutter sang
+  - computed() dễ đọc hơn selector từ pipe(map(...))
+  - local/service state đơn giản không cần Observable everywhere
 
-  BehaviorSubject van hop ly khi:
-  - du an da dung RxJS state service
-  - can interop tot voi stream pipelines san co
+  BehaviorSubject vẫn hợp lý khi:
+  - dự án đã dùng RxJS state service
+  - cần interop tốt với stream pipelines sẵn có
   - team quen pattern Observable-first
 
 ================================================================================
-  5. CACH DOC CODEBASE CU
+  5. CÁCH ĐỌC CODEBASE CŨ
 ================================================================================
 
   @Injectable({ providedIn: 'root' })
@@ -74,13 +74,13 @@ THOI LUONG UOC TINH:
     }
   }
 
-  Cach hieu:
-  - private subject = noi ghi state
-  - public observable = noi component doc state
+  Cách hiểu:
+  - private subject = nơi ghi state
+  - public observable = nơi component đọc state
 
 ================================================================================
-  ✅ TOM LAI:
-  - Subject/BehaviorSubject la OPTIONAL trong lo trinh 2 tuan
-  - Can doc duoc, nhung khong can chon lam default cho app moi
-  - Signals la first path; BehaviorSubject la interop/legacy path
+  ✅ TÓM LẠI:
+  - Subject/BehaviorSubject là OPTIONAL trong lộ trình 2 tuần
+  - Cần đọc được, nhưng không cần chọn làm default cho app mới
+  - Signals là first path; BehaviorSubject là interop/legacy path
 ================================================================================

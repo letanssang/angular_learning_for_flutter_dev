@@ -2,8 +2,8 @@
   ROUTING - NESTED ROUTES VÀ LAZY LOADING
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 20-30 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 20-30 phút
 
 📌 MỤC TIÊU:
   - Nested routes = ShellRoute + child routes

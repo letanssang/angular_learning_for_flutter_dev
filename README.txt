@@ -1,49 +1,49 @@
 ================================================================================
-      LO TRINH ANGULAR 2 TUAN CHO FLUTTER DEVELOPER (VAO CODEBASE NHANH)
+      LỘ TRÌNH ANGULAR 2 TUẦN CHO FLUTTER DEVELOPER (VÀO CODEBASE NHANH)
 ================================================================================
 
-Tac gia: Tai cau truc cho Flutter Developer chuyen sang Angular
-Ngay cap nhat: 2026-04-03
-Muc tieu: Trong 2 tuan, doc duoc codebase Angular hien dai, them duoc feature vua,
-          va fix duoc bug pho bien ma khong sa vao qua nhieu ly thuyet nen.
+Tác giả: Tái cấu trúc cho Flutter Developer chuyển sang Angular
+Ngày cập nhật: 2026-04-03
+Mục tiêu: Trong 2 tuần, đọc được codebase Angular hiện đại, thêm được feature vừa,
+          và fix được bug phổ biến mà không sa vào quá nhiều lý thuyết nền.
 
 ================================================================================
-TOM TAT DINH HUONG
+TÓM TẮT ĐỊNH HƯỚNG
 ================================================================================
 
-- Day la 1 recommended path duy nhat cho 14 ngay.
-- Mac dinh dung Angular hien dai:
+- Đây là 1 recommended path duy nhất cho 14 ngày.
+- Mặc định dùng Angular hiện đại:
   + standalone components
-  + control flow moi: @if, @for
+  + control flow mới: @if, @for
   + signals cho component/app state
   + reactive forms
   + functional guards/interceptors
-- RxJS rat quan trong cho async flows, HTTP va UI streams, nhung khong phai
-  bai dau tien de viet feature.
-- Template-driven forms, BehaviorSubject service state, NgRx, utility types nang
-  cao va chi tiet ve NgModule duoc chuyen sang OPTIONAL/APPENDIX.
+- RxJS rất quan trọng cho async flows, HTTP và UI streams, nhưng không phải
+  bài đầu tiên để viết feature.
+- Template-driven forms, BehaviorSubject service state, NgRx, utility types nâng
+  cao và chi tiết về NgModule được chuyển sang OPTIONAL/APPENDIX.
 
 ================================================================================
-AI PHU HOP VOI LO TRINH NAY
+AI PHÙ HỢP VỚI LỘ TRÌNH NÀY
 ================================================================================
 
-Gia dinh ban da co:
+Giả định bạn đã có:
 - Dart, async/await, OOP
-- State management co ban trong Flutter
-- Tu duy widget tree va tach feature
+- State management cơ bản trong Flutter
+- Tư duy widget tree và tách feature
 
-Gia dinh ban con yeu:
+Giả định bạn còn yếu:
 - HTML/CSS
 - TypeScript idioms
 - Mental model Angular template + DI + router + RxJS
 
 ================================================================================
-MAPPING TU DUY: FLUTTER -> ANGULAR
+MAPPING TƯ DUY: FLUTTER -> ANGULAR
 ================================================================================
 
 Widget              -> Component
 build()             -> Template HTML
-setState()          -> cap nhat state; template phan ung tu dong
+setState()          -> cập nhật state; template phản ứng tự động
 ValueNotifier       -> signal()
 Provider / GetIt    -> service + dependency injection
 GoRouter            -> Angular Router
@@ -51,96 +51,85 @@ Stream              -> Observable
 Form + controllers  -> Reactive Forms
 Bloc/Riverpod       -> NgRx / Signals + services
 
-Ghi nho:
-- Signals la API state ro rang hon cho Angular moi.
-- Observable dung cho async, HTTP, event stream, search/debounce, combine flows.
+Ghi nhớ:
+- Signals là API state rõ ràng hơn cho Angular mới.
+- Observable dùng cho async, HTTP, event stream, search/debounce, combine flows.
 
 ================================================================================
-LO TRINH CORE 14 NGAY
+LỘ TRÌNH CORE 14 NGÀY
 ================================================================================
 
-Ngay 1 - TS essentials + doc cau truc app
+Ngày 1 - TS essentials + đọc cấu trúc app
 - 001_typescript_cho_dart_dev/02_kieu_du_lieu_va_bien
 - 001_typescript_cho_dart_dev/03_interface_va_type
 - 001_typescript_cho_dart_dev/07_module_system
 - 002_angular_cli_va_project_setup/01_cai_dat_angular_cli
 - 002_angular_cli_va_project_setup/02_cau_truc_du_an
 
-Ket qua can dat:
-- Doc duoc app.component, app.config, app.routes, service, model
-- Hieu strict null, interface/type, import/export
-- Doc duoc loi type pho bien ma khong hoang
+Kết quả cần đạt:
+- Đọc được app.component, app.config, app.routes, service, model
+- Hiểu strict null, interface/type, import/export
+- Đọc được lỗi type phổ biến mà không hoảng
 
-Optional practice:
-- 001_typescript_cho_dart_dev/02_kieu_du_lieu_va_bien/thuc_hanh.txt
-- 001_typescript_cho_dart_dev/03_interface_va_type/thuc_hanh.txt
-- 002_angular_cli_va_project_setup/01_cai_dat_angular_cli/thuc_hanh.txt
-
-Ngay 2 - Component, template, control flow, local signals
+Ngày 2 - Component, template, control flow, local signals
 - 003_component_co_ban/01_tao_component
 - 004_template_va_data_binding/01_interpolation_va_property_binding
 - 004_template_va_data_binding/02_event_binding
 - 005_directives/01_structural_directives
-- 011_state_management/03_signals   <- hoc som, khong doi den chuong 11
+- 011_state_management/03_signals   <- học sớm, không đợi đến chương 11
 
-Ket qua can dat:
-- Viet duoc component standalone don gian
-- Hieu data di tu state -> template -> event -> update state
-- Dung duoc @if, @for, signal(), computed()
+Kết quả cần đạt:
+- Viết được component standalone đơn giản
+- Hiểu data đi từ state -> template -> event -> update state
+- Dùng được @if, @for, signal(), computed()
 
-Optional practice:
-- 003_component_co_ban/01_tao_component/thuc_hanh.txt
-
-Ngay 3 - Input/output, services, DI, local feature flow
+Ngày 3 - Input/output, services, DI, local feature flow
 - 003_component_co_ban/03_input_output
 - 006_services_va_dependency_injection/01_tao_service
 - 006_services_va_dependency_injection/02_injection_tokens
 
-Ket qua can dat:
-- Tach duoc component cha/con
-- Dua business logic vao service
-- Hieu inject() va providedIn: 'root'
+Kết quả cần đạt:
+- Tách được component cha/con
+- Đưa business logic vào service
+- Hiểu inject() và providedIn: 'root'
 
-Optional practice:
-- 001_typescript_cho_dart_dev/04_class_va_ke_thua/thuc_hanh.txt (on lai class/DI pattern)
-
-Ngay 4 - Router va layout shell
+Ngày 4 - Router và layout shell
 - 007_routing_va_navigation/01_setup_routing
 - 007_routing_va_navigation/02_route_params_va_query_params
 - 007_routing_va_navigation/03_nested_routes_va_lazy_loading
-- Lam bai: 007_routing_va_navigation/01_setup_routing/thuc_hanh.txt
+- Làm bài: 007_routing_va_navigation/01_setup_routing/thuc_hanh.txt
 
-Ket qua can dat:
-- App co 3 routes + shell layout
-- Doc duoc routerLink, router-outlet, route params
+Kết quả cần đạt:
+- App có 3 routes + shell layout
+- Đọc được routerLink, router-outlet, route params
 
-Ngay 5 - Reactive forms
+Ngày 5 - Reactive forms
 - 008_forms/02_reactive_forms
 - 008_forms/03_validation
-- Lam bai: 008_forms/02_reactive_forms/thuc_hanh.txt
+- Làm bài: 008_forms/02_reactive_forms/thuc_hanh.txt
 
-Ket qua can dat:
-- Tao duoc reactive form co validation
-- Submit du lieu va hien thi loi dung luc
+Kết quả cần đạt:
+- Tạo được reactive form có validation
+- Submit dữ liệu và hiển thị lỗi đúng lúc
 
-Ngay 6 - HTTP, interceptor, loading/error/data state
+Ngày 6 - HTTP, interceptor, loading/error/data state
 - 009_http_va_api/01_http_client
 - 009_http_va_api/02_interceptors
 - 009_http_va_api/03_error_handling
-- Lam bai: 009_http_va_api/01_http_client/thuc_hanh.txt
+- Làm bài: 009_http_va_api/01_http_client/thuc_hanh.txt
 
-Ket qua can dat:
-- Goi API bang HttpClient
-- Them auth/logging interceptor
-- Bieu dien loading, error, data ro rang trong component
+Kết quả cần đạt:
+- Gọi API bằng HttpClient
+- Thêm auth/logging interceptor
+- Biểu diễn loading, error, data rõ ràng trong component
 
-Ngay 7 - RxJS du dung cho feature thuc
+Ngày 7 - RxJS đủ dùng cho feature thực
 - 010_rxjs_va_reactive_programming/01_observable_co_ban
 - 010_rxjs_va_reactive_programming/02_operators_thuong_dung
 - 010_rxjs_va_reactive_programming/04_patterns_thuc_te
-- Lam bai: 010_rxjs_va_reactive_programming/04_patterns_thuc_te/thuc_hanh.txt
+- Làm bài: 010_rxjs_va_reactive_programming/04_patterns_thuc_te/thuc_hanh.txt
 
-Tap trung vao:
+Tập trung vào:
 - map
 - switchMap
 - debounceTime
@@ -148,67 +137,63 @@ Tap trung vao:
 - combineLatest
 - takeUntilDestroyed
 
-Ngay 8 - Signals o service layer + persistence
+Ngày 8 - Signals ở service layer + persistence
 - 011_state_management/03_signals
-- Lam bai: 011_state_management/03_signals/thuc_hanh.txt
+- Làm bài: 011_state_management/03_signals/thuc_hanh.txt
 
-Ket qua can dat:
-- Biet khi nao dung signal, khi nao dung Observable
-- Viet duoc signal service co computed selectors
-- Luu/restore state tu localStorage
+Kết quả cần đạt:
+- Biết khi nào dùng signal, khi nào dùng Observable
+- Viết được signal service có computed selectors
+- Lưu/restore state từ localStorage
 
-Ngay 9-11 - Todo app end-to-end
+Ngày 9-11 - Todo app end-to-end
 - 013_project_thuc_te/01_todo_app
-- Lam bai: 013_project_thuc_te/01_todo_app/thuc_hanh.txt
+- Làm bài: 013_project_thuc_te/01_todo_app/thuc_hanh.txt
 
-Phai dat 3 moc:
-- Ngay 9: list + add + toggle + filter
-- Ngay 10: edit + delete + clear completed
-- Ngay 11: localStorage + polish + tach component
+Phải đạt 3 mốc:
+- Ngày 9: list + add + toggle + filter
+- Ngày 10: edit + delete + clear completed
+- Ngày 11: localStorage + polish + tách component
 
-Ngay 12 - Lazy loading, guards, Angular Material muc du dung
+Ngày 12 - Lazy loading, guards, Angular Material mức đủ dùng
 - 007_routing_va_navigation/03_nested_routes_va_lazy_loading
 - 007_routing_va_navigation/04_guards
 - 012_angular_material/01_setup_va_theming
 - 012_angular_material/02_common_components
 - 012_angular_material/03_layout_va_responsive
 
-Ghi chu: Ngay nay co 5 bai doc, moi bai 10-20 phut (~60-90 phut tong).
-Neu thay nang, chia thanh 2 buoi: guards/lazy-loading truoc, Material sau.
-Hoac day Material sang ngay 13 va bo phan stretch feature.
+Ngày 13 - Đọc codebase Angular mẫu hoặc thêm stretch feature
+- Đọc 1 feature Angular thực tế trong dự án công ty
+- Hoặc làm thêm filter/search/sort vào Todo app
 
-Ngay 13 - Doc codebase Angular mau hoac them stretch feature
-- Doc 1 feature Angular thuc te trong du an cong ty
-- Hoac lam them filter/search/sort vao Todo app
-
-Ngay 14 - Recap + bug-fix simulation
-- Doc lai service, router, forms, HTTP, signals
-- Tu fix 3 loi co chu dich:
+Ngày 14 - Recap + bug-fix simulation
+- Đọc lại service, router, forms, HTTP, signals
+- Tự fix 3 lỗi có chủ đích:
   + route sai param
   + form submit khi invalid
-  + list search khong debounce / khong xu ly error
+  + list search không debounce / không xử lý error
 
 ================================================================================
-CHECKPOINT BAT BUOC
+CHECKPOINT BẮT BUỘC
 ================================================================================
 
 Checkpoint 1 - Routing shell
-- App standalone co 3 routes
-- Co shared layout va router-outlet
-- Co 1 route dung params hoac query params
+- App standalone có 3 routes
+- Có shared layout và router-outlet
+- Có 1 route dùng params hoặc query params
 
 Checkpoint 2 - Reactive form
-- Form co Validators.required + it nhat 1 validator khac
-- Khong submit neu invalid
-- Co fake API submit flow
+- Form có Validators.required + ít nhất 1 validator khác
+- Không submit nếu invalid
+- Có fake API submit flow
 
 Checkpoint 3 - Search/list async
-- Search co debounce
-- Co loading, error, data state
-- Khong subscribe thu cong linh tinh neu template da dung async pipe
+- Search có debounce
+- Có loading, error, data state
+- Không subscribe thủ công linh tinh nếu template đã dùng async pipe
 
-Checkpoint 4 - Todo app bang signal service
-- Signal service lam source of truth
+Checkpoint 4 - Todo app bằng signal service
+- Signal service làm source of truth
 - computed() cho filtered list / item count
 - localStorage persistence
 
@@ -216,7 +201,7 @@ Checkpoint 4 - Todo app bang signal service
 CORE VS OPTIONAL
 ================================================================================
 
-CORE - Hoc trong 14 ngay
+CORE - Học trong 14 ngày
 - 001/02, 001/03, 001/07
 - 002/01, 002/02
 - 003/01, 003/03
@@ -227,14 +212,14 @@ CORE - Hoc trong 14 ngay
 - 008/02, 008/03
 - 009/01, 009/02, 009/03
 - 010/01, 010/02, 010/04
-- 011/03 (hoc som tu ngay 2)
+- 011/03 (học sớm từ ngày 2)
 - 012/01, 012/02, 012/03
 - 013/01
 
-OPTIONAL / APPENDIX - Doc sau khi da lam xong core
-- 001/01 setup moi truong neu ban chua dung TS/VS Code
-- 001/04 class va ke thua
-- 001/05 generics va utility types nang cao
+OPTIONAL / APPENDIX - Đọc sau khi đã làm xong core
+- 001/01 setup môi trường nếu bạn chưa dùng TS/VS Code
+- 001/04 class và kế thừa
+- 001/05 generics và utility types nâng cao
 - 001/06 decorators
 - 003/02 lifecycle hooks
 - 003/04 content projection
@@ -245,50 +230,48 @@ OPTIONAL / APPENDIX - Doc sau khi da lam xong core
 - 005/03 custom directive
 - 006/03 hierarchical injection
 - 008/01 template-driven forms
-- 010/03 subject va BehaviorSubject
-- 011/01 service-based state voi RxJS
+- 010/03 subject và BehaviorSubject
+- 011/01 service-based state với RxJS
 - 011/02 NgRx
 - 013/02 ecommerce dashboard
 
 ================================================================================
-HUONG DOC ANGULAR HIEN DAI
+HƯỚNG ĐỌC ANGULAR HIỆN ĐẠI
 ================================================================================
 
-Nhung gi nen xem la mac dinh:
-- standalone components thay vi bat dau tu NgModule
-- provideRouter() thay vi RouterModule.forRoot() trong bai nhap mon
+Những gì nên xem là mặc định:
+- standalone components thay vì bắt đầu từ NgModule
+- provideRouter() thay vì RouterModule.forRoot() trong bài nhập môn
 - provideHttpClient() + withInterceptors()
-- @if, @for thay vi day qua som vao cu phap cu
-- signals cho state noi bo va service-level state don gian
+- @if, @for thay vì đẩy quá sớm vào cú pháp cũ
+- signals cho state nội bộ và service-level state đơn giản
 
-Nhung gi chi can biet de doc code, chua can master ngay:
-- NgModule cu/legacy code
+Những gì chỉ cần biết để đọc code, chưa cần master ngay:
+- NgModule cũ/legacy code
 - BehaviorSubject state services
 - NgRx
-- decorators tu viet
-- utility types nang cao, conditional types, mapped types sau
+- decorators tự viết
+- utility types nâng cao, conditional types, mapped types sau
 
 ================================================================================
-GHI CHU VE TOOLING
+GHI CHÚ VỀ TOOLING
 ================================================================================
 
-- ng new --standalone van la cach viet ro rang khi hoc, du Angular moi da uu tien
-  standalone cho codebase moi.
-- ng lint chi chay khi workspace da duoc cau hinh lint builder (thuong la
-  angular-eslint). Khong mac dinh xem no la lenh luon co san trong moi project.
-- ng serve cho feedback nhanh, nhung khong giu state nhu Flutter hot reload.
-- Mot so file huong_dan goc dung tieng Viet co dau, mot so file moi sua dung
-  khong dau. Noi dung khong khac nhau, chi la dinh dang text.
+- ng new --standalone vẫn là cách viết rõ ràng khi học, dù Angular mới đã ưu tiên
+  standalone cho codebase mới.
+- ng lint chỉ chạy khi workspace đã được cấu hình lint builder (thường là
+  angular-eslint). Không mặc định xem nó là lệnh luôn có sẵn trong mọi project.
+- ng serve cho feedback nhanh, nhưng không giữ state như Flutter hot reload.
 
 ================================================================================
-KET QUA MONG DOI SAU 2 TUAN
+KẾT QUẢ MONG ĐỢI SAU 2 TUẦN
 ================================================================================
 
-Ban co the:
-- doc duoc cau truc feature Angular thuc te
-- them route, form, service, HTTP call, interceptor, loading state
-- phan biet signal va Observable
-- fix duoc bug co ban trong component/template/router/forms/API flow
-- tiep tuc hoc NgRx, Material nang cao, dashboard project ma khong bi ngop
+Bạn có thể:
+- đọc được cấu trúc feature Angular thực tế
+- thêm route, form, service, HTTP call, interceptor, loading state
+- phân biệt signal và Observable
+- fix được bug cơ bản trong component/template/router/forms/API flow
+- tiếp tục học NgRx, Material nâng cao, dashboard project mà không bị ngợp
 
 ================================================================================

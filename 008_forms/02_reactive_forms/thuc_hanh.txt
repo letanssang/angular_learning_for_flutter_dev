@@ -1,38 +1,38 @@
 ================================================================================
-  THUC HANH - REACTIVE FORM CHECKPOINT
+  THỰC HÀNH - REACTIVE FORM CHECKPOINT
 ================================================================================
 
-MUC TIEU:
-- Tao 1 reactive form co validation va fake submit flow
+MỤC TIÊU:
+- Tạo 1 reactive form có validation và fake submit flow
 
-THOI LUONG UOC TINH:
-- 30-40 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+- 30-40 phút
 
 TASK:
-1. Tao ProductFormComponent hoac LoginComponent
-2. Dung FormGroup + FormControl hoac FormBuilder
-3. Bat buoc co it nhat 3 fields
-4. Them validators:
+1. Tạo ProductFormComponent hoặc LoginComponent
+2. Dùng FormGroup + FormControl hoặc FormBuilder
+3. Bắt buộc có ít nhất 3 fields
+4. Thêm validators:
    - required
-   - email hoac minLength
-   - 1 custom rule nho neu muon
+   - email hoặc minLength
+   - 1 custom rule nhỏ nếu muốn
 5. Disable submit button khi form invalid
 6. Khi submit:
-   - danh dau submitted
-   - mo phong goi API bang setTimeout hoac Observable of(...).pipe(delay(...))
-   - hien thi message thanh cong
-7. Hien thi validation errors chi sau touched/dirty hoac submit
+   - đánh dấu submitted
+   - mô phỏng gọi API bằng setTimeout hoặc Observable of(...).pipe(delay(...))
+   - hiển thị message thành công
+7. Hiển thị validation errors chỉ sau touched/dirty hoặc submit
 
 EXPECTED RESULT:
-- Form khong submit neu invalid
-- Errors hien dung luc
-- Payload in ra dung shape
+- Form không submit nếu invalid
+- Errors hiện đúng lúc
+- Payload in ra đúng shape
 
 SELF-CHECK:
-- Ban co giai thich duoc FormGroup va FormControl khac gi TextEditingController khong?
-- Ban co biet dat validation o component thay vi truoc tien dat linh tinh trong template khong?
-- Ban co the them 1 field moi ma khong vo form structure khong?
+- Bạn có giải thích được FormGroup và FormControl khác gì TextEditingController không?
+- Bạn có biết đặt validation ở component thay vì trước tiên đặt linh tinh trong template không?
+- Bạn có thể thêm 1 field mới mà không vỡ form structure không?
 
 DONE KHI:
-- Ban co 1 form co validation, submit flow va UI feedback ro rang
+- Bạn có 1 form có validation, submit flow và UI feedback rõ ràng
 ================================================================================

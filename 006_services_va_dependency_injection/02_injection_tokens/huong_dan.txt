@@ -2,8 +2,8 @@
   SERVICES - INJECTION TOKENS VÀ HIERARCHICAL INJECTION
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 10-15 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 10-15 phút
 
 📌 Injection Tokens = Cách inject giá trị không phải class
 ================================================================================

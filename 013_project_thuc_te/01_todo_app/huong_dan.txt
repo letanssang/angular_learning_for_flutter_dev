@@ -1,40 +1,40 @@
 ================================================================================
-  PROJECT THUC TE 1: TODO APP (CORE PROJECT)
+  PROJECT THỰC TẾ 1: TODO APP (CORE PROJECT)
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 3-5 gio (tach 3 buoi)
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 3-5 giờ (tách 3 buổi)
 
-📌 MUC TIEU:
-  - Xay dung 1 feature Angular hoan chinh theo phong cach hien dai
-  - Dung signal service lam source of truth
-  - Noi duoc component, forms, local state, persistence, filter, routing mindset
+📌 MỤC TIÊU:
+  - Xây dựng 1 feature Angular hoàn chỉnh theo phong cách hiện đại
+  - Dùng signal service làm source of truth
+  - Nối được component, forms, local state, persistence, filter, routing mindset
 
-  ⚠️ Default path cho project nay:
+  ⚠️ Default path cho project này:
   - standalone components
   - signals-first
   - reactive thinking cho UI/state
-  - khong dung BehaviorSubject lam state mac dinh
+  - không dùng BehaviorSubject làm state mặc định
 
 ================================================================================
-  YEU CAU CHUC NANG
+  YÊU CẦU CHỨC NĂNG
 ================================================================================
 
-  1. HIEN THI DANH SACH TODOS
+  1. HIỂN THỊ DANH SÁCH TODOS
      - checkbox
-     - so item con lai
+     - số item còn lại
      - filter: all / active / completed
 
-  2. THEM TODO
+  2. THÊM TODO
      - input + Enter
-     - khong cho chuoi rong
+     - không cho chuỗi rỗng
 
-  3. SUA TODO
-     - double-click de edit
-     - Enter de luu, Escape de huy
+  3. SỬA TODO
+     - double-click để edit
+     - Enter để lưu, Escape để hủy
 
-  4. XOA TODO
-     - xoa tung item
+  4. XÓA TODO
+     - xóa từng item
      - clear completed
 
   5. PERSIST DATA
@@ -42,23 +42,23 @@ THOI LUONG UOC TINH:
      - restore khi reload
 
 ================================================================================
-  KIEN THUC AP DUNG
+  KIẾN THỨC ÁP DỤNG
 ================================================================================
 
   ✅ Components: TodoComponent, TodoItemComponent, TodoInputComponent, TodoFilter
   ✅ Signals: todos signal, filter signal, computed selectors
-  ✅ @Input/@Output: truyen data giua components
+  ✅ @Input/@Output: truyền data giữa components
   ✅ Template syntax: @if, @for, event binding
   ✅ Service: TodoService cho business logic + persistence
-  ✅ CSS: styling, states, animation nhe
+  ✅ CSS: styling, states, animation nhẹ
 
-  Optional neu muon them:
+  Optional nếu muốn thêm:
   - Angular Material
   - custom pipe
   - search box
 
 ================================================================================
-  CAU TRUC THU MUC GOI Y
+  CẤU TRÚC THƯ MỤC GỢI Ý
 ================================================================================
 
   src/app/
@@ -75,13 +75,13 @@ THOI LUONG UOC TINH:
   │   └── todo.component.ts
 
 ================================================================================
-  HUONG DAN TUNG BUOC
+  HƯỚNG DẪN TỪNG BƯỚC
 ================================================================================
 
-  Buoc 1: Tao project
+  Bước 1: Tạo project
     ng new todo-app --routing --style=scss --standalone
 
-  Buoc 2: Tao model
+  Bước 2: Tạo model
     export interface Todo {
       id: number;
       title: string;
@@ -89,10 +89,10 @@ THOI LUONG UOC TINH:
       createdAt: number;
     }
 
-  Buoc 3: Tao signal service
+  Bước 3: Tạo signal service
     ng g s features/todo/services/todo
 
-    Service can co:
+    Service cần có:
     - todos = signal<Todo[]>([])
     - filter = signal<'all' | 'active' | 'completed'>('all')
     - remaining = computed(...)
@@ -100,58 +100,58 @@ THOI LUONG UOC TINH:
     - addTodo(), toggleTodo(), updateTodo(), deleteTodo(), clearCompleted()
     - loadFromStorage(), saveToStorage()
 
-  Buoc 4: Tao components
+  Bước 4: Tạo components
     ng g c features/todo/components/todo-list
     ng g c features/todo/components/todo-item
     ng g c features/todo/components/todo-input
     ng g c features/todo/components/todo-filter
 
-  Buoc 5: Noi UI vao service
-    - component doc state tu TodoService
-    - event handler goi method trong service
-    - khong tu nhan state o moi component neu khong can
+  Bước 5: Nối UI vào service
+    - component đọc state từ TodoService
+    - event handler gọi method trong service
+    - không tự nhận state ở mọi component nếu không cần
 
-  Buoc 6: Them persistence
-    - load khi app khoi dong
-    - save moi lan todos thay doi
+  Bước 6: Thêm persistence
+    - load khi app khởi động
+    - save mỗi lần todos thay đổi
 
 ================================================================================
-  CHECKPOINT THEO NGAY
+  CHECKPOINT THEO NGÀY
 ================================================================================
 
-  Ngay 9:
+  Ngày 9:
   - render list
   - add todo
   - toggle completed
-  - filter bang computed()
+  - filter bằng computed()
 
-  Ngay 10:
+  Ngày 10:
   - edit title
   - delete item
   - clear completed
 
-  Ngay 11:
+  Ngày 11:
   - localStorage
-  - tach component cho sach
-  - polish UI va edge cases
+  - tách component cho sạch
+  - polish UI và edge cases
 
 ================================================================================
-  SO SANH VOI FLUTTER TODO APP
+  SO SÁNH VỚI FLUTTER TODO APP
 ================================================================================
 
   Flutter:
-  - state co the nam trong StatefulWidget, Riverpod hoac Bloc
-  - UI la widget tree
-  - logic de bi dan vao widget neu khong ky luat
+  - state có thể nằm trong StatefulWidget, Riverpod hoặc Bloc
+  - UI là widget tree
+  - logic dễ bị dàn vào widget nếu không kỷ luật
 
   Angular:
   - template HTML = UI
-  - signal service = source of truth ro rang
-  - component chi nen giu UI logic cuc bo
+  - signal service = source of truth rõ ràng
+  - component chỉ nên giữ UI logic cục bộ
 
 ================================================================================
-  ✅ SAU PROJECT NAY:
-  - Ban doc duoc 1 feature Angular thuc te
-  - Ban biet cach chia component/service/model
-  - Ban biet khi nao state nen o signal service thay vi Observable-first service
+  ✅ SAU PROJECT NÀY:
+  - Bạn đọc được 1 feature Angular thực tế
+  - Bạn biết cách chia component/service/model
+  - Bạn biết khi nào state nên ở signal service thay vì Observable-first service
 ================================================================================

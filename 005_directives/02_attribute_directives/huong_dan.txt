@@ -2,8 +2,8 @@
   DIRECTIVES - ATTRIBUTE DIRECTIVES
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 15-20 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 15-20 phút
 
 📌 MỤC TIÊU:
   - ngClass, ngStyle = dynamic styling

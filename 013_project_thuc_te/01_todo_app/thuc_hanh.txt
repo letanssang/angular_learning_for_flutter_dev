@@ -1,53 +1,53 @@
 ================================================================================
-  THUC HANH - TODO APP CHECKPOINTS (NGAY 9 -> 11)
+  THỰC HÀNH - TODO APP CHECKPOINTS (NGÀY 9 -> 11)
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 3-5 gio (tach 3 buoi)
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 3-5 giờ (tách 3 buổi)
 
-MUC TIEU:
-- Chia project thanh 3 moc nho de khong bi ngop
-- Tu danh gia ban da dat muc "lam duoc feature Angular" hay chua
+MỤC TIÊU:
+- Chia project thành 3 mốc nhỏ để không bị ngợp
+- Tự đánh giá bạn đã đạt mức "làm được feature Angular" hay chưa
 
-NGAY 9 - FOUNDATION
-- Tao Todo model
-- Tao TodoService bang signals
+NGÀY 9 - FOUNDATION
+- Tạo Todo model
+- Tạo TodoService bằng signals
 - Render list
 - Add todo
 - Toggle completed
 - Filter all/active/completed
 
-PASS NEU:
-- remainingCount dung
-- filteredTodos dung
-- component doc state tu service
+PASS NẾU:
+- remainingCount đúng
+- filteredTodos đúng
+- component đọc state từ service
 
-NGAY 10 - CRUD BEHAVIOR
+NGÀY 10 - CRUD BEHAVIOR
 - Edit title
 - Delete item
 - Clear completed
-- Tach TodoItemComponent neu chua tach
+- Tách TodoItemComponent nếu chưa tách
 
-PASS NEU:
-- edit/save/cancel chay dung
-- khong co duplicate state vo ly giua cha/con
+PASS NẾU:
+- edit/save/cancel chạy đúng
+- không có duplicate state vô lý giữa cha/con
 
-NGAY 11 - PERSISTENCE + POLISH
+NGÀY 11 - PERSISTENCE + POLISH
 - localStorage save/load
-- trim input rong
-- focus UX/co keyboard interactions co ban
+- trim input rỗng
+- focus UX/có keyboard interactions cơ bản
 - clean UI states
 
-PASS NEU:
-- reload trang van con data
-- khong them todo rong
-- app khong vo o edge case co ban
+PASS NẾU:
+- reload trang vẫn còn data
+- không thêm todo rỗng
+- app không vỡ ở edge case cơ bản
 
-SELF-CHECK CUOI PROJECT:
-- Ban co the chi ra source of truth la o dau khong?
-- Ban co phan biet duoc state nao nen la signal, state nao nen la Observable khong?
-- Ban co the them them search box hoac sort ma khong pha cau truc khong?
+SELF-CHECK CUỐI PROJECT:
+- Bạn có thể chỉ ra source of truth là ở đâu không?
+- Bạn có phân biệt được state nào nên là signal, state nào nên là Observable không?
+- Bạn có thể thêm search box hoặc sort mà không phá cấu trúc không?
 
 DONE KHI:
-- Ban tu tin co the doc va sua 1 feature Angular thuc te o muc co ban-trung binh
+- Bạn tự tin có thể đọc và sửa 1 feature Angular thực tế ở mức cơ bản-trung bình
 ================================================================================

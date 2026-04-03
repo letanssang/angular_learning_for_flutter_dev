@@ -2,8 +2,8 @@
   TEMPLATE VÀ DATA BINDING - INTERPOLATION & PROPERTY BINDING
 ================================================================================
 
-THOI LUONG UOC TINH:
-  - 15-20 phut
+THỜI LƯỢNG ƯỚC TÍNH:
+  - 15-20 phút
 
 📌 MỤC TIÊU:
   - Hiểu 4 loại data binding trong Angular
