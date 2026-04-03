@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 3-5 giờ (tách 3 buổi)
 
+================================================================================
+  LỆNH CẦN NHỚ
+================================================================================
+
+  - Ngày 9: add/toggle/filter
+  - Ngày 10: edit/delete/clear completed
+  - Ngày 11: persistence + polish + edge cases
+
+
 MỤC TIÊU:
 - Chia project thành 3 mốc nhỏ để không bị ngợp
 - Tự đánh giá bạn đã đạt mức "làm được feature Angular" hay chưa

@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 25-35 phút
 
+================================================================================
+  LỆNH CẦN NHỚ
+================================================================================
+
+  - `display: flex` và `display: grid` là 2 layout cơ bản cần nhớ
+  - Media query xử lý breakpoints đơn giản ở CSS
+  - `BreakpointObserver` khi responsive logic cần nằm ở TypeScript
+
+
   CSS Flexbox = Row/Column/Expanded trong Flutter
   CSS Grid = GridView
   Media queries = MediaQuery/LayoutBuilder

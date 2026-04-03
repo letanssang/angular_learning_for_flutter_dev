@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 15-20 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - Built-in validator hay dùng nhất: `required`, `email`, `minLength`
+  - Custom validator phải trả `ValidationErrors | null`
+  - Async validator cần xử lý lỗi bằng `catchError(() => of(null))`
+
+
 📌 Built-in validators và custom validators
 ================================================================================
 

@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 10-15 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `new InjectionToken<string>("API_URL")`
+  - `{ provide: API_URL, useValue: "..." }`
+  - InjectionToken hợp cho config/value, không phải class service
+
+
 📌 Injection Tokens = Cách inject giá trị không phải class
 ================================================================================
 

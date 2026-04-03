@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 20-30 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `npm install -g typescript` để có `tsc`
+  - `tsc --init` tạo `tsconfig.json`; `npx tsc` compile project hiện tại
+  - `node dist/file.js` hoặc output JS tương ứng để chạy code sau khi compile
+
+
 📌 MỤC TIÊU:
   - Cài đặt Node.js, npm, TypeScript
   - Hiểu cách chạy file TypeScript

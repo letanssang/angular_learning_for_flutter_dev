@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 10-15 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - Action -> Reducer -> Selector -> Effect là chuỗi cơ bản
+  - Chỉ học sâu NgRx khi project thực tế dùng hoặc state rất lớn
+  - Đừng nhảy vào NgRx trước khi rõ component/service/signals
+
+
 📌 MỤC TIÊU:
   - Hiểu NgRx giống BLoC/Redux style architecture
   - Đọc được codebase enterprise có action/reducer/effect/selector

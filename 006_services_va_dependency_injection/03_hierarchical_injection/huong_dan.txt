@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 10-15 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - Provider ở root = singleton toàn app
+  - Provider ở component = instance theo subtree
+  - Debug state không shared thì kiểm tra scope provider trước
+
+
 📌 Scope DI giống widget tree trong Flutter
 ================================================================================
 

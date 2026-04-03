@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 10-15 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - Import `FormsModule` nếu dùng `ngModel`
+  - `#form="ngForm"` và `name="email" ngModel` là bộ cơ bản
+  - Template-driven form chỉ nên dùng cho form nhỏ/legacy
+
+
 📌 MỤC TIÊU:
   - Hiểu ngModel và template-driven form để đọc code nhỏ/code cũ
   - Biết vì sao lộ trình này ưu tiên Reactive Forms

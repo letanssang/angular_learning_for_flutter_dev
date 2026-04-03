@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 30-40 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `new FormGroup({ ... })` hoặc `this.fb.group({ ... })`
+  - `Validators.required`, `Validators.email`, `Validators.minLength(...)`
+  - `form.get("email")?.hasError("required")` để đọc lỗi cụ thể
+
+
 📌 MỤC TIÊU:
   - Reactive forms = Flutter form + controller pattern
   - FormGroup, FormControl, FormArray

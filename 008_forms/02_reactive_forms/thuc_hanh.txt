@@ -8,6 +8,15 @@ MỤC TIÊU:
 THỜI LƯỢNG ƯỚC TÍNH:
 - 30-40 phút
 
+================================================================================
+  LỆNH CẦN NHỚ
+================================================================================
+
+  - `this.fb.group({ ... })` để tạo form nhanh
+  - `[formGroup]="form"` và `formControlName="email"`
+  - `(ngSubmit)="onSubmit()"` + disable button khi `form.invalid`
+
+
 TASK:
 1. Tạo ProductFormComponent hoặc LoginComponent
 2. Dùng FormGroup + FormControl hoặc FormBuilder

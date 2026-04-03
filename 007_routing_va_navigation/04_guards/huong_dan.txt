@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 15-20 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `export const authGuard: CanActivateFn = (...) => ...`
+  - `inject(AuthService)` trong functional guard
+  - Guard có thể trả `true`, `UrlTree`, hoặc `Observable<boolean | UrlTree>`
+
+
 📌 MỤC TIÊU:
   - Guards = redirect logic trong GoRouter
   - Bảo vệ route yêu cầu authentication

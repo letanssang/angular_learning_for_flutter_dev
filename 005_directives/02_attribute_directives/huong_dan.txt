@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 15-20 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `[ngClass]="{ active: isActive }"`
+  - `[ngStyle]="{ width.px: size }"`
+  - Ưu tiên class binding đơn giản trước khi viết logic style lớn
+
+
 📌 MỤC TIÊU:
   - ngClass, ngStyle = dynamic styling
   - So sánh với Flutter's BoxDecoration, TextStyle

@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 20-30 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `@Directive({ selector: "[appTooltip]" })`
+  - Inject `ElementRef`, `Renderer2` khi cần chạm DOM
+  - Directive để tái dùng hành vi UI, không phải nơi nhét business logic
+
+
 📌 MỤC TIÊU:
   - Tạo directive tùy chỉnh
   - So sánh: giống custom RenderObject/CustomPainter ý tưởng

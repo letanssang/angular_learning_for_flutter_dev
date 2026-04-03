@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 30-40 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `interface` cho object contract; `type` cho union/function/alias nhanh
+  - `Partial<T>` = payload cập nhật; `Pick<T, K>` = list/card nhẹ; `Omit<T, K>` = payload tạo mới
+  - Đọc `<T>` như “truyền type vào”, ví dụ `ApiResponse<Product[]>`
+
+
 📌 MỤC TIÊU:
   - Hiểu interface và type để đọc model/service/component Angular
   - Biết 3 utility thực dụng nhất: Partial, Pick, Omit

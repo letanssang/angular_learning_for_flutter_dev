@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 6-10 giờ (stretch project)
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - Dashboard này gom đủ auth + guard + interceptor + CRUD products
+  - Product management = reactive form + table/search/filter
+  - Xem đây là stretch project sau khi bạn đã xong core 14 ngày
+
+
 📌 MỤC TIÊU: Xây dựng dashboard quản lý sản phẩm
    Project nâng cao, áp dụng toàn bộ kiến thức!
 

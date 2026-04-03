@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 15-20 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `Subject` = event stream push tay
+  - `BehaviorSubject` = stream có current value
+  - App mới ưu tiên `signal()` cho local/service state đơn giản
+
+
 📌 MỤC TIÊU:
   - Hiểu Subject/BehaviorSubject để đọc code cũ hoặc codebase RxJS-heavy
   - Biết tại sao nhiều app Angular cũ dùng nó cho service state

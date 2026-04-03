@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 10-15 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - Mặc định styles được scope theo component
+  - ` :host ` dùng để style root của component
+  - Chỉ nghĩ tới `ViewEncapsulation.None` khi thật sự cần global styles
+
+
 📌 MỤC TIÊU:
   - Hiểu CSS scope trong Angular (giống Theme scope Flutter)
   - 3 chế độ encapsulation

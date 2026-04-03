@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 20-30 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `children: [...]` cho nested routes
+  - `loadComponent: () => import(...).then(m => m.X)` cho lazy standalone route
+  - Lazy load theo feature để giảm initial bundle
+
+
 📌 MỤC TIÊU:
   - Nested routes = ShellRoute + child routes
   - Lazy loading = load code khi cần (tối ưu performance)

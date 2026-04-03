@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 10-15 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `#input` tạo template reference variable
+  - `input.value` đọc nhanh giá trị trong template
+  - Hợp cho DOM access nhỏ; không thay thế form model/state rõ ràng
+
+
 📌 MỤC TIÊU:
   - Hiểu #ref syntax (giống GlobalKey trong Flutter)
   - Truy cập DOM element trực tiếp

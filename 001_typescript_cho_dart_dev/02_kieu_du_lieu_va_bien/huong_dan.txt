@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 30-40 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `let` = biến đổi được, `const` = tham chiếu không đổi
+  - `string | null | undefined` là strict null mindset trong TypeScript
+  - Function type cơ bản: `(input: string) => number`
+
+
 📌 MỤC TIÊU:
   - So sánh kiểu dữ liệu Dart vs TypeScript
   - Hiểu let, const, var trong TS
@@ -58,15 +67,14 @@ THỜI LƯỢNG ƯỚC TÍNH:
   - TS KHÔNG có compile-time constant như Dart
   - TS dùng 'as const' để tạo literal types (gần giống const Dart)
 
-  ┌──────────────┬──────────────────┐
-  │ Dart         │ TypeScript       │
-  ├──────────────┼──────────────────┤
-  │ var          │ let              │
-  │ final        │ const            │
-  │ const        │ as const (gần)   │
-  │ late         │ ! (non-null      │
-  │              │   assertion)     │
-  └──────────────┴──────────────────┘
+  ┌──────────────┬───────────────────────────────┐
+  │ Dart         │ TypeScript                    │
+  ├──────────────┼───────────────────────────────┤
+  │ var          │ let                           │
+  │ final        │ const                         │
+  │ const        │ as const (gần đúng một phần)  │
+  │ late         │ không có tương đương trực tiếp│
+  └──────────────┴───────────────────────────────┘
 
 ================================================================================
   3. TYPE ANNOTATION VS TYPE INFERENCE
@@ -142,7 +150,7 @@ THỜI LƯỢNG ƯỚC TÍNH:
   id = 123;    // OK
 
   // Literal type - giới hạn giá trị cụ thể:
-  let direction: 'up' | 'down' | 'left' | 'right';
+ ≈≈
   direction = 'up';    // OK
   direction = 'back';  // ERROR!
 

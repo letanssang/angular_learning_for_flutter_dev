@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 25-35 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `count = signal(0)` để tạo state
+  - `doubleCount = computed(() => ...)` cho derived state
+  - `effect(() => { ... })` chỉ dành cho side effect, không thay cho computed
+
+
   ⚠️ THỨ TỰ HỌC: Bài này nên học ở NGÀY 2 trong lộ trình 14 ngày
   (xem README.txt), không đợi đến chương 011. Bạn cần signals sớm
   để hiểu component state trước khi học forms, HTTP, RxJS.

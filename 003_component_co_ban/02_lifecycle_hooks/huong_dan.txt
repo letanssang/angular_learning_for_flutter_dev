@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 20-30 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - Thường gặp nhất: `ngOnInit`, `ngOnChanges`, `ngOnDestroy`
+  - Side effects/initial load thường ở `ngOnInit`
+  - Cleanup subscription/resource ở `ngOnDestroy` hoặc `takeUntilDestroyed()`
+
+
 📌 MỤC TIÊU:
   - Hiểu lifecycle hooks Angular vs Flutter State lifecycle
   - Biết khi nào dùng hook nào

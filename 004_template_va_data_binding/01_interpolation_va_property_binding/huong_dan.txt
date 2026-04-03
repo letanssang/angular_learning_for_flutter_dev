@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 15-20 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `{{ value }}` = đọc dữ liệu ra template
+  - `[src]="imageUrl"`, `[disabled]="isLoading"` = property binding
+  - Template nên đọc state; business logic nặng để ở component/service
+
+
 📌 MỤC TIÊU:
   - Hiểu 4 loại data binding trong Angular
   - Interpolation {{ }}

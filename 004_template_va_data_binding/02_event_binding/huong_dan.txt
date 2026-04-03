@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 15-20 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `(click)="save()"`
+  - `(input)="onInput($event)"`
+  - `($event.target as HTMLInputElement).value` để lấy giá trị input
+
+
 📌 MỤC TIÊU:
   - Xử lý sự kiện user trong Angular
   - So sánh với GestureDetector, onPressed trong Flutter

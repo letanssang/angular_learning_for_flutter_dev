@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 15-20 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `{{ price | currency:"VND" }}`
+  - `{{ createdAt | date:"short" }}`
+  - Pipe dùng cho transform hiển thị, không chứa side effects
+
+
 📌 MỤC TIÊU:
   - Hiểu pipes = format hiển thị (KHÔNG thay đổi data gốc)
   - Pipes có sẵn và custom pipes

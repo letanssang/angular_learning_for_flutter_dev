@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 15-25 phut
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `this.route.snapshot.paramMap.get("id")`
+  - `this.route.queryParamMap.subscribe(...)`
+  - Path param = resource; query param = filter/search/page
+
+
 📌 MỤC TIÊU:
   - Route params = GoRoute path params (:id)
   - Query params = queryParameters

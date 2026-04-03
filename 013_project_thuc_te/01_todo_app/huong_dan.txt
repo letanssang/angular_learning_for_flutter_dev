@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 3-5 giờ (tách 3 buổi)
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - Source of truth = `TodoService`
+  - Signals cốt lõi: `todos`, `filter`, `remaining`, `filteredTodos`
+  - Persistence tối thiểu: `loadFromStorage()` khi khởi động và `saveToStorage()` khi state đổi
+
+
 📌 MỤC TIÊU:
   - Xây dựng 1 feature Angular hoàn chỉnh theo phong cách hiện đại
   - Dùng signal service làm source of truth

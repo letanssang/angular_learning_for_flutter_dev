@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 20-30 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `ng new my-app --routing --style=scss --standalone`
+  - `ng serve --open` hoặc `ng serve --port 3000`
+  - `ng g c feature/name` và `ng g s feature/name` là 2 generator dùng nhiều nhất
+
+
 📌 MỤC TIÊU:
   - Cài đặt Angular CLI
   - Tạo project Angular đầu tiên

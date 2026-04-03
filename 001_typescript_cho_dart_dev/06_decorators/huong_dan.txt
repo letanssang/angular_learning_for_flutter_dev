@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 10-15 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `@Component` = class UI
+  - `@Injectable` = service có thể inject
+  - `@Input/@Output` = API giao tiếp parent-child
+
+
 📌 MỤC TIÊU:
   - Chỉ đủ mental model để đọc @Component, @Injectable, @Input, @Output
   - Biết decorators trong Angular dùng để gắn metadata vào class/member

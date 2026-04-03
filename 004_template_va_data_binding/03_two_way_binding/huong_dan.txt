@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 20-25 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `[(ngModel)]="query"` = banana in a box
+  - Two-way binding hợp cho case đơn giản; form thực tế vẫn ưu tiên Reactive Forms
+  - Nhớ import `FormsModule` nếu dùng `ngModel`
+
+
 📌 MỤC TIÊU:
   - Hiểu [(ngModel)] = TextEditingController
   - Banana-in-a-box syntax

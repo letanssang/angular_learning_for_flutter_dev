@@ -10,6 +10,15 @@ MỤC TIÊU:
 THỜI LƯỢNG ƯỚC TÍNH:
 - 30-40 phút
 
+================================================================================
+  LỆNH CẦN NHỚ
+================================================================================
+
+  - `npm i -g json-server`
+  - `json-server --watch db.json --port 3001`
+  - `http.get<T>()`, `catchError(...)`, `startWith(...)` cho loading/data/error flow
+
+
 TASK:
 1. Tạo ProductService với method getProducts()
 2. Gọi fake API:

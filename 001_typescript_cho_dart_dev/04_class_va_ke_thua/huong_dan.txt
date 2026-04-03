@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 25-35 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `class User { constructor(...) {} }` là form bạn sẽ gặp nhiều nhất
+  - `extends` = kế thừa implementation; `implements` = tuân thủ contract
+  - `public/private/protected/readonly` là 4 từ khóa cần đọc nhanh
+
+
 📌 MỤC TIÊU:
   - So sánh class Dart vs TypeScript
   - Hiểu access modifiers, constructor shorthand

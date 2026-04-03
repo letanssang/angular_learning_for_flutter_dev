@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 15-20 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - Loading VM hay dùng: `startWith(...)`, `map(...)`, `catchError(...)`
+  - Polling: `timer(0, 30000).pipe(switchMap(...))`
+  - Filters/search/sort thường đi với `combineLatest([...]).pipe(switchMap(...))`
+
+
 📌 Các patterns RxJS phổ biến trong Angular projects
 ================================================================================
 

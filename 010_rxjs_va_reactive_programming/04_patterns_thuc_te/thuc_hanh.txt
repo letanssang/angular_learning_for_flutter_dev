@@ -8,6 +8,15 @@ MỤC TIÊU:
 THỜI LƯỢNG ƯỚC TÍNH:
 - 30-40 phút
 
+================================================================================
+  LỆNH CẦN NHỚ
+================================================================================
+
+  - `valueChanges.pipe(debounceTime(300), distinctUntilChanged(), switchMap(...))`
+  - `catchError(() => of([]))` để stream không bị chết
+  - Render bằng `results$ | async` thay vì subscribe tay trong template case
+
+
 TASK:
 1. Tạo 1 input search
 2. Tạo searchTerm$ bằng Subject<string> hoặc FormControl.valueChanges

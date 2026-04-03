@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 30-40 phút
 
+================================================================================
+  LỆNH CẦN NHỚ
+================================================================================
+
+  - `ng g c components/greeting`
+  - Sửa `selector` rồi dùng `<app-greeting></app-greeting>` trong component cha
+  - Nếu parent là standalone, nhớ import child vào `imports: []`
+
+
 📌 BÀI 1: PROFILE CARD COMPONENT
 ================================================================================
 

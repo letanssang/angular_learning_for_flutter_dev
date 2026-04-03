@@ -9,6 +9,15 @@ MỤC TIÊU:
 THỜI LƯỢNG ƯỚC TÍNH:
 - 30-40 phút
 
+================================================================================
+  LỆNH CẦN NHỚ
+================================================================================
+
+  - `ng g c pages/home` và `ng g c pages/products`
+  - `ng g c layouts/main-layout` để làm shell
+  - `this.router.navigate(["/products", id])` cho điều hướng trong code
+
+
 TASK:
 1. Tạo 3 page: HomeComponent, ProductsComponent, ProductDetailComponent
 2. Cấu hình routes:

@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 15-20 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - Giữ `BehaviorSubject` là private; expose `asObservable()` ra ngoài
+  - State mutate qua methods, không expose subject trực tiếp
+  - Pattern này để đọc code cũ, không phải default path cho app mới
+
+
 📌 MỤC TIÊU:
   - Đọc được pattern service + BehaviorSubject trong codebase cũ/hiện có
   - Hiểu nó giống ChangeNotifier/StateNotifier + Provider

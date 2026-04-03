@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 15-20 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - View model tối thiểu thường có `loading`, `data`, `error`
+  - `catchError(() => of(fallback))` để không làm vỡ luồng UI
+  - Đừng nuốt lỗi mà không phản hồi cho người dùng
+
+
 📌 Xử lý lỗi HTTP trong Angular
 ================================================================================
 

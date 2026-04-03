@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 20-30 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `export` công khai symbol; `import` dùng lại symbol
+  - Ưu tiên named export trong Angular codebase
+  - Cách lần code nhanh: route -> component -> service -> model/API
+
+
 📌 MỤC TIÊU:
   - Hiểu import/export để lần theo code Angular nhanh
   - Đọc file structure mà không bị rối

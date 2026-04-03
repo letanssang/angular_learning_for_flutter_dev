@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 30-40 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `provideHttpClient()` ở app config
+  - `http.get<Product[]>("/api/products")` / `http.post<T>(...)`
+  - HttpClient trả `Observable<T>`, không phải `Future<T>`
+
+
 📌 MỤC TIÊU:
   - HttpClient = package http/dio trong Flutter
   - GET, POST, PUT, DELETE

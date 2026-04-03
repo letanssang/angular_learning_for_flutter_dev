@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 25-35 phút
 
+================================================================================
+  LỆNH CẦN NHỚ
+================================================================================
+
+  - `class Admin extends User { ... }`
+  - `constructor(private api: ApiService) {}` để vừa khai báo vừa gán property
+  - `readonly id: number` cho field không được sửa sau khi tạo
+
+
 📌 BÀI 1: CHUYỂN ĐỔI DART MODEL SANG TYPESCRIPT
 ================================================================================
 

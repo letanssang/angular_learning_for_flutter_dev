@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 30-40 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `map` = transform value
+  - `switchMap` = chuyển sang Observable mới và hủy request cũ
+  - `combineLatest` = gộp nhiều nguồn state đầu vào
+
+
 📌 Operators = Stream transformers trong Dart (nhưng SỐ LƯỢNG LỚN hơn!)
 ================================================================================
 

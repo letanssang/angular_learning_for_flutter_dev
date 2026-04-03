@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 25-35 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - Render template -> ưu tiên `async` pipe
+  - Imperative side effect -> `subscribe()` + cleanup
+  - `takeUntilDestroyed()` là mặc định an toàn khi subscribe trong component
+
+
 📌 MỤC TIÊU:
   - Observable = Stream trong Dart
   - Hiểu subscribe, async pipe, unsubscribe

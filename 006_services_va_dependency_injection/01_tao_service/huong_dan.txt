@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 25-35 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `ng g s core/services/auth`
+  - `@Injectable({ providedIn: "root" })` tạo singleton toàn app
+  - Component gọi service; service giữ business logic/API/state
+
+
 📌 MỤC TIÊU:
   - Hiểu Service = Repository/Provider/UseCase pattern Flutter
   - DI trong Angular vs Provider/GetIt/Riverpod trong Flutter

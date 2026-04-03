@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 20-30 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `Partial<T>`, `Pick<T, K>`, `Omit<T, K>` là 3 utility quan trọng nhất
+  - `Record<K, V>` = object map typed
+  - Mapped/conditional types chỉ cần đọc được từ trong ra ngoài, chưa cần master ngay
+
+
 📌 MỤC TIÊU:
   - Mở rộng sau khi bạn đã xong core 2 tuần
   - Hiểu thêm về utility types nâng cao trong codebase lớn

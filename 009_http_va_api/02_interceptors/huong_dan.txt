@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 15-20 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `provideHttpClient(withInterceptors([authInterceptor]))`
+  - `req.clone({ setHeaders: ... })` để thêm token/header
+  - Interceptor hợp cho auth, logging, retry policy và normalize lỗi
+
+
 📌 MỤC TIÊU:
   - Interceptor = Dio interceptor trong Flutter
   - Thêm token, logging, error handling tự động

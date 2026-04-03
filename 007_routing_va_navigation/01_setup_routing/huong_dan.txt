@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 25-35 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `provideRouter(routes)`
+  - `<a routerLink="/products">` để điều hướng declarative
+  - `<router-outlet></router-outlet>` là nơi route render UI
+
+
 📌 MỤC TIÊU:
   - Cấu hình routing = GoRouter setup
   - routerLink = context.go()

@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 20-30 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `ng add @angular/material`
+  - Import đúng module của component đang dùng, không import tràn lan
+  - Theme cơ bản nằm ở `styles.scss` với `@use "@angular/material" as mat;`
+
+
 📌 MỤC TIÊU:
   - Angular Material = Flutter Material widgets
   - Setup và custom theme

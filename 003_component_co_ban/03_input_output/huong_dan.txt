@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 25-35 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `@Input() title = ""` để nhận data từ parent
+  - `@Output() saved = new EventEmitter<T>()` để emit event lên parent
+  - `[value]="x"` đi xuống; `(saved)="handle($event)"` đi lên
+
+
 📌 MỤC TIÊU:
   - Hiểu @Input() = widget parameter
   - Hiểu @Output() = callback function

@@ -10,6 +10,15 @@ MỤC TIÊU:
 THỜI LƯỢNG ƯỚC TÍNH:
 - 30-40 phút
 
+================================================================================
+  LỆNH CẦN NHỚ
+================================================================================
+
+  - `items = signal<Item[]>([])`
+  - `filteredItems = computed(() => ...)`
+  - `items.update(v => [...v, item])` để mutate state an toàn
+
+
 TASK:
 1. Tạo PreferencesService hoặc TodoService
 2. Trong service, tạo:

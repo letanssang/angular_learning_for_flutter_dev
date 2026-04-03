@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 15-25 phut
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `angular.json` = build/serve/test targets
+  - `package.json` = dependencies + scripts
+  - `tsconfig*.json` = strictness/type-checking cho TypeScript
+
+
 📌 MỤC TIÊU:
   - Hiểu angular.json (giống pubspec.yaml)
   - Cấu hình build, serve, test

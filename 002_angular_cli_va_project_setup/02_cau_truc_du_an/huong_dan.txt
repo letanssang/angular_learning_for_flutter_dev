@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 20-30 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `app.config.ts` = providers toàn app
+  - `app.routes.ts` = cấu hình router
+  - `features/` = theo tính năng; `core/` = singleton/platform; `shared/` = tái sử dụng
+
+
 📌 MỤC TIÊU:
   - Hiểu cấu trúc thư mục Angular project
   - So sánh với cấu trúc Flutter project

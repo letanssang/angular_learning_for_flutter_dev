@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 20-30 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `MatButtonModule`, `MatFormFieldModule`, `MatInputModule` là bộ dùng nhiều
+  - `<mat-form-field>` thường đi cùng `matInput`
+  - Dùng Material đủ dùng, tránh import cả kho component khi chưa cần
+
+
 📌 Các component thường dùng nhất
 ================================================================================
 

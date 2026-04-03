@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 25-35 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `@if (...) { ... }`
+  - `@for (item of items; track item.id) { ... }`
+  - Render list động thì luôn nghĩ tới `track` trước
+
+
 📌 MỤC TIÊU:
   - *ngIf = Visibility/if-else trong Flutter
   - *ngFor = ListView.builder

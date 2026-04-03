@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 35-45 phút
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `ng g c features/todo/components/todo-item`
+  - Nhìn 4 field trước: `selector`, `templateUrl`, `styleUrls`, `imports`
+  - Standalone component phải tự khai báo `imports` cần dùng
+
+
 📌 MỤC TIÊU:
   - Hiểu Angular Component = Flutter Widget
   - Tạo component bằng CLI và thủ công

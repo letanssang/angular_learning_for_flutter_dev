@@ -5,6 +5,15 @@
 THỜI LƯỢNG ƯỚC TÍNH:
   - 15-25 phut
 
+================================================================================
+  CHEATSHEET NHANH
+================================================================================
+
+  - `<ng-content />` = slot mặc định
+  - `<ng-content select="[header]" />` = slot có selector
+  - Dùng khi parent quyết định markup bên trong component con
+
+
 📌 MỤC TIÊU:
   - Hiểu ng-content = Flutter child/children
   - Multi-slot projection
