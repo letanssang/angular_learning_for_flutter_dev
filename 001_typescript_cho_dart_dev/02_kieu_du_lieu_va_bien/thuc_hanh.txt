@@ -1,0 +1,98 @@
+================================================================================
+  BÀI THỰC HÀNH: KIỂU DỮ LIỆU VÀ BIẾN
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 25-35 phut
+
+📌 BÀI 1: KHAI BÁO BIẾN VÀ KIỂU DỮ LIỆU
+================================================================================
+
+  Tạo file bai1.ts, thực hiện:
+
+  1. Khai báo các biến sau với kiểu rõ ràng:
+     - name: kiểu string
+     - age: kiểu number
+     - isStudent: kiểu boolean
+     - scores: mảng number
+     - profile: object có name (string) và age (number)
+
+  2. Khai báo lại các biến trên KHÔNG dùng type annotation
+     → để TypeScript tự suy luận kiểu
+
+  3. Thử gán sai kiểu và quan sát lỗi:
+     let age: number = "hai lăm";  // → lỗi gì?
+
+================================================================================
+
+📌 BÀI 2: NULL SAFETY
+================================================================================
+
+  Tạo file bai2.ts:
+
+  1. Khai báo:
+     let userName: string | null = null;
+     let userAge: number | undefined = undefined;
+
+  2. Viết function greet nhận tham số nullable:
+     function greet(name: string | null): string {
+       // Dùng ?? và ?. để xử lý null
+       // So sánh với cách viết trong Dart
+     }
+
+  3. Thử dùng non-null assertion (!):
+     let element = document.getElementById('app')!;
+     // Khi nào nên dùng? Khi nào KHÔNG nên dùng?
+
+================================================================================
+
+📌 BÀI 3: UNION TYPES VÀ LITERAL TYPES
+================================================================================
+
+  Tạo file bai3.ts:
+
+  1. Viết function formatId nhận id là string HOẶC number:
+     function formatId(id: string | number): string {
+       // Dùng typeof để kiểm tra kiểu (type narrowing)
+       // typeof id === 'string' → ...
+       // typeof id === 'number' → ...
+     }
+
+  2. Tạo type cho trạng thái đơn hàng (dùng literal types):
+     type OrderStatus = 'pending' | 'processing' | 'shipped' | 'delivered';
+
+     // Viết function getStatusMessage(status: OrderStatus): string
+     // Dùng switch-case cho từng trạng thái
+
+  3. So sánh: Trong Dart bạn viết bài này thế nào? (dùng enum?)
+
+================================================================================
+
+📌 BÀI 4: TYPE ASSERTION (ÉP KIỂU)
+================================================================================
+
+  Tạo file bai4.ts:
+
+  // So sánh Dart: value as String
+  // TypeScript:
+  let value: unknown = "Hello TypeScript";
+
+  // Cách 1: as keyword
+  let str1 = value as string;
+
+  // Cách 2: angle-bracket (không dùng trong JSX/Angular)
+  let str2 = <string>value;
+
+  // Bài tập: Viết function parseJSON an toàn
+  function safeParseJSON<T>(json: string): T | null {
+    // try-catch và return kết quả ép kiểu
+  }
+
+================================================================================
+
+  ✅ TIÊU CHÍ HOÀN THÀNH:
+  - Tất cả file compile thành công (tsc --noEmit)
+  - Không có lỗi TypeScript
+  - Hiểu khi nào dùng union type thay vì enum
+  - Hiểu sự khác biệt null vs undefined
+================================================================================

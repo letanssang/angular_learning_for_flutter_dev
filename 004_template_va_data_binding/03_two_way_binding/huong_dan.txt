@@ -1,0 +1,92 @@
+================================================================================
+  TEMPLATE - TWO-WAY BINDING
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 20-25 phut
+
+📌 MỤC TIÊU:
+  - Hiểu [(ngModel)] = TextEditingController
+  - Banana-in-a-box syntax
+  - FormsModule setup
+
+================================================================================
+  1. TWO-WAY BINDING LÀ GÌ?
+================================================================================
+
+  // ──── FLUTTER ────
+  // TextEditingController tự đồng bộ text ↔ TextField
+  final controller = TextEditingController(text: 'Hello');
+  TextField(controller: controller)
+  // Đọc: controller.text
+  // Ghi: controller.text = 'New value'
+
+  // ──── ANGULAR ────
+  // [(ngModel)] tự đồng bộ biến ↔ input
+  <input [(ngModel)]="name">
+  // Đọc: this.name
+  // Ghi: this.name = 'New value'
+
+  // [()] = "banana in a box" syntax 🍌📦
+  // Kết hợp [property] binding + (event) binding
+
+================================================================================
+  2. SETUP NGMODEL
+================================================================================
+
+  // Bước 1: Import FormsModule
+  import { FormsModule } from '@angular/forms';
+
+  @Component({
+    standalone: true,
+    imports: [FormsModule],                  // PHẢI import!
+    template: `
+      <input [(ngModel)]="searchQuery">
+      <p>Bạn đang tìm: {{ searchQuery }}</p>
+    `
+  })
+  export class SearchComponent {
+    searchQuery: string = '';
+  }
+
+  // [(ngModel)]="searchQuery" là viết tắt của:
+  // [ngModel]="searchQuery" (ngModelChange)="searchQuery = $event"
+
+================================================================================
+  3. CUSTOM TWO-WAY BINDING
+================================================================================
+
+  // Tạo two-way binding cho component tùy chỉnh:
+  // Quy ước: @Input() x + @Output() xChange
+
+  @Component({
+    selector: 'app-rating',
+    template: `
+      <span *ngFor="let star of stars"
+        (click)="setRating(star)"
+        [class.filled]="star <= value">
+        ★
+      </span>
+    `
+  })
+  export class RatingComponent {
+    @Input() value: number = 0;
+    @Output() valueChange = new EventEmitter<number>();
+
+    stars = [1, 2, 3, 4, 5];
+
+    setRating(rating: number): void {
+      this.value = rating;
+      this.valueChange.emit(rating);
+    }
+  }
+
+  // Sử dụng:
+  <app-rating [(value)]="productRating"></app-rating>
+
+================================================================================
+  ✅ SAU BÀI NÀY:
+  - [(ngModel)] = TextEditingController (nhưng đơn giản hơn!)
+  - Import FormsModule
+  - Custom two-way binding: @Input x + @Output xChange
+================================================================================

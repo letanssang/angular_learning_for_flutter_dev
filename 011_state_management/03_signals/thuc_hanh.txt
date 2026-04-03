@@ -1,0 +1,41 @@
+================================================================================
+  THUC HANH - SIGNAL SERVICE CHECKPOINT
+================================================================================
+
+MUC TIEU:
+- Tao 1 service dung signals lam source of truth
+- Dung computed() cho derived state
+- Co persistence localStorage
+
+THOI LUONG UOC TINH:
+- 30-40 phut
+
+TASK:
+1. Tao PreferencesService hoac TodoService
+2. Trong service, tao:
+   - items = signal<Item[]>([])
+   - filter = signal<'all' | 'active' | 'done'>('all')
+   - filteredItems = computed(...)
+   - remainingCount = computed(...)
+3. Viet methods:
+   - addItem()
+   - toggleItem()
+   - removeItem()
+   - clearDone()
+4. Luu state vao localStorage moi lan thay doi
+5. Load state tu localStorage khi app bat dau
+6. O component, chi doc signal va goi methods cua service
+
+EXPECTED RESULT:
+- Service la noi giu state trung tam
+- Component khong can tu quan ly business state trung lap
+- Reload trang van giu duoc data
+
+SELF-CHECK:
+- Ban co giai thich duoc vi sao filteredItems la computed thay vi mang duoc update tay khong?
+- Ban co biet khi nao nen doi sang Observable khong? Goi y: HTTP, route params, search stream
+- Ban co giu UI logic o component va business logic o service khong?
+
+DONE KHI:
+- Ban co 1 signal service hoat dong giong source of truth thuc te
+================================================================================

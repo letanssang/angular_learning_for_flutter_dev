@@ -1,0 +1,183 @@
+================================================================================
+  COMPONENT CƠ BẢN - INPUT VÀ OUTPUT
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 25-35 phut
+
+📌 MỤC TIÊU:
+  - Hiểu @Input() = widget parameter
+  - Hiểu @Output() = callback function
+  - Truyền dữ liệu giữa parent-child component
+
+================================================================================
+  1. @INPUT - NHẬN DỮ LIỆU TỪ PARENT
+================================================================================
+
+  // ──── FLUTTER ────
+  class ProductCard extends StatelessWidget {
+    final String title;          // parameter
+    final double price;
+    final bool isFeatured;
+
+    const ProductCard({
+      required this.title,
+      required this.price,
+      this.isFeatured = false,
+    });
+
+    @override
+    Widget build(BuildContext context) { ... }
+  }
+
+  // Sử dụng:
+  ProductCard(title: 'iPhone', price: 999, isFeatured: true)
+
+  // ──── ANGULAR ────
+  @Component({
+    selector: 'app-product-card',
+    standalone: true,
+    template: `
+      <div [class.featured]="isFeatured">
+        <h3>{{ title }}</h3>
+        <p>{{ price | currency }}</p>
+      </div>
+    `
+  })
+  export class ProductCardComponent {
+    @Input() title: string = '';           // required trong TS mới
+    @Input() price: number = 0;
+    @Input() isFeatured: boolean = false;  // default value
+  }
+
+  // Sử dụng:
+  <app-product-card
+    [title]="'iPhone'"
+    [price]="999"
+    [isFeatured]="true">
+  </app-product-card>
+
+  ⚠️ SYNTAX:
+  - [propertyName]="expression"  ← property binding
+  - Dấu [] = binding 1 chiều (parent → child)
+  - Giống truyền parameter trong Flutter
+
+================================================================================
+  2. @OUTPUT - GỬI SỰ KIỆN LÊN PARENT
+================================================================================
+
+  // ──── FLUTTER ────
+  class LikeButton extends StatelessWidget {
+    final VoidCallback onLiked;
+    final ValueChanged<int> onRated;
+
+    const LikeButton({required this.onLiked, required this.onRated});
+
+    @override
+    Widget build(BuildContext context) {
+      return ElevatedButton(
+        onPressed: () {
+          onLiked();
+          onRated(5);
+        },
+        child: Text('Like'),
+      );
+    }
+  }
+
+  // ──── ANGULAR ────
+  import { Component, Output, EventEmitter } from '@angular/core';
+
+  @Component({
+    selector: 'app-like-button',
+    standalone: true,
+    template: `
+      <button (click)="onLike()">Like</button>
+    `
+  })
+  export class LikeButtonComponent {
+    @Output() liked = new EventEmitter<void>();
+    @Output() rated = new EventEmitter<number>();
+
+    onLike(): void {
+      this.liked.emit();        // ≈ widget.onLiked()
+      this.rated.emit(5);       // ≈ widget.onRated(5)
+    }
+  }
+
+  // Sử dụng (parent):
+  <app-like-button
+    (liked)="handleLike()"
+    (rated)="handleRate($event)">
+  </app-like-button>
+
+  // $event = giá trị được emit (trong ví dụ: 5)
+
+  ⚠️ SYNTAX:
+  - (eventName)="handler($event)"  ← event binding
+  - Dấu () = binding sự kiện (child → parent)
+  - EventEmitter ≈ VoidCallback/ValueChanged trong Flutter
+
+================================================================================
+  3. INPUT + OUTPUT KẾT HỢP - VÍ DỤ THỰC TẾ
+================================================================================
+
+  // ──── ANGULAR ────
+  @Component({
+    selector: 'app-search-bar',
+    standalone: true,
+    template: `
+      <input
+        [value]="query"
+        (input)="onSearch($event)"
+        placeholder="Tìm kiếm..."
+      />
+      <button (click)="clear()">Xóa</button>
+    `
+  })
+  export class SearchBarComponent {
+    @Input() query: string = '';
+    @Output() queryChange = new EventEmitter<string>();
+    @Output() searchSubmit = new EventEmitter<string>();
+
+    onSearch(event: Event): void {
+      const value = (event.target as HTMLInputElement).value;
+      this.queryChange.emit(value);
+    }
+
+    clear(): void {
+      this.queryChange.emit('');
+    }
+  }
+
+  // Parent:
+  <app-search-bar
+    [query]="searchQuery"
+    (queryChange)="searchQuery = $event"
+    (searchSubmit)="doSearch($event)">
+  </app-search-bar>
+
+================================================================================
+  4. SO SÁNH TỔNG HỢP
+================================================================================
+
+  ┌──────────────────────────┬──────────────────────────────┐
+  │ Flutter                  │ Angular                      │
+  ├──────────────────────────┼──────────────────────────────┤
+  │ final String title       │ @Input() title: string       │
+  │ required this.title      │ @Input({ required: true })   │
+  │ this.value = 'default'   │ @Input() value = 'default'   │
+  │ VoidCallback onTap       │ @Output() tap = EventEmitter │
+  │ ValueChanged<T> onChange │ @Output() change = EE<T>     │
+  │ Widget(title: 'Hi')      │ [title]="'Hi'"               │
+  │ onTap: () => doSth()     │ (tap)="doSth()"              │
+  └──────────────────────────┴──────────────────────────────┘
+
+================================================================================
+  ✅ SAU BÀI NÀY BẠN CẦN BIẾT:
+  - @Input() = widget constructor parameter
+  - @Output() + EventEmitter = callback function
+  - [property]="value" = truyền data xuống
+  - (event)="handler()" = lắng nghe event lên
+  - $event = giá trị được emit
+================================================================================

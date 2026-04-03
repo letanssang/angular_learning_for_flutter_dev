@@ -1,0 +1,191 @@
+================================================================================
+  TYPESCRIPT CHO DART DEV - CLASS VÀ KẾ THỪA
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 25-35 phut
+
+📌 MỤC TIÊU:
+  - So sánh class Dart vs TypeScript
+  - Hiểu access modifiers, constructor shorthand
+  - Abstract class, static members
+
+================================================================================
+  1. KHAI BÁO CLASS CƠ BẢN
+================================================================================
+
+  // ──── DART ────
+  class Person {
+    String name;
+    int age;
+
+    Person(this.name, this.age);        // shorthand constructor
+
+    String greet() => 'Hi, I am $name';
+  }
+
+  // ──── TYPESCRIPT ────
+  class Person {
+    constructor(
+      public name: string,              // shorthand tương tự!
+      public age: number
+    ) {}
+
+    greet(): string {
+      return `Hi, I am ${this.name}`;   // template literal
+    }
+  }
+
+  ⚠️ KHÁC BIỆT:
+  - TS bắt buộc dùng 'this.' khi truy cập property
+  - Dart dùng 'this.' chỉ khi cần (ambiguous)
+  - TS constructor shorthand: dùng access modifier trong param
+
+================================================================================
+  2. ACCESS MODIFIERS
+================================================================================
+
+  ┌──────────────┬──────────────────────────┐
+  │ Dart         │ TypeScript               │
+  ├──────────────┼──────────────────────────┤
+  │ (default)    │ public (default)         │
+  │ _private     │ private                  │
+  │ (không có)   │ protected                │
+  │ @protected   │ protected                │
+  │ _underscore  │ #privateField (ES2022)   │
+  └──────────────┴──────────────────────────┘
+
+  class BankAccount {
+    private _balance: number;           // chỉ class này truy cập
+    protected owner: string;            // class này + subclass
+    public accountNumber: string;       // ai cũng truy cập
+
+    // ES2022 private field (thực sự private ở runtime):
+    #pin: number;
+
+    constructor(owner: string, initialBalance: number) {
+      this.owner = owner;
+      this._balance = initialBalance;
+      this.accountNumber = 'ACC-001';
+      this.#pin = 1234;
+    }
+  }
+
+  ⚠️ CHÚ Ý:
+  - Dart dùng _ (underscore) = library-private
+  - TS private chỉ ở compile-time, runtime vẫn truy cập được!
+  - Dùng # (hash) nếu cần private thực sự ở runtime
+
+================================================================================
+  3. GETTER VÀ SETTER
+================================================================================
+
+  // Dart và TS khá giống nhau ở đây:
+
+  class Temperature {
+    private _celsius: number;
+
+    constructor(celsius: number) {
+      this._celsius = celsius;
+    }
+
+    get fahrenheit(): number {          // Dart: double get fahrenheit
+      return this._celsius * 9/5 + 32;
+    }
+
+    set fahrenheit(f: number) {         // Dart: set fahrenheit(double f)
+      this._celsius = (f - 32) * 5/9;
+    }
+  }
+
+  const temp = new Temperature(100);
+  console.log(temp.fahrenheit);         // 212
+  temp.fahrenheit = 32;                 // set Celsius = 0
+
+================================================================================
+  4. KẾ THỪA (EXTENDS)
+================================================================================
+
+  class Animal {
+    constructor(public name: string) {}
+
+    speak(): string {
+      return `${this.name} makes a sound`;
+    }
+  }
+
+  class Dog extends Animal {
+    constructor(name: string, public breed: string) {
+      super(name);                      // Dart: super(name)
+    }
+
+    override speak(): string {          // override keyword (optional)
+      return `${this.name} barks!`;
+    }
+  }
+
+  // 'override' keyword trong TS là optional (từ TS 4.3+)
+  // Bật "noImplicitOverride": true trong tsconfig để bắt buộc
+
+================================================================================
+  5. ABSTRACT CLASS
+================================================================================
+
+  // Giống Dart khá nhiều:
+
+  abstract class Shape {
+    abstract area(): number;            // Dart: double area();
+    abstract perimeter(): number;
+
+    describe(): string {                // method có body
+      return `Area: ${this.area()}, Perimeter: ${this.perimeter()}`;
+    }
+  }
+
+  class Circle extends Shape {
+    constructor(private radius: number) {
+      super();
+    }
+
+    area(): number {
+      return Math.PI * this.radius ** 2;
+    }
+
+    perimeter(): number {
+      return 2 * Math.PI * this.radius;
+    }
+  }
+
+================================================================================
+  6. STATIC MEMBERS
+================================================================================
+
+  class MathUtils {
+    static readonly PI = 3.14159;       // Dart: static const pi
+    private static instance: MathUtils;
+
+    static square(x: number): number {  // Dart: static int square
+      return x * x;
+    }
+
+    // Singleton pattern (giống Dart factory constructor):
+    static getInstance(): MathUtils {
+      if (!MathUtils.instance) {
+        MathUtils.instance = new MathUtils();
+      }
+      return MathUtils.instance;
+    }
+  }
+
+  ⚠️ DART CÓ FACTORY CONSTRUCTOR, TS KHÔNG CÓ:
+  // Dart: factory MyClass() => _instance;
+  // TS: dùng static method thay thế
+
+================================================================================
+  ✅ SAU BÀI NÀY BẠN CẦN BIẾT:
+  - Constructor shorthand TS vs Dart (this.param vs modifier param)
+  - Access modifiers: public/private/protected vs Dart _underscore
+  - Abstract class giống nhau ~90%
+  - TS không có factory constructor → dùng static method
+  - override keyword mới có từ TS 4.3
+================================================================================

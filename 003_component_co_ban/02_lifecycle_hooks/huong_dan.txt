@@ -1,0 +1,146 @@
+================================================================================
+  COMPONENT CƠ BẢN - LIFECYCLE HOOKS
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 20-30 phut
+
+📌 MỤC TIÊU:
+  - Hiểu lifecycle hooks Angular vs Flutter State lifecycle
+  - Biết khi nào dùng hook nào
+  - So sánh initState, dispose, didUpdateWidget, didChangeDependencies
+
+================================================================================
+  1. SO SÁNH LIFECYCLE
+================================================================================
+
+  ┌─────────────────────────┬──────────────────────────────────┐
+  │ Flutter (State)         │ Angular (Component)              │
+  ├─────────────────────────┼──────────────────────────────────┤
+  │ initState()             │ ngOnInit()                       │
+  │ didChangeDependencies() │ ngOnInit() (gần giống)           │
+  │ didUpdateWidget()       │ ngOnChanges()                    │
+  │ build()                 │ Template (tự động)               │
+  │ dispose()               │ ngOnDestroy()                    │
+  │ (không có)              │ ngAfterViewInit()                │
+  │ (không có)              │ ngAfterContentInit()             │
+  │ (không có)              │ ngDoCheck()                      │
+  └─────────────────────────┴──────────────────────────────────┘
+
+================================================================================
+  2. CÁC LIFECYCLE HOOKS QUAN TRỌNG
+================================================================================
+
+  import { Component, OnInit, OnDestroy, OnChanges,
+           AfterViewInit, SimpleChanges } from '@angular/core';
+
+  @Component({ ... })
+  export class MyComponent implements OnInit, OnDestroy, OnChanges,
+                                      AfterViewInit {
+
+    // 1. CONSTRUCTOR - Chạy đầu tiên
+    // ≈ Dart constructor (KHÔNG phải initState)
+    // KHÔNG nên gọi API ở đây!
+    constructor() {
+      console.log('Constructor');
+    }
+
+    // 2. ngOnChanges - Khi @Input thay đổi
+    // ≈ Flutter: didUpdateWidget()
+    // Chạy TRƯỚC ngOnInit và mỗi khi @Input thay đổi
+    ngOnChanges(changes: SimpleChanges): void {
+      console.log('Input changed:', changes);
+    }
+
+    // 3. ngOnInit - Khởi tạo component
+    // ≈ Flutter: initState()
+    // Chạy SAU lần ngOnChanges đầu tiên
+    // GỌI API Ở ĐÂY!
+    ngOnInit(): void {
+      console.log('Component initialized');
+      // this.loadData();
+    }
+
+    // 4. ngAfterViewInit - Sau khi view render xong
+    // ≈ Flutter: addPostFrameCallback()
+    // Truy cập DOM elements ở đây
+    ngAfterViewInit(): void {
+      console.log('View initialized');
+    }
+
+    // 5. ngOnDestroy - Dọn dẹp
+    // ≈ Flutter: dispose()
+    // Hủy subscriptions, timers ở đây
+    ngOnDestroy(): void {
+      console.log('Component destroyed');
+      // this.subscription.unsubscribe();
+    }
+  }
+
+================================================================================
+  3. THỨ TỰ THỰC THI
+================================================================================
+
+  Component khởi tạo:
+  1. constructor()
+  2. ngOnChanges() (nếu có @Input)
+  3. ngOnInit()
+  4. ngDoCheck()
+  5. ngAfterContentInit()
+  6. ngAfterContentChecked()
+  7. ngAfterViewInit()
+  8. ngAfterViewChecked()
+
+  Component update (khi @Input thay đổi):
+  1. ngOnChanges()
+  2. ngDoCheck()
+  3. ngAfterContentChecked()
+  4. ngAfterViewChecked()
+
+  Component hủy:
+  1. ngOnDestroy()
+
+================================================================================
+  4. THỰC TẾ: DÙNG HOOKS THƯỜNG GẶP
+================================================================================
+
+  // Cách dùng phổ biến nhất (80% trường hợp):
+
+  export class UserListComponent implements OnInit, OnDestroy {
+    users: User[] = [];
+    private subscription!: Subscription;
+
+    constructor(private userService: UserService) {}
+
+    // Giống initState() trong Flutter:
+    ngOnInit(): void {
+      this.subscription = this.userService.getUsers()
+        .subscribe(users => this.users = users);
+    }
+
+    // Giống dispose() trong Flutter:
+    ngOnDestroy(): void {
+      this.subscription.unsubscribe();
+    }
+  }
+
+  // Flutter tương đương:
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _loadUsers();
+  // }
+  // @override
+  // void dispose() {
+  //   _subscription.cancel();
+  //   super.dispose();
+  // }
+
+================================================================================
+  ✅ SAU BÀI NÀY BẠN CẦN BIẾT:
+  - ngOnInit = initState (gọi API ở đây)
+  - ngOnDestroy = dispose (hủy subscription)
+  - ngOnChanges = didUpdateWidget (input thay đổi)
+  - ngAfterViewInit = addPostFrameCallback (DOM ready)
+  - Luôn implements interface tương ứng
+================================================================================

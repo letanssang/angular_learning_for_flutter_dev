@@ -1,0 +1,37 @@
+================================================================================
+  THUC HANH - ROUTING SHELL CHECKPOINT
+================================================================================
+
+MUC TIEU:
+- Tao app standalone co 3 routes va shared layout
+- Dung router-outlet, routerLink, route param/query param
+
+THOI LUONG UOC TINH:
+- 30-40 phut
+
+TASK:
+1. Tao 3 page: HomeComponent, ProductsComponent, ProductDetailComponent
+2. Cau hinh routes:
+   - /
+   - /products
+   - /products/:id
+3. Tao 1 layout component chua nav + router-outlet
+4. Trong nav, them link Home va Products
+5. Tu Products page, click vao 1 item de di den /products/123
+6. O ProductDetailComponent, doc id tu route params va render ra man hinh
+7. Them 1 query param q o page Products de mo phong search state
+
+EXPECTED RESULT:
+- App chay voi shell layout chung
+- Dieu huong giua 3 route khong reload trang
+- Detail page doc duoc id tu URL
+- Products page doc duoc query param q
+
+SELF-CHECK:
+- Ban co giai thich duoc router-outlet render o dau khong?
+- Ban co phan biet duoc route params va query params khong?
+- Ban co biet layout shell giong y tuong nao trong Flutter navigation khong?
+
+DONE KHI:
+- Ban co 1 app co cau truc route ro rang, duoc xem la checkpoint routing dat
+================================================================================

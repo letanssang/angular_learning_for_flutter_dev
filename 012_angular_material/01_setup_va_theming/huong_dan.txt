@@ -1,0 +1,124 @@
+================================================================================
+  ANGULAR MATERIAL - SETUP VÀ THEMING
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 20-30 phut
+
+📌 MỤC TIÊU:
+  - Angular Material = Flutter Material widgets
+  - Setup và custom theme
+  - So sánh components
+
+================================================================================
+  1. CÀI ĐẶT
+================================================================================
+
+  # Cài đặt:
+  ng add @angular/material
+
+  # Chọn theme, typography, animations khi được hỏi
+
+  // Flutter: Material có sẵn!
+  // Angular: phải cài thêm @angular/material
+
+================================================================================
+  2. IMPORT COMPONENTS
+================================================================================
+
+  // Mỗi component import riêng (tree-shaking!):
+  import { MatButtonModule } from '@angular/material/button';
+  import { MatCardModule } from '@angular/material/card';
+  import { MatInputModule } from '@angular/material/input';
+  import { MatIconModule } from '@angular/material/icon';
+  import { MatToolbarModule } from '@angular/material/toolbar';
+
+  @Component({
+    imports: [
+      MatButtonModule,
+      MatCardModule,
+      MatInputModule,
+      MatIconModule,
+      MatToolbarModule,
+    ],
+    template: `
+      <mat-toolbar color="primary">My App</mat-toolbar>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Hello</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary">Submit</button>
+        </mat-card-actions>
+      </mat-card>
+    `
+  })
+
+================================================================================
+  3. SO SÁNH COMPONENTS
+================================================================================
+
+  ┌──────────────────────────┬──────────────────────────────┐
+  │ Flutter Material         │ Angular Material             │
+  ├──────────────────────────┼──────────────────────────────┤
+  │ AppBar()                 │ <mat-toolbar>                │
+  │ ElevatedButton()         │ <button mat-raised-button>   │
+  │ TextButton()             │ <button mat-button>          │
+  │ Card()                   │ <mat-card>                   │
+  │ TextField()              │ <mat-form-field> + <input>   │
+  │ Checkbox()               │ <mat-checkbox>               │
+  │ Switch()                 │ <mat-slide-toggle>           │
+  │ CircularProgressIndicator│ <mat-spinner>                │
+  │ SnackBar                 │ MatSnackBar service          │
+  │ AlertDialog              │ MatDialog service            │
+  │ BottomSheet              │ MatBottomSheet service       │
+  │ Drawer()                 │ <mat-sidenav>                │
+  │ TabBar()                 │ <mat-tab-group>              │
+  │ DataTable()              │ <mat-table>                  │
+  │ ListTile()               │ <mat-list-item>              │
+  │ Chip()                   │ <mat-chip>                   │
+  └──────────────────────────┴──────────────────────────────┘
+
+================================================================================
+  4. CUSTOM THEME
+================================================================================
+
+  // styles.scss:
+  @use '@angular/material' as mat;
+
+  $my-theme: mat.define-theme((
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: (
+      brand-family: 'Roboto',
+    ),
+  ));
+
+  html {
+    @include mat.all-component-themes($my-theme);
+  }
+
+  // Flutter tương đương:
+  // MaterialApp(
+  //   theme: ThemeData(
+  //     colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+  //     useMaterial3: true,
+  //   ),
+  // )
+
+================================================================================
+  ✅ SAU BÀI NÀY:
+  - ng add @angular/material để cài đặt
+  - Import từng module riêng (MatButtonModule, ...)
+  - Components tương tự Flutter Material widgets
+  - Custom theme bằng SCSS
+================================================================================

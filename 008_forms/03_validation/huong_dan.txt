@@ -1,0 +1,46 @@
+================================================================================
+  FORMS - VALIDATION
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 15-20 phut
+
+📌 Built-in validators và custom validators
+================================================================================
+
+  1. BUILT-IN VALIDATORS:
+  - Validators.required
+  - Validators.minLength(n)
+  - Validators.maxLength(n)
+  - Validators.email
+  - Validators.pattern(regex)
+  - Validators.min(n)
+  - Validators.max(n)
+
+  2. CUSTOM VALIDATOR:
+  function passwordMatch(group: FormGroup): ValidationErrors | null {
+    const pass = group.get('password')?.value;
+    const confirm = group.get('confirmPassword')?.value;
+    return pass === confirm ? null : { passwordMismatch: true };
+  }
+
+  // Sử dụng:
+  registerForm = this.fb.group({
+    password: ['', Validators.required],
+    confirmPassword: ['', Validators.required],
+  }, { validators: passwordMatch });
+
+  3. ASYNC VALIDATOR (kiểm tra server):
+  function emailExists(http: HttpClient): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+      return http.get<boolean>(`/api/check-email/${control.value}`)
+        .pipe(
+          map(exists => exists ? { emailExists: true } : null),
+          catchError(() => of(null))
+        );
+    };
+  }
+
+================================================================================
+  ✅ Giống Flutter validator nhưng mạnh hơn với async validation
+================================================================================

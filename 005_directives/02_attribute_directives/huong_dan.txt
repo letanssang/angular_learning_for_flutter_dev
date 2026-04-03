@@ -1,0 +1,81 @@
+================================================================================
+  DIRECTIVES - ATTRIBUTE DIRECTIVES
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 15-20 phut
+
+📌 MỤC TIÊU:
+  - ngClass, ngStyle = dynamic styling
+  - So sánh với Flutter's BoxDecoration, TextStyle
+
+================================================================================
+  1. NGCLASS (DYNAMIC CSS CLASSES)
+================================================================================
+
+  // ──── FLUTTER ────
+  Container(
+    decoration: BoxDecoration(
+      color: isActive ? Colors.green : Colors.grey,
+      borderRadius: BorderRadius.circular(isRounded ? 16 : 0),
+    ),
+  )
+
+  // ──── ANGULAR ────
+  // Cách 1: Object syntax
+  <div [ngClass]="{ 'active': isActive, 'rounded': isRounded,
+                     'error': hasError }">
+
+  // Cách 2: Array syntax
+  <div [ngClass]="['card', isActive ? 'card-active' : 'card-inactive']">
+
+  // Cách 3: String syntax
+  <div [ngClass]="currentClasses">
+
+  // Cách 4: Class binding đơn lẻ
+  <div [class.active]="isActive">
+
+================================================================================
+  2. NGSTYLE (DYNAMIC INLINE STYLES)
+================================================================================
+
+  // ──── FLUTTER ────
+  Text('Hello', style: TextStyle(
+    fontSize: customSize,
+    color: customColor,
+    fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
+  ))
+
+  // ──── ANGULAR ────
+  <p [ngStyle]="{
+    'font-size': customSize + 'px',
+    'color': customColor,
+    'font-weight': isBold ? 'bold' : 'normal'
+  }">Hello</p>
+
+  // Style binding đơn lẻ:
+  <p [style.fontSize.px]="customSize"
+     [style.color]="customColor">Hello</p>
+
+================================================================================
+  3. VÍ DỤ THỰC TẾ
+================================================================================
+
+  // Danh sách tasks với trạng thái:
+  @for (task of tasks; track task.id) {
+    <div class="task"
+         [ngClass]="{
+           'task-done': task.completed,
+           'task-urgent': task.priority === 'high'
+         }"
+         [style.opacity]="task.completed ? 0.5 : 1">
+      {{ task.title }}
+    </div>
+  }
+
+================================================================================
+  ✅ SAU BÀI NÀY:
+  - [ngClass] = dynamic class toggling
+  - [ngStyle] = dynamic inline styles
+  - [class.x] và [style.x] cho single property
+================================================================================

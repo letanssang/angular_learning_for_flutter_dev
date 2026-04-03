@@ -1,0 +1,105 @@
+================================================================================
+  ANGULAR JSON VÀ CẤU HÌNH PROJECT
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 15-25 phut
+
+📌 MỤC TIÊU:
+  - Hiểu angular.json (giống pubspec.yaml)
+  - Cấu hình build, serve, test
+  - Environment configuration
+
+================================================================================
+  1. ANGULAR.JSON - FILE CẤU HÌNH CHÍNH
+================================================================================
+
+  Tương đương pubspec.yaml trong Flutter:
+
+  {
+    "projects": {
+      "my-app": {
+        "architect": {
+          "build": {
+            "options": {
+              "outputPath": "dist/",              // build output
+              "index": "src/index.html",
+              "main": "src/main.ts",              // entry point
+              "assets": ["src/assets"],            // static assets
+              "styles": ["src/styles.css"],        // global styles
+              "scripts": []                        // global scripts
+            }
+          },
+          "serve": {
+            "options": {
+              "port": 4200,                        // dev server port
+              "open": true                         // tự mở browser
+            }
+          }
+        }
+      }
+    }
+  }
+
+================================================================================
+  2. PACKAGE.JSON - QUẢN LÝ DEPENDENCIES
+================================================================================
+
+  // Tương đương pubspec.yaml phần dependencies:
+
+  // Flutter:
+  // dependencies:
+  //   http: ^1.0.0
+  //   provider: ^6.0.0
+  // dev_dependencies:
+  //   flutter_test:
+
+  // Angular (package.json):
+  {
+    "dependencies": {
+      "@angular/core": "^17.0.0",     // framework core
+      "@angular/router": "^17.0.0",   // routing
+      "rxjs": "~7.8.0"               // reactive programming
+    },
+    "devDependencies": {
+      "@angular/cli": "^17.0.0",      // CLI tool
+      "typescript": "~5.2.0",         // TS compiler
+      "karma": "~6.4.0"              // test runner
+    }
+  }
+
+  // Cài package: npm install axios
+  // Tương đương: flutter pub add http
+
+================================================================================
+  3. ENVIRONMENT CONFIGURATION
+================================================================================
+
+  // Flutter: --dart-define=API_URL=https://...
+  // Angular: environments/
+
+  // environment.ts (dev):
+  export const environment = {
+    production: false,
+    apiUrl: 'http://localhost:3000/api'
+  };
+
+  // environment.prod.ts (production):
+  export const environment = {
+    production: true,
+    apiUrl: 'https://api.myapp.com'
+  };
+
+  // Sử dụng trong code:
+  import { environment } from '../environments/environment';
+  console.log(environment.apiUrl);
+
+  // Build production tự động swap file:
+  // ng build --configuration production
+
+================================================================================
+  ✅ SAU BÀI NÀY BẠN CẦN BIẾT:
+  - angular.json = pubspec.yaml (cấu hình)
+  - package.json = pubspec.yaml (dependencies)
+  - Environment files = --dart-define
+================================================================================

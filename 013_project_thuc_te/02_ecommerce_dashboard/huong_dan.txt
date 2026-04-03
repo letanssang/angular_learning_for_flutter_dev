@@ -1,0 +1,91 @@
+================================================================================
+  PROJECT THỰC TẾ 2: E-COMMERCE DASHBOARD
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 6-10 gio (stretch project)
+
+📌 MỤC TIÊU: Xây dựng dashboard quản lý sản phẩm
+   Project nâng cao, áp dụng toàn bộ kiến thức!
+
+================================================================================
+  YÊU CẦU CHỨC NĂNG:
+================================================================================
+
+  1. AUTHENTICATION
+     - Login page
+     - Auth guard bảo vệ routes
+     - JWT token handling (interceptor)
+
+  2. DASHBOARD
+     - Tổng quan: cards thống kê (total products, orders, revenue)
+     - Charts (dùng ng2-charts hoặc chart.js)
+
+  3. PRODUCT MANAGEMENT (CRUD)
+     - Danh sách sản phẩm (table + pagination + sort)
+     - Thêm/Sửa sản phẩm (reactive form)
+     - Xóa sản phẩm (confirm dialog)
+     - Search + Filter (RxJS debounce)
+
+  4. ROUTING
+     - /login
+     - /dashboard (guard protected)
+     - /dashboard/products
+     - /dashboard/products/:id
+     - /dashboard/orders
+     - 404 page
+
+  5. RESPONSIVE
+     - Sidebar navigation (collapse trên mobile)
+     - Responsive table/grid
+
+================================================================================
+  KIẾN THỨC ÁP DỤNG:
+================================================================================
+
+  ✅ Components: 10+ components
+  ✅ Services: AuthService, ProductService, OrderService
+  ✅ Routing: nested routes, lazy loading, guards
+  ✅ Forms: Reactive forms với validation
+  ✅ HTTP: CRUD operations, interceptors
+  ✅ RxJS: search, combine filters, error handling
+  ✅ State: Signals hoặc service-based state
+  ✅ Material: dialog, table, snackbar, sidenav, toolbar
+  ✅ Guards: auth guard, admin guard
+
+================================================================================
+  CẤU TRÚC THƯ MỤC:
+================================================================================
+
+  src/app/
+  ├── core/
+  │   ├── services/auth.service.ts
+  │   ├── guards/auth.guard.ts
+  │   ├── interceptors/auth.interceptor.ts
+  │   └── models/
+  ├── shared/
+  │   ├── components/confirm-dialog/
+  │   ├── components/loading-spinner/
+  │   └── pipes/
+  ├── features/
+  │   ├── auth/login/
+  │   ├── dashboard/
+  │   │   ├── overview/
+  │   │   ├── products/
+  │   │   │   ├── product-list/
+  │   │   │   ├── product-form/
+  │   │   │   └── product-detail/
+  │   │   └── orders/
+  │   └── not-found/
+  └── layouts/
+      ├── main-layout/
+      └── auth-layout/
+
+================================================================================
+  API GIẢ LẬP:
+  - Dùng json-server: npm install -g json-server
+  - Tạo db.json với mock data
+  - Chạy: json-server --watch db.json --port 3001
+
+  Hoặc dùng: https://fakestoreapi.com (API có sẵn)
+================================================================================

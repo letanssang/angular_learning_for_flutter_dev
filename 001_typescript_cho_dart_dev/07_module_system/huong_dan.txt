@@ -1,0 +1,126 @@
+================================================================================
+  TYPESCRIPT CHO DART DEV - IMPORT/EXPORT VA DOC TYPE ERRORS
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 20-30 phut
+
+📌 MUC TIEU:
+  - Hieu import/export de lan theo code Angular nhanh
+  - Doc file structure ma khong bi roi
+  - Nhan ra mot so loi TypeScript pho bien khi sua code
+
+  ⚠️ Trong lo trinh 2 tuan:
+  - Bai nay la CORE
+  - Trong code Angular moi, standalone quan trong hon viec hoc sau ve NgModule
+
+================================================================================
+  1. EXPORT VA IMPORT
+================================================================================
+
+  // user.model.ts
+  export interface User {
+    id: number;
+    name: string;
+  }
+
+  export class UserService {
+    getUsers(): User[] {
+      return [];
+    }
+  }
+
+  // file khac
+  import { User, UserService } from './user.model';
+
+  Ban can doc nhu sau:
+  - export = file nay cong khai type/class/function nay
+  - import = file kia dang dung lai no
+
+================================================================================
+  2. NAMED EXPORT LA MAC DINH NEN DUNG
+================================================================================
+
+  // logger.ts
+  export class Logger {
+    log(message: string): void {
+      console.log(message);
+    }
+  }
+
+  // file khac
+  import { Logger } from './logger';
+
+  Thuc te Angular:
+  - thuong dung named export
+  - giam nham lan khi rename/symbol search
+  - de lan theo component/service/model hon
+
+================================================================================
+  3. BARREL EXPORTS (INDEX FILES)
+================================================================================
+
+  // models/index.ts
+  export { User } from './user.model';
+  export { Product } from './product.model';
+
+  // usage
+  import { User, Product } from './models';
+
+  Ban se gap trong codebase lon:
+  - shared models
+  - shared UI exports
+  - feature public API
+
+================================================================================
+  4. DOC CAU TRUC FILE ANGULAR HIEN DAI
+================================================================================
+
+  src/app/
+  ├── core/
+  ├── shared/
+  ├── features/
+  │   └── products/
+  │       ├── product-list.component.ts
+  │       ├── product-form.component.ts
+  │       ├── product.service.ts
+  │       └── product.model.ts
+  ├── app.config.ts
+  └── app.routes.ts
+
+  Cach lan code:
+  - route -> component
+  - component -> service
+  - service -> model / HttpClient
+  - form / template -> event -> state update
+
+  ⚠️ NgModule co the van xuat hien trong code cu, nhung khong phai diem vao
+  codebase nhanh cho lo trinh nay.
+
+================================================================================
+  5. 4 LOI TYPE THUONG GAP KHI SUA CODE
+================================================================================
+
+  Loi 1:
+  Cannot find name 'X'
+  -> thieu import, go sai ten, hoac file chua export symbol nay
+
+  Loi 2:
+  Module has no exported member 'X'
+  -> import sai symbol, hoac barrel file chua re-export
+
+  Loi 3:
+  Object is possibly 'undefined'
+  -> can null check, default value, hoac doi flow control
+
+  Loi 4:
+  Type 'A' is not assignable to type 'B'
+  -> payload/response/state shape dang sai contract
+
+================================================================================
+  ✅ SAU BAI NAY BAN CAN BIET:
+  - lan theo import/export de doc feature nhanh
+  - doc barrel file ma khong bi roi
+  - khong can hoc NgModule truoc khi lam app Angular moi
+  - xu ly duoc nhung type errors co ban nhat
+================================================================================

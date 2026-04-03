@@ -1,0 +1,36 @@
+================================================================================
+  THUC HANH - RXJS SEARCH FLOW CHECKPOINT
+================================================================================
+
+MUC TIEU:
+- Dung RxJS cho UI stream thuc te: search + debounce + switchMap + error handling
+
+THOI LUONG UOC TINH:
+- 30-40 phut
+
+TASK:
+1. Tao 1 input search
+2. Tao searchTerm$ bang Subject<string> hoac FormControl.valueChanges
+3. Pipe chain gom:
+   - debounceTime(300)
+   - distinctUntilChanged()
+   - switchMap(...)
+   - catchError(...)
+4. Goi ProductService.search(term)
+5. Them 1 bo loc phu category$ hoac sort$
+6. Neu them bo loc phu, dung combineLatest de tao request state cuoi cung
+7. Render ket qua qua async pipe
+
+EXPECTED RESULT:
+- Typing nhanh khong spam request
+- Request cu bi huy khi request moi bat dau
+- Loi khong lam vo stream hoan toan
+
+SELF-CHECK:
+- Ban co giai thich duoc vi sao switchMap hop hon mergeMap trong search khong?
+- Ban co biet async pipe giup tranh unsubscribe thu cong o case nay khong?
+- Ban co hieu Observable dang dai dien cho event stream nao khong?
+
+DONE KHI:
+- Ban co 1 search/list flow dung duoc trong app thuc
+================================================================================

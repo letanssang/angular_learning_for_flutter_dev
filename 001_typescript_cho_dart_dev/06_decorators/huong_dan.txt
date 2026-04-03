@@ -1,0 +1,88 @@
+================================================================================
+  APPENDIX - DECORATORS DE DOC ANGULAR CODE
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 10-15 phut
+
+📌 MUC TIEU:
+  - Chi du mental model de doc @Component, @Injectable, @Input, @Output
+  - Biet decorators trong Angular dung de gan metadata vao class/member
+  - Khong sa vao viet custom decorators qua som
+
+  ⚠️ Trong lo trinh 2 tuan:
+  - Bai nay la OPTIONAL
+  - Ban khong can tu viet decorator de lam feature Angular thong thuong
+
+================================================================================
+  1. DECORATOR LA GI?
+================================================================================
+
+  // Angular se gap rat nhieu:
+  @Component({...})
+  @Injectable({...})
+  @Input()
+  @Output()
+
+  Cach hieu de doc code:
+  - @Component: day la component va cau hinh template/styles/imports
+  - @Injectable: day la service co the inject
+  - @Input/@Output: contract giao tiep parent <-> child
+
+================================================================================
+  2. SO SANH NHANH VOI FLUTTER
+================================================================================
+
+  Flutter:
+  - annotation thuong la metadata cho analyzer/codegen
+  - vi du: @override, @deprecated, @riverpod, @freezed
+
+  Angular:
+  - decorator la API framework de dang ky metadata
+  - ban doc decorator de biet class nay dong vai tro gi trong app
+
+================================================================================
+  3. NHUNG DECORATOR CAN DOC TRONG 2 TUAN DAU
+================================================================================
+
+  @Component({
+    selector: 'app-header',
+    standalone: true,
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.css'],
+  })
+  export class HeaderComponent {}
+
+  @Injectable({ providedIn: 'root' })
+  export class AuthService {}
+
+  export class ProductCardComponent {
+    @Input() title: string = '';
+    @Output() selected = new EventEmitter<void>();
+  }
+
+  Ban khong can nho co che runtime ben duoi.
+  Ban chi can doc ra:
+  - component nao render UI
+  - service nao co the inject
+  - component nhan/emit du lieu gi
+
+================================================================================
+  4. NOTE CHO ANGULAR MOI
+================================================================================
+
+  Trong Angular moi, ban co the thay them function APIs nhu:
+  - input()
+  - output()
+  - inject()
+
+  Nghia la:
+  - khong phai moi thu deu phai hoc qua custom decorator examples
+  - uu tien hieu public API framework va vai tro cua tung file
+
+================================================================================
+  ✅ SAU BAI NAY:
+  - Doc duoc decorators pho bien trong Angular
+  - Khong con xem decorators la chu de bat buoc phai hoc sau
+  - Tap trung vao component, service, router, forms, HTTP, signals truoc
+================================================================================

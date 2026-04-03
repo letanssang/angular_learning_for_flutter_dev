@@ -1,0 +1,135 @@
+================================================================================
+  SERVICES VÀ DEPENDENCY INJECTION - TẠO SERVICE
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 25-35 phut
+
+📌 MỤC TIÊU:
+  - Hiểu Service = Repository/Provider/UseCase pattern Flutter
+  - DI trong Angular vs Provider/GetIt/Riverpod trong Flutter
+  - @Injectable decorator
+
+================================================================================
+  1. SERVICE LÀ GÌ?
+================================================================================
+
+  💡 ANGULAR SERVICE = FLUTTER PROVIDER/REPOSITORY
+
+  ┌──────────────────────────┬──────────────────────────────┐
+  │ Flutter                  │ Angular                      │
+  ├──────────────────────────┼──────────────────────────────┤
+  │ Provider/Riverpod        │ @Injectable service          │
+  │ Repository class         │ Service class                │
+  │ UseCase class            │ Service method               │
+  │ GetIt.I<AuthService>()   │ inject(AuthService)          │
+  │ context.read<T>()        │ constructor injection        │
+  └──────────────────────────┴──────────────────────────────┘
+
+================================================================================
+  2. TẠO SERVICE
+================================================================================
+
+  // ng g service services/auth
+
+  import { Injectable } from '@angular/core';
+
+  @Injectable({
+    providedIn: 'root'        // Singleton toàn app (giống GetIt)
+  })
+  export class AuthService {
+    private isAuthenticated = false;
+    private currentUser: User | null = null;
+
+    login(email: string, password: string): Observable<User> {
+      // gọi API...
+      return this.http.post<User>('/api/login', { email, password })
+        .pipe(
+          tap(user => {
+            this.isAuthenticated = true;
+            this.currentUser = user;
+          })
+        );
+    }
+
+    logout(): void {
+      this.isAuthenticated = false;
+      this.currentUser = null;
+    }
+
+    isLoggedIn(): boolean {
+      return this.isAuthenticated;
+    }
+  }
+
+  // Flutter tương đương:
+  // class AuthRepository {
+  //   bool _isAuthenticated = false;
+  //   User? _currentUser;
+  //
+  //   Future<User> login(String email, String password) async {
+  //     final response = await http.post(...);
+  //     _isAuthenticated = true;
+  //     _currentUser = User.fromJson(response.body);
+  //     return _currentUser!;
+  //   }
+  // }
+
+================================================================================
+  3. SỬ DỤNG SERVICE (DEPENDENCY INJECTION)
+================================================================================
+
+  // ──── FLUTTER (với GetIt) ────
+  // Đăng ký: GetIt.I.registerSingleton<AuthService>(AuthService());
+  // Sử dụng: final auth = GetIt.I<AuthService>();
+
+  // ──── FLUTTER (với Provider) ────
+  // Đăng ký: Provider<AuthService>(create: (_) => AuthService())
+  // Sử dụng: context.read<AuthService>()
+
+  // ──── ANGULAR ────
+  @Component({ ... })
+  export class LoginComponent {
+    // Constructor injection (giống GetIt.I<AuthService>()):
+    constructor(private authService: AuthService) {}
+
+    // Angular 14+: inject() function:
+    private authService = inject(AuthService);
+
+    login(): void {
+      this.authService.login(this.email, this.password)
+        .subscribe(user => {
+          console.log('Logged in:', user);
+        });
+    }
+  }
+
+  // 'providedIn: root' = singleton tự động!
+  // KHÔNG cần đăng ký thủ công như GetIt/Provider
+
+================================================================================
+  4. SERVICE GỌI SERVICE (GIỐNG FLUTTER LAYER)
+================================================================================
+
+  @Injectable({ providedIn: 'root' })
+  export class UserService {
+    constructor(
+      private http: HttpClient,       // HTTP client (có sẵn)
+      private authService: AuthService // service khác
+    ) {}
+
+    getProfile(): Observable<User> {
+      if (!this.authService.isLoggedIn()) {
+        throw new Error('Not authenticated');
+      }
+      return this.http.get<User>('/api/profile');
+    }
+  }
+
+================================================================================
+  ✅ SAU BÀI NÀY:
+  - @Injectable({ providedIn: 'root' }) = Singleton service
+  - Constructor injection = GetIt/Provider
+  - inject() function = cách mới (Angular 14+)
+  - KHÔNG cần đăng ký thủ công (khác GetIt)
+================================================================================

@@ -1,0 +1,77 @@
+================================================================================
+  ROUTING - NESTED ROUTES VÀ LAZY LOADING
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 20-30 phut
+
+📌 MỤC TIÊU:
+  - Nested routes = ShellRoute + child routes
+  - Lazy loading = load code khi cần (tối ưu performance)
+
+================================================================================
+  1. NESTED ROUTES
+================================================================================
+
+  // ──── FLUTTER (GoRouter) ────
+  ShellRoute(
+    builder: (ctx, state, child) => DashboardLayout(child: child),
+    routes: [
+      GoRoute(path: '/dashboard', builder: ... => OverviewScreen()),
+      GoRoute(path: '/dashboard/users', builder: ... => UsersScreen()),
+      GoRoute(path: '/dashboard/settings', builder: ... => SettingsScreen()),
+    ],
+  )
+
+  // ──── ANGULAR ────
+  const routes: Routes = [
+    {
+      path: 'dashboard',
+      component: DashboardLayoutComponent,  // ShellRoute builder
+      children: [                           // child routes
+        { path: '', component: OverviewComponent },
+        { path: 'users', component: UsersComponent },
+        { path: 'settings', component: SettingsComponent },
+      ]
+    }
+  ];
+
+  // DashboardLayoutComponent template:
+  <div class="dashboard">
+    <app-sidebar></app-sidebar>
+    <main>
+      <router-outlet></router-outlet>      <!-- child renders here -->
+    </main>
+  </div>
+
+================================================================================
+  2. LAZY LOADING (Angular CỰC MẠNH!)
+================================================================================
+
+  // Chỉ load code khi user navigate đến route đó:
+
+  const routes: Routes = [
+    { path: '', component: HomeComponent },
+    {
+      path: 'admin',
+      loadComponent: () =>                  // LAZY LOAD!
+        import('./admin/admin.component')
+          .then(m => m.AdminComponent)
+    },
+    {
+      path: 'shop',
+      loadChildren: () =>                   // LAZY LOAD children!
+        import('./shop/shop.routes')
+          .then(m => m.SHOP_ROUTES)
+    }
+  ];
+
+  // Flutter: KHÔNG có lazy loading routes built-in
+  // Phải dùng deferred loading hoặc code splitting thủ công
+
+================================================================================
+  ✅ SAU BÀI NÀY:
+  - children = ShellRoute nested routes
+  - router-outlet trong parent = child widget trong ShellRoute
+  - loadComponent/loadChildren = lazy loading (performance++)
+================================================================================

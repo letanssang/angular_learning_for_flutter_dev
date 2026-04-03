@@ -1,0 +1,50 @@
+================================================================================
+  STATE MANAGEMENT - NGRX STORE (OPTIONAL / APPENDIX)
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 10-15 phut
+
+📌 MUC TIEU:
+  - Hieu NgRx giong BLoC/Redux style architecture
+  - Doc duoc codebase enterprise co action/reducer/effect/selector
+  - Khong nham no la bat buoc cho 2 tuan dau
+
+================================================================================
+  1. NGRX = KHI STATE DA QUA LON
+================================================================================
+
+  ┌──────────────────────────┬──────────────────────────────┐
+  │ Flutter BLoC             │ NgRx                         │
+  ├──────────────────────────┼──────────────────────────────┤
+  │ Event                    │ Action                       │
+  │ State                    │ State                        │
+  │ Bloc                     │ Reducer                      │
+  │ Side effects             │ Effects                      │
+  │ BlocSelector             │ Selector                     │
+  └──────────────────────────┴──────────────────────────────┘
+
+================================================================================
+  2. KHI NAO MOI CAN?
+================================================================================
+
+  Chi nghiem tuc hoc NgRx neu:
+  - app lon, nhieu domain state
+  - nhieu dev cung sua state layer
+  - can strict unidirectional flow
+  - du an cong ty dang dung san
+
+================================================================================
+  3. LO TRINH NAY KHUYEN GI?
+================================================================================
+
+  Thu tu uu tien:
+  1. signal cho local va service-level state don gian
+  2. Observable cho HTTP/UI streams
+  3. NgRx chi hoc khi project thuc su can
+
+================================================================================
+  ✅ TOM LAI:
+  - NgRx quan trong trong enterprise Angular
+  - Nhung khong phai diem vao codebase nhanh cho Flutter dev moi chuyen sang
+================================================================================

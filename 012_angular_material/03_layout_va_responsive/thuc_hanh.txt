@@ -1,0 +1,15 @@
+================================================================================
+  ANGULAR MATERIAL - LAYOUT VÀ RESPONSIVE
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 25-35 phut
+
+  CSS Flexbox = Row/Column/Expanded trong Flutter
+  CSS Grid = GridView
+  Media queries = MediaQuery/LayoutBuilder
+  BreakpointObserver = responsive logic trong code
+  CDK Virtual Scroll = ListView.builder cho web
+
+  Xem chi tiết tại file huong_dan.txt cùng thư mục.
+================================================================================

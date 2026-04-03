@@ -1,0 +1,97 @@
+================================================================================
+  TYPESCRIPT CHO DART DEV - SETUP MÔI TRƯỜNG
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 20-30 phut
+
+📌 MỤC TIÊU:
+  - Cài đặt Node.js, npm, TypeScript
+  - Hiểu cách chạy file TypeScript
+  - So sánh với môi trường Dart
+
+================================================================================
+  1. CÀI ĐẶT NODE.JS VÀ NPM
+================================================================================
+
+  Dart có Dart SDK → TypeScript cần Node.js + npm
+
+  # Cài Node.js (khuyên dùng LTS)
+  # Truy cập: https://nodejs.org/
+  # Hoặc dùng brew (macOS):
+  brew install node
+
+  # Kiểm tra:
+  node --version    # tương tự: dart --version
+  npm --version     # tương tự: pub (package manager)
+
+================================================================================
+  2. CÀI ĐẶT TYPESCRIPT
+================================================================================
+
+  # Cài TypeScript toàn cục:
+  npm install -g typescript
+
+  # Kiểm tra:
+  tsc --version
+
+  💡 SO SÁNH VỚI DART:
+  ┌──────────────────┬──────────────────────┐
+  │ Dart             │ TypeScript           │
+  ├──────────────────┼──────────────────────┤
+  │ dart run file    │ tsc file.ts → chạy   │
+  │ dart compile     │ tsc (compile)        │
+  │ pub get          │ npm install          │
+  │ pubspec.yaml     │ package.json         │
+  │ analysis_options │ tsconfig.json        │
+  └──────────────────┴──────────────────────┘
+
+================================================================================
+  3. TẠO PROJECT TYPESCRIPT ĐẦU TIÊN
+================================================================================
+
+  mkdir ts-playground && cd ts-playground
+
+  # Khởi tạo project:
+  npm init -y                  # tương tự: dart create
+  tsc --init                   # tạo tsconfig.json
+
+  # Cài ts-node để chạy trực tiếp (không cần compile):
+  npm install -D ts-node
+
+  # Chạy file:
+  npx ts-node hello.ts         # tương tự: dart run hello.dart
+
+================================================================================
+  4. CẤU HÌNH TSCONFIG.JSON (GIỐNG analysis_options.yaml)
+================================================================================
+
+  File tsconfig.json quan trọng nhất:
+
+  {
+    "compilerOptions": {
+      "target": "ES2022",            // phiên bản JS output
+      "module": "commonjs",          // hệ thống module
+      "strict": true,                // bật strict mode (NÊN BẬT!)
+      "esModuleInterop": true,
+      "outDir": "./dist",            // thư mục output
+      "rootDir": "./src"             // thư mục source
+    }
+  }
+
+================================================================================
+  5. EXTENSIONS KHUYÊN DÙNG (VS CODE)
+================================================================================
+
+  - TypeScript Importer
+  - Path Intellisense
+  - Error Lens (giống Dart)
+  - Prettier - Code formatter
+
+================================================================================
+  ✅ SAU BÀI NÀY BẠN CẦN BIẾT:
+  - Cách cài Node.js, npm, TypeScript
+  - Cách tạo và chạy file .ts
+  - Hiểu tsconfig.json tương đương analysis_options.yaml
+  - Hiểu npm tương đương pub
+================================================================================

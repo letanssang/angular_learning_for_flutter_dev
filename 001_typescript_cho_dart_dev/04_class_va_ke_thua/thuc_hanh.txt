@@ -1,0 +1,83 @@
+================================================================================
+  BÀI THỰC HÀNH: CLASS VÀ KẾ THỪA
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 25-35 phut
+
+📌 BÀI 1: CHUYỂN ĐỔI DART MODEL SANG TYPESCRIPT
+================================================================================
+
+  Chuyển đổi Dart class sau sang TypeScript:
+
+  // ──── DART (gốc) ────
+  class User {
+    final String id;
+    final String name;
+    String? email;
+    final DateTime createdAt;
+
+    User({
+      required this.id,
+      required this.name,
+      this.email,
+      DateTime? createdAt,
+    }) : createdAt = createdAt ?? DateTime.now();
+
+    String get displayName => email != null ? '$name ($email)' : name;
+
+    User copyWith({String? name, String? email}) {
+      return User(id: id, name: name ?? this.name, email: email ?? this.email);
+    }
+  }
+
+  // → Viết lại bằng TypeScript
+  // Lưu ý: TS không có named parameters → dùng object destructuring
+
+================================================================================
+
+📌 BÀI 2: ABSTRACT CLASS + KẾ THỪA
+================================================================================
+
+  Tạo hệ thống Widget đơn giản (giống Flutter):
+
+  1. abstract class Widget:
+     - abstract build(): string
+     - protected key?: string
+
+  2. class Text extends Widget:
+     - data: string
+     - style?: { fontSize: number; color: string }
+     - build(): trả về HTML string
+
+  3. class Column extends Widget:
+     - children: Widget[]
+     - build(): gọi build() từng child và nối lại
+
+  4. Test: tạo Column chứa Text → gọi build()
+
+================================================================================
+
+📌 BÀI 3: SINGLETON VÀ STATIC
+================================================================================
+
+  Viết class AppConfig (Singleton):
+
+  class AppConfig {
+    // Private constructor
+    // Static instance
+    // Static getInstance()
+    // Properties: apiUrl, appName, version
+    // Method: isProduction(): boolean
+  }
+
+  // So sánh: Dart thường dùng factory constructor cho Singleton
+
+================================================================================
+
+  ✅ TIÊU CHÍ HOÀN THÀNH:
+  - Chuyển được Dart class sang TS thành thạo
+  - Hiểu object destructuring thay named parameters
+  - Implement abstract class pattern
+  - Implement Singleton không dùng factory constructor
+================================================================================

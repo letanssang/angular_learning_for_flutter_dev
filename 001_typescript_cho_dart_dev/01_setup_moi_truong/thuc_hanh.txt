@@ -1,0 +1,77 @@
+================================================================================
+  BÀI THỰC HÀNH: SETUP MÔI TRƯỜNG TYPESCRIPT
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 30-45 phut
+
+📌 BÀI 1: CÀI ĐẶT VÀ KIỂM TRA
+================================================================================
+
+  Bước 1: Cài đặt Node.js và npm
+  Bước 2: Cài đặt TypeScript global
+  Bước 3: Chạy các lệnh kiểm tra:
+    - node --version
+    - npm --version
+    - tsc --version
+
+  ✅ Kết quả mong đợi: Hiển thị version cho cả 3 lệnh
+
+================================================================================
+
+📌 BÀI 2: TẠO PROJECT VÀ CHẠY FILE ĐẦU TIÊN
+================================================================================
+
+  Bước 1: Tạo thư mục project:
+    mkdir my-first-ts && cd my-first-ts
+
+  Bước 2: Khởi tạo project:
+    npm init -y
+    tsc --init
+
+  Bước 3: Tạo file src/hello.ts:
+    ─────────────────────────────
+    // So sánh với Dart:
+    // Dart:    void main() { print('Hello'); }
+    // TS:
+
+    const greeting: string = "Hello from TypeScript!";
+    console.log(greeting);
+
+    // Dart dùng print(), TS dùng console.log()
+    ─────────────────────────────
+
+  Bước 4: Compile và chạy:
+    tsc src/hello.ts
+    node src/hello.js
+
+  Bước 5: Hoặc chạy trực tiếp bằng ts-node:
+    npm install -D ts-node
+    npx ts-node src/hello.ts
+
+  ✅ Kết quả mong đợi: In ra "Hello from TypeScript!"
+
+================================================================================
+
+📌 BÀI 3: THỬ NGHIỆM TSCONFIG.JSON
+================================================================================
+
+  Bước 1: Mở tsconfig.json
+  Bước 2: Thay đổi "strict" thành false
+  Bước 3: Tạo file test-strict.ts:
+
+    ─────────────────────────────
+    // Khi strict: false → không lỗi
+    // Khi strict: true  → lỗi (giống Dart null safety)
+    let name;         // implicit any
+    name = 42;
+    name = "hello";
+    console.log(name.toUpperCase());
+    ─────────────────────────────
+
+  Bước 4: Đổi "strict" thành true và compile lại → quan sát lỗi
+
+  ✅ Kết quả mong đợi: Hiểu tại sao strict mode quan trọng
+     (tương tự Dart null safety)
+
+================================================================================

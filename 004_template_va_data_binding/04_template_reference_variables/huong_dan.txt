@@ -1,0 +1,67 @@
+================================================================================
+  TEMPLATE - TEMPLATE REFERENCE VARIABLES
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 10-15 phut
+
+📌 MỤC TIÊU:
+  - Hiểu #ref syntax (giống GlobalKey trong Flutter)
+  - Truy cập DOM element trực tiếp
+
+================================================================================
+  1. TEMPLATE REFERENCE VARIABLE (#)
+================================================================================
+
+  // ──── FLUTTER ────
+  final _formKey = GlobalKey<FormState>();
+  Form(key: _formKey, child: ...)
+  // Truy cập: _formKey.currentState!.validate()
+
+  // ──── ANGULAR ────
+  <input #nameInput type="text">
+  <button (click)="greet(nameInput.value)">Chào</button>
+
+  // #nameInput = tham chiếu trực tiếp đến element
+  // Truy cập property: nameInput.value, nameInput.focus(), ...
+
+================================================================================
+  2. VÍ DỤ THỰC TẾ
+================================================================================
+
+  // Form đơn giản không cần ngModel:
+  <input #emailInput type="email" placeholder="Email">
+  <input #passwordInput type="password" placeholder="Password">
+  <button (click)="login(emailInput.value, passwordInput.value)">
+    Đăng nhập
+  </button>
+
+  // Tương đương Flutter:
+  // final emailController = TextEditingController();
+  // final passController = TextEditingController();
+  // onPressed: () => login(emailController.text, passController.text)
+
+================================================================================
+  3. @VIEWCHILD - TRUY CẬP TRONG CODE
+================================================================================
+
+  import { ViewChild, ElementRef } from '@angular/core';
+
+  @Component({
+    template: `<input #searchInput type="text">`
+  })
+  export class SearchComponent implements AfterViewInit {
+    @ViewChild('searchInput') input!: ElementRef;
+
+    ngAfterViewInit() {
+      this.input.nativeElement.focus();     // auto focus
+    }
+  }
+
+  // ≈ Flutter: FocusNode + requestFocus()
+
+================================================================================
+  ✅ SAU BÀI NÀY:
+  - #variableName = tham chiếu đến element
+  - @ViewChild = truy cập element trong code (giống GlobalKey)
+================================================================================

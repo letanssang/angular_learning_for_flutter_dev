@@ -1,0 +1,89 @@
+================================================================================
+  COMPONENT CƠ BẢN - CONTENT PROJECTION
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 15-25 phut
+
+📌 MỤC TIÊU:
+  - Hiểu ng-content = Flutter child/children
+  - Multi-slot projection
+  - So sánh với Flutter's Widget composition
+
+================================================================================
+  1. NG-CONTENT CƠ BẢN (= CHILD WIDGET)
+================================================================================
+
+  // ──── FLUTTER ────
+  class Card extends StatelessWidget {
+    final Widget child;
+    const Card({required this.child});
+
+    @override
+    Widget build(BuildContext context) {
+      return Container(
+        padding: EdgeInsets.all(16),
+        decoration: BoxDecoration(border: Border.all()),
+        child: child,                    // render child ở đây
+      );
+    }
+  }
+  // Sử dụng: Card(child: Text('Hello'))
+
+  // ──── ANGULAR ────
+  @Component({
+    selector: 'app-card',
+    template: `
+      <div class="card">
+        <ng-content></ng-content>        <!-- render child ở đây -->
+      </div>
+    `
+  })
+  export class CardComponent {}
+
+  // Sử dụng:
+  <app-card>
+    <p>Hello</p>                         <!-- content projected -->
+  </app-card>
+
+================================================================================
+  2. MULTI-SLOT PROJECTION (= NAMED SLOTS)
+================================================================================
+
+  // Flutter: dùng nhiều Widget parameters
+  // class AppBar { final Widget title; final Widget leading; ... }
+
+  // Angular: dùng select attribute
+  @Component({
+    selector: 'app-dialog',
+    template: `
+      <div class="dialog">
+        <div class="dialog-header">
+          <ng-content select="[dialog-header]"></ng-content>
+        </div>
+        <div class="dialog-body">
+          <ng-content select="[dialog-body]"></ng-content>
+        </div>
+        <div class="dialog-footer">
+          <ng-content select="[dialog-footer]"></ng-content>
+        </div>
+      </div>
+    `
+  })
+  export class DialogComponent {}
+
+  // Sử dụng:
+  <app-dialog>
+    <h2 dialog-header>Xác nhận</h2>
+    <p dialog-body>Bạn có chắc chắn?</p>
+    <div dialog-footer>
+      <button>Hủy</button>
+      <button>OK</button>
+    </div>
+  </app-dialog>
+
+================================================================================
+  ✅ SAU BÀI NÀY:
+  - ng-content = Widget child parameter
+  - select attribute = multiple Widget parameters (title, leading,...)
+================================================================================

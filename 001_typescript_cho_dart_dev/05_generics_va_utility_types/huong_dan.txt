@@ -1,0 +1,94 @@
+================================================================================
+  APPENDIX - GENERICS VA UTILITY TYPES NANG CAO
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 20-30 phut
+
+📌 MUC TIEU:
+  - Mo rong sau khi ban da xong core 2 tuan
+  - Hieu them ve utility types nang cao trong codebase lon
+  - Biet doc mapped types va conditional types ma khong can thuoc long
+
+  ⚠️ KHONG BAT BUOC de:
+  - tao feature CRUD co ban
+  - dung router, forms, HTTP, signals
+  - hoan thanh Todo app trong lo trinh cap toc
+
+================================================================================
+  1. NHUNG THU GIAI QUYET DUOC VIEC NGAY
+================================================================================
+
+  interface User {
+    id: number;
+    name: string;
+    email: string;
+    avatar?: string;
+  }
+
+  type UpdateUser = Partial<User>;
+  type UserPreview = Pick<User, 'id' | 'name'>;
+  type CreateUser = Omit<User, 'id'>;
+  type UserMap = Record<string, User>;
+  type FrozenUser = Readonly<User>;
+
+  💡 Neu ban thay nhung type nay trong codebase, chi can doc nhu sau:
+  - Partial<T> = tat ca field thanh optional
+  - Pick<T, K> = lay mot vai field
+  - Omit<T, K> = bo mot vai field
+  - Record<K, V> = object map
+  - Readonly<T> = khong cho sua
+
+================================================================================
+  2. CONDITIONAL TYPES - DOC DUOC LA DU
+================================================================================
+
+  type IsString<T> = T extends string ? 'yes' : 'no';
+
+  type A = IsString<string>;  // 'yes'
+  type B = IsString<number>;  // 'no'
+
+  Khi gap loai nay trong du an:
+  - dung hoang
+  - doc tu trong ra ngoai
+  - thu thay T bang type cu the de hieu ket qua
+
+================================================================================
+  3. MAPPED TYPES - BIEN DOI HANG LOAT
+================================================================================
+
+  type Optional<T> = {
+    [K in keyof T]?: T[K];
+  };
+
+  type FormState<T> = {
+    [K in keyof T]: {
+      value: T[K];
+      error: string | null;
+      touched: boolean;
+    };
+  };
+
+  Ung dung thuc te:
+  - tao wrapper state cho model
+  - tao helper types cho form va cache layer
+
+================================================================================
+  4. KHI NAO NEN HOC KY
+================================================================================
+
+  Hoc ky hon neu:
+  - ban bat dau lam shared libraries
+  - du an co typed API client / generic data-table / form builder
+  - review PR gap nhieu type infer phuc tap
+
+  Tam de sau neu:
+  - muc tieu hien tai la vao codebase nhanh
+  - ban van dang hoc router/forms/HTTP/signals
+
+================================================================================
+  ✅ TOM LAI:
+  - Core 2 tuan chi can Partial / Pick / Omit
+  - Phan con lai la appendix de doc codebase lon tot hon
+  - Khong can hoc ky truoc khi lam feature flow dau tien
+================================================================================

@@ -1,0 +1,54 @@
+================================================================================
+  RXJS - PATTERNS THỰC TẾ
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 15-20 phut
+
+📌 Các patterns RxJS phổ biến trong Angular projects
+================================================================================
+
+  1. LOADING STATE PATTERN:
+  ─────────────────────────
+  export class ProductListComponent {
+    products$ = this.productService.getProducts().pipe(
+      map(products => ({ data: products, loading: false, error: null })),
+      startWith({ data: [], loading: true, error: null }),
+      catchError(err => of({ data: [], loading: false, error: err.message }))
+    );
+  }
+
+  // Template:
+  @if (products$ | async; as state) {
+    @if (state.loading) { <app-spinner /> }
+    @if (state.error) { <app-error [message]="state.error" /> }
+    @for (product of state.data; track product.id) {
+      <app-product-card [product]="product" />
+    }
+  }
+
+  2. POLLING PATTERN (tự động refresh):
+  ─────────────────────────
+  data$ = timer(0, 30000).pipe(    // mỗi 30 giây
+    switchMap(() => this.http.get('/api/data'))
+  );
+
+  3. DEBOUNCED SEARCH:
+  ─────────────────────────
+  (Xem bài operators)
+
+  4. COMBINE FILTERS:
+  ─────────────────────────
+  filteredProducts$ = combineLatest([
+    this.category$,
+    this.priceRange$,
+    this.sortBy$
+  ]).pipe(
+    switchMap(([cat, price, sort]) =>
+      this.productService.search({ category: cat, ...price, sort })
+    )
+  );
+
+================================================================================
+  ✅ RxJS patterns giúp xử lý async data flows phức tạp
+================================================================================

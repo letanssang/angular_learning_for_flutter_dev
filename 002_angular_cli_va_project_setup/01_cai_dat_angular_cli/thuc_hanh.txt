@@ -1,0 +1,66 @@
+================================================================================
+  BÀI THỰC HÀNH: CÀI ĐẶT ANGULAR CLI
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 25-35 phut
+
+📌 BÀI 1: CÀI ĐẶT VÀ TẠO PROJECT
+================================================================================
+
+  Bước 1: Cài Angular CLI
+    npm install -g @angular/cli
+
+  Bước 2: Kiểm tra version
+    ng version
+
+  Bước 3: Tạo project đầu tiên
+    ng new my-first-angular --routing --style=scss --standalone
+    # Chọn Yes cho routing
+    # Chọn SCSS cho style
+
+  Bước 4: Chạy dev server
+    cd my-first-angular
+    ng serve --open
+    # --open sẽ tự mở browser
+
+  ✅ Kết quả: Thấy trang welcome Angular trên localhost:4200
+
+================================================================================
+
+📌 BÀI 2: THỬ NG GENERATE
+================================================================================
+
+  Trong project vừa tạo:
+
+  1. Tạo component:
+     ng g c components/header
+     → Quan sát: 4 files được tạo tự động!
+
+  2. Tạo service:
+     ng g s services/api
+     → Quan sát: file service + spec file
+
+  3. Tạo pipe:
+     ng g p pipes/truncate
+
+  4. Kiểm tra cấu trúc thư mục:
+     tree src/app (hoặc ls -la)
+
+  ✅ Kết quả: Hiểu cách Angular CLI tự động tạo boilerplate code
+
+================================================================================
+
+📌 BÀI 3: SỬA CODE ĐẦU TIÊN
+================================================================================
+
+  1. Mở src/app/app.component.ts
+  2. Thay đổi title = 'Hello Angular from Flutter Dev!'
+  3. Mở src/app/app.component.html
+  4. Xóa tất cả content mặc định
+  5. Thêm: <h1>{{ title }}</h1>
+  6. Lưu → quan sát browser tự reload
+
+  ✅ Kết quả: Hiểu flow File → Template → Browser
+
+================================================================================

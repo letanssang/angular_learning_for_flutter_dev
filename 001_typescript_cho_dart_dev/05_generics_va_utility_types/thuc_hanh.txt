@@ -1,0 +1,84 @@
+================================================================================
+  BÀI THỰC HÀNH: GENERICS VÀ UTILITY TYPES
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 20-30 phut
+
+📌 BÀI 1: GENERIC REPOSITORY
+================================================================================
+
+  Viết generic Repository class (giống pattern trong Flutter):
+
+  interface BaseEntity {
+    id: string;
+    createdAt: Date;
+  }
+
+  class Repository<T extends BaseEntity> {
+    private items: Map<string, T> = new Map();
+
+    add(item: T): void { ... }
+    findById(id: string): T | undefined { ... }
+    findAll(): T[] { ... }
+    update(id: string, data: Partial<T>): T | undefined { ... }
+    delete(id: string): boolean { ... }
+    findWhere(predicate: (item: T) => boolean): T[] { ... }
+  }
+
+  // Test với: Repository<User>, Repository<Product>
+
+================================================================================
+
+📌 BÀI 2: UTILITY TYPES TRONG THỰC TẾ
+================================================================================
+
+  Cho interface:
+  interface Product {
+    id: string;
+    name: string;
+    price: number;
+    description: string;
+    category: string;
+    stock: number;
+    imageUrl: string;
+  }
+
+  Dùng utility types tạo:
+  1. CreateProductDto = Omit<Product, 'id'>
+  2. UpdateProductDto = Partial<Omit<Product, 'id'>>
+  3. ProductPreview = Pick<Product, 'id' | 'name' | 'price' | 'imageUrl'>
+  4. ProductFilter = Partial<Pick<Product, 'category' | 'price'>>
+
+  Viết function cho mỗi type trên.
+
+================================================================================
+
+📌 BÀI 3: CUSTOM MAPPED TYPE
+================================================================================
+
+  Tạo utility type FormFields<T>:
+
+  type FormFields<T> = {
+    [K in keyof T]: {
+      value: T[K];
+      error: string | null;
+      dirty: boolean;
+      validators: ((value: T[K]) => string | null)[];
+    }
+  };
+
+  // Áp dụng cho LoginForm:
+  interface LoginData {
+    email: string;
+    password: string;
+    rememberMe: boolean;
+  }
+
+  type LoginForm = FormFields<LoginData>;
+  // → Tạo initialFormState và validateField function
+
+================================================================================
+
+  ✅ TIÊU CHÍ: Hiểu power của TS type system so với Dart
+================================================================================

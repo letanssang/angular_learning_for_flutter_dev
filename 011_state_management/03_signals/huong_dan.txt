@@ -1,0 +1,142 @@
+================================================================================
+  STATE MANAGEMENT - SIGNALS (MỚI! Angular 16+)
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 25-35 phut
+
+  ⚠️ THU TU HOC: Bai nay nen hoc o NGAY 2 trong lo trinh 14 ngay
+  (xem README.txt), khong doi den chuong 011. Ban can signals som
+  de hieu component state truoc khi hoc forms, HTTP, RxJS.
+
+📌 MỤC TIÊU:
+  - Signal = ValueNotifier trong Flutter
+  - Cách mới, đơn giản, hiệu quả để quản lý state
+  - Đây là default path cho lộ trình 2 tuần này
+
+================================================================================
+  1. SIGNAL LÀ GÌ?
+================================================================================
+
+  💡 Angular Signals = Flutter ValueNotifier + ValueListenableBuilder
+  Nhưng ĐƠN GIẢN hơn nhiều!
+
+  import { signal, computed, effect } from '@angular/core';
+
+  // ──── FLUTTER ────
+  final count = ValueNotifier<int>(0);
+  // Đọc: count.value
+  // Ghi: count.value = 5
+
+  // ──── ANGULAR SIGNAL ────
+  count = signal(0);
+  // Đọc: count() ← gọi như function!
+  // Ghi: count.set(5)
+  //       count.update(v => v + 1)
+
+================================================================================
+  2. COMPUTED (= DERIVED STATE)
+================================================================================
+
+  // Tự động tính lại khi dependencies thay đổi:
+  firstName = signal('Nguyễn');
+  lastName = signal('An');
+
+  fullName = computed(() => `${this.firstName()} ${this.lastName()}`);
+  // → tự động update khi firstName hoặc lastName thay đổi!
+
+  // Flutter tương đương: ProxyProvider, Riverpod computed
+  // Nhưng Angular computed ĐƠN GIẢN hơn nhiều
+
+================================================================================
+  3. EFFECT (= SIDE EFFECTS)
+================================================================================
+
+  // Chạy code khi signal thay đổi:
+  theme = signal<'light' | 'dark'>('light');
+
+  constructor() {
+    effect(() => {
+      document.body.className = this.theme();
+      console.log('Theme changed to:', this.theme());
+    });
+    // Tự động chạy lại khi this.theme() thay đổi
+  }
+
+  // Flutter: ValueNotifier + addListener()
+
+================================================================================
+  4. VÍ DỤ THỰC TẾ: TODO APP VỚI SIGNALS
+================================================================================
+
+  @Component({
+    template: `
+      <input #input (keyup.enter)="addTodo(input)">
+      <p>{{ remaining() }} items left</p>
+      @for (todo of filteredTodos(); track todo.id) {
+        <div [class.done]="todo.completed">
+          <input type="checkbox"
+                 [checked]="todo.completed"
+                 (change)="toggle(todo.id)">
+          {{ todo.title }}
+        </div>
+      }
+    `
+  })
+  export class TodoComponent {
+    todos = signal<Todo[]>([]);
+    filter = signal<'all' | 'active' | 'completed'>('all');
+
+    // Computed:
+    remaining = computed(() =>
+      this.todos().filter(t => !t.completed).length
+    );
+
+    filteredTodos = computed(() => {
+      const f = this.filter();
+      switch(f) {
+        case 'active': return this.todos().filter(t => !t.completed);
+        case 'completed': return this.todos().filter(t => t.completed);
+        default: return this.todos();
+      }
+    });
+
+    addTodo(input: HTMLInputElement): void {
+      this.todos.update(todos => [
+        ...todos,
+        { id: Date.now(), title: input.value, completed: false }
+      ]);
+      input.value = '';
+    }
+
+    toggle(id: number): void {
+      this.todos.update(todos =>
+        todos.map(t => t.id === id ? { ...t, completed: !t.completed } : t)
+      );
+    }
+  }
+
+================================================================================
+  5. SO SÁNH TỔNG HỢP STATE MANAGEMENT
+================================================================================
+
+  ┌──────────────────┬──────────────────┬──────────────────────┐
+  │ Cách             │ Phù hợp                    │ Flutter tương đương   │
+  ├──────────────────┼────────────────────────────┼───────────────────────┤
+  │ Signals          │ Local + service state rõ   │ ValueNotifier/Riverpod│
+  │ Service + RxJS   │ Observable-first codebase  │ ChangeNotifier+Provider│
+  │ NgRx             │ App enterprise             │ BLoC                  │
+  └──────────────────┴──────────────────┴──────────────────────┘
+
+  💡 THỨ TỰ NÊN HỌC:
+  - Bắt đầu với Signals cho state rõ ràng
+  - Dùng Observable cho HTTP, route params, search/debounce, combine streams
+  - Chỉ sang NgRx khi project thật cần
+
+================================================================================
+  ✅ SAU BÀI NÀY:
+  - signal() = ValueNotifier (nhưng dùng đơn giản hơn)
+  - computed() = derived state (tự động update)
+  - effect() = side effects (addListener)
+  - Signals là path mặc định tốt cho app Angular mới ở mức local/service state
+================================================================================

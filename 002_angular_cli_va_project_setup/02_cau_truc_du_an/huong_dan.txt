@@ -1,0 +1,115 @@
+================================================================================
+  ANGULAR CLI VÀ PROJECT SETUP - CẤU TRÚC DỰ ÁN
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 20-30 phut
+
+📌 MỤC TIÊU:
+  - Hiểu cấu trúc thư mục Angular project
+  - So sánh với cấu trúc Flutter project
+  - Biết mỗi file/folder làm gì
+
+================================================================================
+  1. CẤU TRÚC TỔNG QUAN
+================================================================================
+
+  my-angular-app/
+  ├── src/                          # flutter: lib/
+  │   ├── app/                      # flutter: lib/ (code chính)
+  │   │   ├── app.component.ts      # flutter: main.dart → MyApp widget
+  │   │   ├── app.component.html    # flutter: build() method
+  │   │   ├── app.component.css     # flutter: ThemeData + styles
+  │   │   ├── app.component.spec.ts # flutter: test/
+  │   │   ├── app.config.ts         # flutter: main() setup
+  │   │   └── app.routes.ts         # flutter: GoRouter routes
+  │   ├── assets/                   # flutter: assets/
+  │   ├── environments/             # flutter: --dart-define
+  │   │   ├── environment.ts
+  │   │   └── environment.prod.ts
+  │   ├── index.html                # flutter: web/index.html
+  │   ├── main.ts                   # flutter: main() entry point
+  │   └── styles.css                # flutter: global ThemeData
+  ├── angular.json                  # flutter: pubspec.yaml (config)
+  ├── package.json                  # flutter: pubspec.yaml (deps)
+  ├── tsconfig.json                 # flutter: analysis_options.yaml
+  └── node_modules/                 # flutter: .dart_tool/
+
+================================================================================
+  2. SO SÁNH CHI TIẾT
+================================================================================
+
+  ┌──────────────────────────┬──────────────────────────────┐
+  │ Angular                  │ Flutter                      │
+  ├──────────────────────────┼──────────────────────────────┤
+  │ src/app/                 │ lib/                         │
+  │ angular.json             │ pubspec.yaml                 │
+  │ package.json             │ pubspec.yaml                 │
+  │ tsconfig.json            │ analysis_options.yaml        │
+  │ node_modules/            │ .dart_tool/                  │
+  │ .angular/                │ .dart_tool/ (cache)          │
+  │ dist/                    │ build/                       │
+  │ src/assets/              │ assets/                      │
+  │ src/environments/        │ --dart-define-from-file      │
+  │ karma.conf.js            │ flutter_test (built-in)      │
+  │ .editorconfig            │ (không có mặc định)          │
+  └──────────────────────────┴──────────────────────────────┘
+
+================================================================================
+  3. ANGULAR COMPONENT = 4 FILES
+================================================================================
+
+  Mỗi component Angular có 4 files (Flutter chỉ có 1 file):
+
+  header/
+  ├── header.component.ts        # Logic (class + decorator)
+  ├── header.component.html      # Template (giống build())
+  ├── header.component.css       # Styles (scoped!)
+  └── header.component.spec.ts   # Unit test
+
+  // Flutter tương đương gộp 4 files thành 1:
+  // class HeaderWidget extends StatelessWidget {
+  //   @override
+  //   Widget build(BuildContext context) {  ← .html
+  //     return Container(  ← .css (inline style)
+  //     );
+  //   }
+  // }
+
+  ⚠️ NHẬN XÉT:
+  - Angular: TÁCH biệt logic/template/style (Separation of Concerns)
+  - Flutter: GỘP tất cả trong 1 file (Widget = UI + Logic)
+  - Cả hai đều có ưu nhược điểm riêng
+
+================================================================================
+  4. CẤU TRÚC THƯ MỤC KHUYẾN NGHỊ
+================================================================================
+
+  src/app/
+  ├── core/                    # flutter: core/ (singleton services)
+  │   ├── services/
+  │   ├── guards/
+  │   ├── interceptors/
+  │   └── models/
+  ├── shared/                  # flutter: shared/ (reusable)
+  │   ├── components/
+  │   ├── directives/
+  │   ├── pipes/
+  │   └── models/
+  ├── features/                # flutter: features/ (theo tính năng)
+  │   ├── auth/
+  │   │   ├── login/
+  │   │   ├── register/
+  │   │   └── auth.service.ts
+  │   ├── dashboard/
+  │   └── profile/
+  └── layouts/                 # flutter: Scaffold, layouts
+      ├── main-layout/
+      └── auth-layout/
+
+================================================================================
+  ✅ SAU BÀI NÀY BẠN CẦN BIẾT:
+  - Mỗi file/folder Angular tương ứng gì trong Flutter
+  - Component = 4 files (tách biệt) vs Widget = 1 file (gộp)
+  - Cấu trúc core/shared/features giống nhau giữa 2 framework
+================================================================================

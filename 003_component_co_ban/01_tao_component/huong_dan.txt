@@ -1,0 +1,162 @@
+================================================================================
+  COMPONENT CƠ BẢN - TẠO COMPONENT
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 35-45 phut
+
+📌 MỤC TIÊU:
+  - Hiểu Angular Component = Flutter Widget
+  - Tạo component bằng CLI và thủ công
+  - Anatomy of a component
+
+================================================================================
+  1. COMPONENT LÀ GÌ?
+================================================================================
+
+  💡 ANGULAR COMPONENT = FLUTTER WIDGET
+
+  ┌────────────────────────┬────────────────────────────────┐
+  │ Flutter Widget         │ Angular Component              │
+  ├────────────────────────┼────────────────────────────────┤
+  │ class MyWidget         │ class MyComponent              │
+  │ extends StatelessWidget│ @Component decorator           │
+  │ build() method         │ Template HTML file             │
+  │ ThemeData / inline     │ CSS file (scoped!)             │
+  │ (1 file)               │ (4 files: ts, html, css, spec) │
+  └────────────────────────┴────────────────────────────────┘
+
+================================================================================
+  2. TẠO COMPONENT
+================================================================================
+
+  # CLI (khuyên dùng):
+  ng generate component components/greeting
+  # hoặc:
+  ng g c components/greeting
+
+  # Files được tạo:
+  # greeting.component.ts       ← Logic
+  # greeting.component.html     ← Template (build method)
+  # greeting.component.css      ← Styles (scoped)
+  # greeting.component.spec.ts  ← Unit test
+
+================================================================================
+  3. ANATOMY OF A COMPONENT
+================================================================================
+
+  // ──── greeting.component.ts ────
+
+  import { Component } from '@angular/core';
+
+  @Component({
+    selector: 'app-greeting',              // tên tag HTML
+    standalone: true,                       // standalone component (mới)
+    templateUrl: './greeting.component.html',
+    styleUrls: ['./greeting.component.css']
+  })
+  export class GreetingComponent {
+    // Properties = State
+    name: string = 'World';
+    count: number = 0;
+
+    // Methods = Event handlers
+    increment(): void {
+      this.count++;
+    }
+  }
+
+  // ──── greeting.component.html ────
+  <div class="greeting">
+    <h1>Hello, {{ name }}!</h1>            <!-- interpolation -->
+    <p>Count: {{ count }}</p>
+    <button (click)="increment()">+1</button>
+  </div>
+
+  // ──── greeting.component.css ────
+  .greeting {
+    padding: 20px;
+    border: 1px solid #ccc;
+  }
+  /* CSS này CHỈ áp dụng cho component này! (Scoped) */
+
+  // ──── SO SÁNH FLUTTER ────
+  class GreetingWidget extends StatefulWidget {
+    @override
+    State<GreetingWidget> createState() => _GreetingWidgetState();
+  }
+
+  class _GreetingWidgetState extends State<GreetingWidget> {
+    String name = 'World';
+    int count = 0;
+
+    @override
+    Widget build(BuildContext context) {
+      return Column(children: [
+        Text('Hello, $name!'),
+        Text('Count: $count'),
+        ElevatedButton(
+          onPressed: () => setState(() => count++),
+          child: Text('+1'),
+        ),
+      ]);
+    }
+  }
+
+================================================================================
+  4. INLINE TEMPLATE VÀ STYLES
+================================================================================
+
+  // Với component nhỏ, có thể inline:
+  @Component({
+    selector: 'app-badge',
+    standalone: true,
+    template: `
+      <span class="badge">{{ text }}</span>
+    `,                                      // inline template
+    styles: [`
+      .badge {
+        padding: 4px 8px;
+        border-radius: 4px;
+        background: #007bff;
+        color: white;
+      }
+    `]                                      // inline styles
+  })
+  export class BadgeComponent {
+    text: string = 'New';
+  }
+
+================================================================================
+  5. SỬ DỤNG COMPONENT
+================================================================================
+
+  // Trong Flutter: GreetingWidget()
+  // Trong Angular: <app-greeting></app-greeting>
+
+  // parent.component.ts:
+  @Component({
+    selector: 'app-parent',
+    standalone: true,
+    imports: [GreetingComponent],           // PHẢI import!
+    template: `
+      <app-greeting></app-greeting>
+      <app-greeting></app-greeting>
+    `
+  })
+  export class ParentComponent {}
+
+  ⚠️ KHÁC FLUTTER:
+  - Angular dùng HTML tags, Flutter dùng constructor
+  - Angular phải import component trong metadata
+  - selector = tên HTML tag (quy ước: app-tên-component)
+
+================================================================================
+  ✅ SAU BÀI NÀY BẠN CẦN BIẾT:
+  - Component = Widget (nhưng tách 4 files)
+  - @Component decorator cấu hình component
+  - selector = HTML tag name
+  - standalone: true (cách mới, nên dùng)
+  - {{ }} interpolation ≈ Text('$variable')
+  - (click) event binding ≈ onPressed
+================================================================================

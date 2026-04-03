@@ -1,0 +1,82 @@
+================================================================================
+  ROUTING - GUARDS (BẢO VỆ ROUTE)
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 15-20 phut
+
+📌 MỤC TIÊU:
+  - Guards = redirect logic trong GoRouter
+  - Bảo vệ route yêu cầu authentication
+
+================================================================================
+  1. ROUTE GUARD LÀ GÌ?
+================================================================================
+
+  // ──── FLUTTER (GoRouter) ────
+  GoRouter(
+    redirect: (context, state) {
+      final isLoggedIn = authProvider.isLoggedIn;
+      if (!isLoggedIn && state.matchedLocation != '/login') {
+        return '/login';
+      }
+      return null;
+    },
+  )
+
+  // ──── ANGULAR ────
+  // ng g guard auth
+
+  import { CanActivateFn } from '@angular/router';
+  import { inject } from '@angular/core';
+
+  export const authGuard: CanActivateFn = (route, state) => {
+    const authService = inject(AuthService);
+    const router = inject(Router);
+
+    if (authService.isLoggedIn()) {
+      return true;                      // cho phép truy cập
+    } else {
+      router.navigate(['/login']);      // redirect
+      return false;
+    }
+  };
+
+  // Áp dụng vào route:
+  const routes: Routes = [
+    { path: 'dashboard', component: DashboardComponent,
+      canActivate: [authGuard]          // bảo vệ!
+    },
+    { path: 'admin', component: AdminComponent,
+      canActivate: [authGuard, adminGuard]  // nhiều guards
+    },
+  ];
+
+================================================================================
+  2. CÁC LOẠI GUARDS
+================================================================================
+
+  ┌──────────────────────┬──────────────────────────────────┐
+  │ Guard Type           │ Mục đích                         │
+  ├──────────────────────┼──────────────────────────────────┤
+  │ canActivate          │ Có cho phép vào route không?     │
+  │ canDeactivate        │ Có cho phép rời route không?     │
+  │                      │ (confirm unsaved changes)         │
+  │ canMatch             │ Có match route này không?        │
+  │ resolve              │ Load data trước khi vào route    │
+  └──────────────────────┴──────────────────────────────────┘
+
+  // canDeactivate example (hỏi trước khi rời):
+  export const unsavedChangesGuard: CanDeactivateFn<any> = (component) => {
+    if (component.hasUnsavedChanges) {
+      return confirm('Bạn có muốn rời trang? Dữ liệu chưa lưu!');
+    }
+    return true;
+  };
+
+================================================================================
+  ✅ SAU BÀI NÀY:
+  - canActivate guard ≈ GoRouter redirect
+  - Guards = functions (Angular 15+)
+  - Nhiều guard types cho nhiều tình huống
+================================================================================

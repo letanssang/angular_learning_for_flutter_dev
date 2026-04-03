@@ -1,0 +1,73 @@
+================================================================================
+  ROUTING - ROUTE PARAMS VÀ QUERY PARAMS
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 15-25 phut
+
+📌 MỤC TIÊU:
+  - Route params = GoRoute path params (:id)
+  - Query params = queryParameters
+
+================================================================================
+  1. ROUTE PARAMETERS
+================================================================================
+
+  // ──── FLUTTER ────
+  GoRoute(
+    path: '/product/:id',
+    builder: (ctx, state) {
+      final id = state.pathParameters['id']!;
+      return ProductScreen(id: id);
+    },
+  )
+
+  // ──── ANGULAR ────
+  // Routes:
+  { path: 'product/:id', component: ProductComponent }
+
+  // Component:
+  import { ActivatedRoute } from '@angular/router';
+
+  export class ProductComponent implements OnInit {
+    constructor(private route: ActivatedRoute) {}
+
+    ngOnInit(): void {
+      // Cách 1: Snapshot (like widget.id in Flutter)
+      const id = this.route.snapshot.paramMap.get('id');
+
+      // Cách 2: Observable (ReactiveX - auto update khi param thay đổi)
+      this.route.paramMap.subscribe(params => {
+        const id = params.get('id');
+        this.loadProduct(id!);
+      });
+    }
+  }
+
+================================================================================
+  2. QUERY PARAMETERS
+================================================================================
+
+  // ──── FLUTTER ────
+  // context.go('/search?q=angular&page=1')
+  // final query = state.uri.queryParameters['q'];
+
+  // ──── ANGULAR ────
+  // URL: /search?q=angular&page=1
+
+  this.route.queryParamMap.subscribe(params => {
+    const query = params.get('q');
+    const page = params.get('page');
+  });
+
+  // Navigate với query params:
+  this.router.navigate(['/search'], {
+    queryParams: { q: 'angular', page: 1 }
+  });
+
+================================================================================
+  ✅ SAU BÀI NÀY:
+  - Route params: route.paramMap ≈ state.pathParameters
+  - Query params: route.queryParamMap ≈ state.uri.queryParameters
+  - Observable params = auto-update khi URL thay đổi
+================================================================================

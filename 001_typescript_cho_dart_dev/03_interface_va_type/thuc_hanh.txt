@@ -1,0 +1,78 @@
+================================================================================
+  BÀI THỰC HÀNH: INTERFACE VÀ TYPE
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 25-35 phut
+
+📌 BÀI 1: ĐỊNH NGHĨA INTERFACE CHO ỨNG DỤNG FLUTTER
+================================================================================
+
+  Hãy tưởng tượng bạn đang viết lại model layer của app Flutter bằng TS.
+
+  1. Tạo interface cho một Product:
+     - id: number (readonly)
+     - name: string
+     - price: number
+     - description: string (optional)
+     - category: 'electronics' | 'clothing' | 'food'
+     - imageUrl: string (optional)
+
+  2. Tạo interface CartItem extends Product:
+     - quantity: number
+     - addedAt: Date
+
+  3. Tạo interface Cart:
+     - items: CartItem[]
+     - totalPrice(): number
+
+================================================================================
+
+📌 BÀI 2: TYPE ALIAS VÀ UNION TYPES
+================================================================================
+
+  1. Tạo type alias cho API response:
+
+     type ApiResponse<T> =
+       | { status: 'success'; data: T }
+       | { status: 'error'; message: string }
+       | { status: 'loading' };
+
+     // So sánh: Dart thường dùng sealed class hoặc freezed
+
+  2. Viết function handleResponse:
+     function handleResponse<T>(response: ApiResponse<T>): void {
+       // switch trên response.status
+       // TS sẽ tự narrow type trong mỗi case!
+     }
+
+  3. Test với: handleResponse<Product[]>({ status: 'success', data: [] });
+
+================================================================================
+
+📌 BÀI 3: INTERSECTION TYPES
+================================================================================
+
+  1. Tạo các type cơ bản:
+     type Timestamps = { createdAt: Date; updatedAt: Date };
+     type SoftDelete = { deletedAt: Date | null; isDeleted: boolean };
+     type HasId = { id: string };
+
+  2. Kết hợp chúng:
+     type BaseEntity = HasId & Timestamps & SoftDelete;
+     type UserEntity = BaseEntity & { name: string; email: string };
+
+  3. Tạo object UserEntity và verify type checking
+
+  4. So sánh: Trong Dart, bạn giải quyết bài này bằng mixin?
+     mixin Timestamps { ... }
+     mixin SoftDelete { ... }
+     → TS intersection types đơn giản hơn?
+
+================================================================================
+
+  ✅ TIÊU CHÍ HOÀN THÀNH:
+  - Phân biệt được interface vs type
+  - Sử dụng được union types cho discriminated unions
+  - Sử dụng được intersection types thay vì mixin
+================================================================================

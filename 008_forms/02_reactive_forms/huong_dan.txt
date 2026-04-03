@@ -1,0 +1,104 @@
+================================================================================
+  FORMS - REACTIVE FORMS (KHUYÊN DÙNG!)
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 30-40 phut
+
+📌 MỤC TIÊU:
+  - Reactive forms = Flutter form + controller pattern
+  - FormGroup, FormControl, FormArray
+  - Cho form phức tạp
+
+================================================================================
+  1. SETUP REACTIVE FORM
+================================================================================
+
+  import { ReactiveFormsModule, FormGroup, FormControl, Validators }
+    from '@angular/forms';
+
+  @Component({
+    imports: [ReactiveFormsModule],
+    template: `
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <input formControlName="email" placeholder="Email">
+        <input formControlName="password" type="password">
+        <button [disabled]="loginForm.invalid">Login</button>
+      </form>
+    `
+  })
+  export class LoginComponent {
+    loginForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required,
+                                      Validators.minLength(6)]),
+    });
+
+    onSubmit(): void {
+      if (this.loginForm.valid) {
+        console.log(this.loginForm.value);
+        // { email: '...', password: '...' }
+      }
+    }
+  }
+
+================================================================================
+  2. HIỂN THỊ VALIDATION ERRORS
+================================================================================
+
+  <div>
+    <input formControlName="email">
+    @if (loginForm.get('email')?.hasError('required') &&
+         loginForm.get('email')?.touched) {
+      <span class="error">Email là bắt buộc</span>
+    }
+    @if (loginForm.get('email')?.hasError('email')) {
+      <span class="error">Email không hợp lệ</span>
+    }
+  </div>
+
+  // Flutter tương đương: validator callback trong TextFormField
+
+================================================================================
+  3. FORMBUILDER (CÁCH VIẾT NGẮN GỌN)
+================================================================================
+
+  import { FormBuilder } from '@angular/forms';
+
+  export class RegisterComponent {
+    constructor(private fb: FormBuilder) {}
+
+    registerForm = this.fb.group({
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      address: this.fb.group({            // nested group
+        street: [''],
+        city: [''],
+        zip: [''],
+      }),
+      hobbies: this.fb.array([]),         // dynamic array
+    });
+  }
+
+================================================================================
+  4. SO SÁNH
+================================================================================
+
+  ┌──────────────────────────┬──────────────────────────────┐
+  │ Flutter                  │ Angular Reactive Forms       │
+  ├──────────────────────────┼──────────────────────────────┤
+  │ TextEditingController    │ FormControl                  │
+  │ Form(key: formKey)       │ FormGroup                    │
+  │ TextFormField validator  │ Validators                   │
+  │ formKey.currentState     │ formGroup.valid/invalid      │
+  │ (không có built-in)      │ FormArray (dynamic fields)   │
+  └──────────────────────────┴──────────────────────────────┘
+
+================================================================================
+  ✅ SAU BÀI NÀY:
+  - FormGroup = Form widget
+  - FormControl = TextEditingController
+  - Validators = validator callback
+  - FormBuilder = helper tạo form nhanh
+================================================================================

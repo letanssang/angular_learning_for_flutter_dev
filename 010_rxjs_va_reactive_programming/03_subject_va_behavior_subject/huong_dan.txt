@@ -1,0 +1,86 @@
+================================================================================
+  APPENDIX - SUBJECT VA BEHAVIORSUBJECT
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 15-20 phut
+
+📌 MUC TIEU:
+  - Hieu Subject/BehaviorSubject de doc code cu hoac codebase RxJS-heavy
+  - Biet tai sao nhieu app Angular cu dung no cho service state
+  - Biet vi sao lo trinh nay KHONG chon no lam default path
+
+================================================================================
+  1. SUBJECT TYPES
+================================================================================
+
+  ┌─────────────────────────┬──────────────────────────────┐
+  │ Dart                    │ RxJS                         │
+  ├─────────────────────────┼──────────────────────────────┤
+  │ StreamController<T>     │ Subject<T>                   │
+  │ ValueNotifier<T>        │ BehaviorSubject<T>           │
+  │ (ko co tuong duong)     │ ReplaySubject<T>             │
+  └─────────────────────────┴──────────────────────────────┘
+
+================================================================================
+  2. SUBJECT
+================================================================================
+
+  import { Subject } from 'rxjs';
+
+  const search$ = new Subject<string>();
+  search$.next('angular');
+
+================================================================================
+  3. BEHAVIORSUBJECT
+================================================================================
+
+  import { BehaviorSubject } from 'rxjs';
+
+  const counter$ = new BehaviorSubject<number>(0);
+  console.log(counter$.value);
+  counter$.next(1);
+
+  BehaviorSubject co:
+  - gia tri khoi tao
+  - gia tri hien tai
+  - kha nang stream hoa state
+
+================================================================================
+  4. VI SAO KHONG CHON LAM MAC DINH CHO LO TRINH NAY?
+================================================================================
+
+  Vi voi Angular moi:
+  - signal() ro mental model hon cho nguoi tu Flutter sang
+  - computed() de doc hon selector tu pipe(map(...))
+  - local/service state don gian khong can Observable everywhere
+
+  BehaviorSubject van hop ly khi:
+  - du an da dung RxJS state service
+  - can interop tot voi stream pipelines san co
+  - team quen pattern Observable-first
+
+================================================================================
+  5. CACH DOC CODEBASE CU
+================================================================================
+
+  @Injectable({ providedIn: 'root' })
+  export class CartService {
+    private items$ = new BehaviorSubject<CartItem[]>([]);
+    readonly cartItems$ = this.items$.asObservable();
+
+    addItem(item: CartItem): void {
+      this.items$.next([...this.items$.value, item]);
+    }
+  }
+
+  Cach hieu:
+  - private subject = noi ghi state
+  - public observable = noi component doc state
+
+================================================================================
+  ✅ TOM LAI:
+  - Subject/BehaviorSubject la OPTIONAL trong lo trinh 2 tuan
+  - Can doc duoc, nhung khong can chon lam default cho app moi
+  - Signals la first path; BehaviorSubject la interop/legacy path
+================================================================================

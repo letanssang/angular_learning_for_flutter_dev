@@ -1,0 +1,67 @@
+================================================================================
+  STATE MANAGEMENT - SERVICE-BASED STATE VOI RXJS (OPTIONAL)
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 15-20 phut
+
+📌 MUC TIEU:
+  - Doc duoc pattern service + BehaviorSubject trong codebase cu/hien co
+  - Hieu no giong ChangeNotifier/StateNotifier + Provider
+  - Biet vi sao lo trinh nay uu tien signal service truoc
+
+================================================================================
+  1. SERVICE-BASED STATE VOI BEHAVIORSUBJECT
+================================================================================
+
+  @Injectable({ providedIn: 'root' })
+  export class AppStateService {
+    private _user$ = new BehaviorSubject<User | null>(null);
+    private _theme$ = new BehaviorSubject<'light' | 'dark'>('light');
+
+    readonly user$ = this._user$.asObservable();
+    readonly theme$ = this._theme$.asObservable();
+    readonly isLoggedIn$ = this._user$.pipe(map(u => u !== null));
+
+    setUser(user: User | null): void {
+      this._user$.next(user);
+    }
+
+    toggleTheme(): void {
+      this._theme$.next(this._theme$.value === 'light' ? 'dark' : 'light');
+    }
+  }
+
+================================================================================
+  2. CACH DOC TRONG COMPONENT
+================================================================================
+
+  @Component({
+    template: `
+      @if (appState.user$ | async; as user) {
+        <p>Welcome, {{ user.name }}</p>
+      }
+    `
+  })
+  export class HeaderComponent {
+    constructor(public appState: AppStateService) {}
+  }
+
+================================================================================
+  3. KHI NAO DUNG PATTERN NAY?
+================================================================================
+
+  Hop ly khi:
+  - codebase da theo Observable-first
+  - can interop nhieu voi RxJS pipelines
+  - team quen async pipe + selectors tu stream
+
+  Khong phai default lo trinh 2 tuan vi:
+  - signal() ro hon cho nguoi tu Flutter sang
+  - state don gian khong can Observable o moi cho
+
+================================================================================
+  ✅ TOM LAI:
+  - Doc duoc pattern nay la can thiet
+  - Mac dinh cua lo trinh nay van la Signals
+================================================================================

@@ -1,0 +1,83 @@
+================================================================================
+  TEMPLATE VÀ DATA BINDING - INTERPOLATION & PROPERTY BINDING
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 15-20 phut
+
+📌 MỤC TIÊU:
+  - Hiểu 4 loại data binding trong Angular
+  - Interpolation {{ }}
+  - Property binding [property]
+
+================================================================================
+  1. TỔNG QUAN 4 LOẠI DATA BINDING
+================================================================================
+
+  ┌─────────────────────┬──────────────────┬─────────────────────┐
+  │ Loại                │ Syntax           │ Flutter tương đương │
+  ├─────────────────────┼──────────────────┼─────────────────────┤
+  │ Interpolation       │ {{ expression }} │ Text('$variable')   │
+  │ Property binding    │ [property]="exp" │ Widget(prop: value) │
+  │ Event binding       │ (event)="fn()"   │ onPressed: fn       │
+  │ Two-way binding     │ [(ngModel)]="var"│ TextEditingController│
+  └─────────────────────┴──────────────────┴─────────────────────┘
+
+================================================================================
+  2. INTERPOLATION {{ }}
+================================================================================
+
+  // Angular:
+  <h1>{{ title }}</h1>
+  <p>{{ user.name }}</p>
+  <p>{{ 1 + 1 }}</p>                         // expressions OK
+  <p>{{ isLoggedIn ? 'Hi' : 'Login' }}</p>   // ternary OK
+  <p>{{ items.length }}</p>                  // property access OK
+  <p>{{ getFullName() }}</p>                 // method call OK
+
+  // Flutter tương đương:
+  Text(title)
+  Text(user.name)
+  Text('${1 + 1}')
+  Text(isLoggedIn ? 'Hi' : 'Login')
+  Text('${items.length}')
+  Text(getFullName())
+
+  ⚠️ KHÔNG ĐƯỢC dùng trong {{ }}:
+  - Assignment: {{ x = 5 }}           ❌
+  - new keyword: {{ new Date() }}     ❌
+  - Chaining: {{ x; y }}              ❌
+
+================================================================================
+  3. PROPERTY BINDING [property]
+================================================================================
+
+  // Bind giá trị vào property của HTML element hoặc component:
+
+  // HTML attribute binding:
+  <img [src]="imageUrl">                    // Dart: Image.network(url)
+  <button [disabled]="isLoading">Save</button>
+  <div [hidden]="!isVisible"></div>
+  <input [value]="userName">
+  <div [style.background]="bgColor"></div>
+  <div [class.active]="isActive"></div>
+
+  // Component property binding:
+  <app-product [name]="productName" [price]="productPrice">
+  </app-product>
+  // ≈ Flutter: ProductWidget(name: productName, price: productPrice)
+
+  // Style binding:
+  <div [style.width.px]="boxWidth">         // width: 200px
+  <div [style.fontSize.em]="1.5">
+
+  // Class binding:
+  <div [class.highlight]="isHighlighted">   // toggle class
+  <div [ngClass]="{'active': isActive, 'disabled': isDisabled}">
+
+================================================================================
+  ✅ SAU BÀI NÀY:
+  - {{ }} cho text content (giống $ interpolation Dart)
+  - [] cho HTML/component properties
+  - [style.x], [class.x] cho dynamic styling
+================================================================================

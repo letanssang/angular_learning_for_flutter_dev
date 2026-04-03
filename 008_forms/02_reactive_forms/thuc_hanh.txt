@@ -1,0 +1,38 @@
+================================================================================
+  THUC HANH - REACTIVE FORM CHECKPOINT
+================================================================================
+
+MUC TIEU:
+- Tao 1 reactive form co validation va fake submit flow
+
+THOI LUONG UOC TINH:
+- 30-40 phut
+
+TASK:
+1. Tao ProductFormComponent hoac LoginComponent
+2. Dung FormGroup + FormControl hoac FormBuilder
+3. Bat buoc co it nhat 3 fields
+4. Them validators:
+   - required
+   - email hoac minLength
+   - 1 custom rule nho neu muon
+5. Disable submit button khi form invalid
+6. Khi submit:
+   - danh dau submitted
+   - mo phong goi API bang setTimeout hoac Observable of(...).pipe(delay(...))
+   - hien thi message thanh cong
+7. Hien thi validation errors chi sau touched/dirty hoac submit
+
+EXPECTED RESULT:
+- Form khong submit neu invalid
+- Errors hien dung luc
+- Payload in ra dung shape
+
+SELF-CHECK:
+- Ban co giai thich duoc FormGroup va FormControl khac gi TextEditingController khong?
+- Ban co biet dat validation o component thay vi truoc tien dat linh tinh trong template khong?
+- Ban co the them 1 field moi ma khong vo form structure khong?
+
+DONE KHI:
+- Ban co 1 form co validation, submit flow va UI feedback ro rang
+================================================================================

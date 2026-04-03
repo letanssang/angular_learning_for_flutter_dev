@@ -1,0 +1,65 @@
+================================================================================
+  ANGULAR MATERIAL - COMMON COMPONENTS
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 20-30 phut
+
+📌 Các component thường dùng nhất
+================================================================================
+
+  1. DIALOG (= showDialog Flutter):
+  ─────────────────────────
+  constructor(private dialog: MatDialog) {}
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '400px',
+      data: { title: 'Xác nhận', message: 'Bạn có chắc?' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) { /* confirmed */ }
+    });
+  }
+
+  // Flutter:
+  // showDialog(context: context, builder: (_) => AlertDialog(...))
+
+  2. SNACKBAR (= ScaffoldMessenger.showSnackBar):
+  ─────────────────────────
+  constructor(private snackBar: MatSnackBar) {}
+
+  showMessage(): void {
+    this.snackBar.open('Đã lưu thành công!', 'Đóng', {
+      duration: 3000,
+      horizontalPosition: 'center',
+    });
+  }
+
+  3. TABLE (= DataTable):
+  ─────────────────────────
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Tên</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+    <!-- Thêm columns... -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  4. AUTOCOMPLETE:
+  ─────────────────────────
+  <mat-form-field>
+    <input matInput [matAutocomplete]="auto" [formControl]="searchControl">
+    <mat-autocomplete #auto="matAutocomplete">
+      @for (option of filteredOptions$ | async; track option) {
+        <mat-option [value]="option">{{ option }}</mat-option>
+      }
+    </mat-autocomplete>
+  </mat-form-field>
+
+================================================================================
+  ✅ Angular Material có đầy đủ components tương tự Flutter Material
+================================================================================

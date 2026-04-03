@@ -1,0 +1,82 @@
+================================================================================
+  DIRECTIVES - CUSTOM DIRECTIVE
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 20-30 phut
+
+📌 MỤC TIÊU:
+  - Tạo directive tùy chỉnh
+  - So sánh: giống custom RenderObject/CustomPainter ý tưởng
+
+================================================================================
+  1. TẠO CUSTOM DIRECTIVE
+================================================================================
+
+  // ng g directive directives/highlight
+
+  import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+
+  @Directive({
+    selector: '[appHighlight]',           // attribute selector
+    standalone: true
+  })
+  export class HighlightDirective {
+    @Input() appHighlight: string = 'yellow';
+
+    constructor(private el: ElementRef) {}
+
+    @HostListener('mouseenter')
+    onMouseEnter() {
+      this.el.nativeElement.style.backgroundColor = this.appHighlight;
+    }
+
+    @HostListener('mouseleave')
+    onMouseLeave() {
+      this.el.nativeElement.style.backgroundColor = '';
+    }
+  }
+
+  // Sử dụng:
+  <p appHighlight="lightblue">Hover me!</p>
+  <p appHighlight="pink">Hover me too!</p>
+
+================================================================================
+  2. VÍ DỤ: TOOLTIP DIRECTIVE
+================================================================================
+
+  @Directive({
+    selector: '[appTooltip]',
+    standalone: true
+  })
+  export class TooltipDirective {
+    @Input() appTooltip: string = '';
+    private tooltipElement!: HTMLDivElement;
+
+    constructor(private el: ElementRef) {}
+
+    @HostListener('mouseenter')
+    show() {
+      this.tooltipElement = document.createElement('div');
+      this.tooltipElement.textContent = this.appTooltip;
+      this.tooltipElement.className = 'tooltip';
+      document.body.appendChild(this.tooltipElement);
+    }
+
+    @HostListener('mouseleave')
+    hide() {
+      this.tooltipElement?.remove();
+    }
+  }
+
+  // Sử dụng:
+  <button appTooltip="Click để lưu">💾 Save</button>
+
+  // So sánh Flutter: Tooltip(message: 'Click để lưu', child: ...)
+
+================================================================================
+  ✅ SAU BÀI NÀY:
+  - @Directive tạo behavior tái sử dụng
+  - @HostListener lắng nghe events
+  - ElementRef truy cập DOM element
+================================================================================

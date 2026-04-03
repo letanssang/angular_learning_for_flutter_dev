@@ -1,0 +1,158 @@
+================================================================================
+  TYPESCRIPT CHO DART DEV - KIỂU DỮ LIỆU VÀ BIẾN
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 30-40 phut
+
+📌 MỤC TIÊU:
+  - So sánh kiểu dữ liệu Dart vs TypeScript
+  - Hiểu let, const, var trong TS
+  - Nắm vững strict null mindset trong TS
+  - Đọc được function type cơ bản
+
+================================================================================
+  1. KIỂU DỮ LIỆU CƠ BẢN
+================================================================================
+
+  ┌─────────────────┬──────────────────┬─────────────────────────┐
+  │ Dart            │ TypeScript       │ Ghi chú                 │
+  ├─────────────────┼──────────────────┼─────────────────────────┤
+  │ int             │ number           │ TS không phân biệt      │
+  │ double          │ number           │ int/double              │
+  │ String          │ string           │ chữ thường!             │
+  │ bool            │ boolean          │                         │
+  │ List<T>         │ T[] hoặc Array<T>│                         │
+  │ Map<K,V>        │ Record<K,V>      │ hoặc { [key: K]: V }   │
+  │ Set<T>          │ Set<T>           │ giống nhau              │
+  │ dynamic         │ any              │ tránh dùng!             │
+  │ Object          │ unknown          │ an toàn hơn any         │
+  │ void            │ void             │ giống nhau              │
+  │ null            │ null             │                         │
+  │ Null            │ undefined | null │ TS có 2 khái niệm!     │
+  │ Never           │ never            │ giống nhau              │
+  │ enum            │ enum             │ TS enum mạnh hơn        │
+  │ Tuple (Record)  │ [T1, T2]         │ TS tuple linh hoạt hơn  │
+  └─────────────────┴──────────────────┴─────────────────────────┘
+
+================================================================================
+  2. KHAI BÁO BIẾN
+================================================================================
+
+  // ──── DART ────
+  var name = 'Dart';       // type inference
+  final age = 25;          // runtime constant
+  const pi = 3.14;         // compile-time constant
+  String? nullable;        // nullable
+
+  // ──── TYPESCRIPT ────
+  let name = 'TypeScript'; // tương tự var (nhưng block-scoped)
+  const age = 25;          // tương tự final (KHÔNG phải const Dart!)
+  readonly pi = 3.14;      // chỉ dùng trong class/interface
+
+  let nullable: string | null = null;    // union type cho null
+  let optional?: string;                 // optional (undefined)
+
+  ⚠️ CHÚ Ý QUAN TRỌNG:
+  - const trong TS = final trong Dart (runtime constant)
+  - TS KHÔNG có compile-time constant như Dart
+  - TS dùng 'as const' để tạo literal types (gần giống const Dart)
+
+  ┌──────────────┬──────────────────┐
+  │ Dart         │ TypeScript       │
+  ├──────────────┼──────────────────┤
+  │ var          │ let              │
+  │ final        │ const            │
+  │ const        │ as const (gần)   │
+  │ late         │ ! (non-null      │
+  │              │   assertion)     │
+  └──────────────┴──────────────────┘
+
+================================================================================
+  3. TYPE ANNOTATION VS TYPE INFERENCE
+================================================================================
+
+  // TS cũng có type inference mạnh giống Dart:
+
+  // Explicit annotation:
+  let count: number = 0;         // Dart: int count = 0;
+  let items: string[] = [];      // Dart: List<String> items = [];
+
+  // Type inference (tự động suy luận):
+  let count = 0;                 // → number
+  let items = ['a', 'b'];       // → string[]
+
+  // Function types:
+  // Dart: int Function(String) converter;
+  // TS:
+  let converter: (input: string) => number;
+
+================================================================================
+  4. NULL SAFETY (KHÁC BIỆT LỚN!)
+================================================================================
+
+  // ──── DART ────
+  String? name;              // nullable
+  String name = 'hello';     // non-nullable
+  name!                      // force unwrap
+  name?.length               // null-aware access
+  name ?? 'default'          // null-aware default
+
+  // ──── TYPESCRIPT ────
+  let name: string | null;          // nullable (union type)
+  let name: string | undefined;     // undefined
+  let name?: string;                // optional = string | undefined
+  name!                             // non-null assertion (giống Dart)
+  name?.length                      // optional chaining (giống Dart)
+  name ?? 'default'                 // nullish coalescing (giống Dart)
+
+  ⚠️ KHÁC BIỆT LỚN:
+  - Dart có 1 khái niệm: null
+  - TS có 2 khái niệm: null VÀ undefined
+  - undefined = chưa gán giá trị
+  - null = cố tình gán null
+  - Cần bật "strictNullChecks": true trong tsconfig.json
+
+================================================================================
+  5. FUNCTION TYPES CƠ BẢN
+================================================================================
+
+  // Dart:
+  // int Function(String) converter;
+
+  // TypeScript:
+  let converter: (input: string) => number;
+
+  function formatPrice(value: number): string {
+    return `${value} đ`;
+  }
+
+  💡 Bạn sẽ gặp function types ở:
+  - callbacks
+  - RxJS operators
+  - component outputs
+
+================================================================================
+  6. UNION TYPES VÀ LITERAL TYPES (DART KHÔNG CÓ!)
+================================================================================
+
+  // Union type - biến có thể là nhiều kiểu:
+  let id: string | number;     // Dart không có!
+  id = "abc";  // OK
+  id = 123;    // OK
+
+  // Literal type - giới hạn giá trị cụ thể:
+  let direction: 'up' | 'down' | 'left' | 'right';
+  direction = 'up';    // OK
+  direction = 'back';  // ERROR!
+
+  // Dart phải dùng enum, TS có thể dùng literal types
+
+================================================================================
+  ✅ SAU BÀI NÀY BẠN CẦN BIẾT:
+  - Mapping kiểu dữ liệu Dart ↔ TypeScript
+  - let/const/readonly tương đương gì trong Dart
+  - strict null mindset: null vs undefined trong TypeScript
+  - function type cơ bản để đọc callbacks
+  - Union types và literal types (điểm mạnh của TS)
+================================================================================

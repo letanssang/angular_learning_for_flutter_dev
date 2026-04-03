@@ -1,0 +1,55 @@
+================================================================================
+  HTTP - ERROR HANDLING
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 15-20 phut
+
+📌 Xử lý lỗi HTTP trong Angular
+================================================================================
+
+  // Service level:
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.apiUrl).pipe(
+      retry(2),                          // retry 2 lần nếu lỗi
+      catchError(this.handleError)       // xử lý lỗi
+    );
+  }
+
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    if (error.status === 0) {
+      console.error('Network error:', error.error);
+    } else if (error.status === 401) {
+      // redirect to login
+    } else if (error.status === 404) {
+      console.error('Not found');
+    } else {
+      console.error(`Server error ${error.status}:`, error.error);
+    }
+    return throwError(() => new Error('Something went wrong'));
+  }
+
+  // Flutter tương đương:
+  // try {
+  //   final response = await http.get(...);
+  //   if (response.statusCode == 200) { ... }
+  //   else if (response.statusCode == 401) { ... }
+  // } on SocketException { ... }
+  // catch (e) { ... }
+
+================================================================================
+  // Global error interceptor:
+  export const errorInterceptor: HttpInterceptorFn = (req, next) => {
+    return next(req).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 401) {
+          // auto logout & redirect
+        }
+        return throwError(() => error);
+      })
+    );
+  };
+
+================================================================================
+  ✅ RxJS operators (retry, catchError) giúp xử lý lỗi mạnh hơn try-catch
+================================================================================

@@ -1,0 +1,101 @@
+================================================================================
+  ANGULAR CLI VA PROJECT SETUP - CAI DAT ANGULAR CLI
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 20-30 phut
+
+📌 MUC TIEU:
+  - Cai dat Angular CLI
+  - Tao project Angular dau tien
+  - Hieu nhung lenh toi thieu de vao codebase nhanh
+
+================================================================================
+  1. CAI DAT ANGULAR CLI
+================================================================================
+
+  # Cai dat global:
+  npm install -g @angular/cli
+
+  # Kiem tra:
+  ng version
+
+  💡 SO SANH NHANH:
+  ┌──────────────────────┬────────────────────────────────────┐
+  │ Flutter              │ Angular                            │
+  ├──────────────────────┼────────────────────────────────────┤
+  │ flutter create       │ ng new                             │
+  │ flutter run          │ ng serve                           │
+  │ flutter build        │ ng build                           │
+  │ flutter test         │ ng test                            │
+  │ flutter pub get      │ npm install                        │
+  │ flutter doctor       │ ng version                         │
+  │ dart analyze         │ ng lint (neu workspace co lint)    │
+  └──────────────────────┴────────────────────────────────────┘
+
+================================================================================
+  2. TAO PROJECT MOI
+================================================================================
+
+  # Tao project:
+  ng new my-angular-app
+
+  # Option huu ich:
+  ng new my-app --routing
+  ng new my-app --style=scss
+  ng new my-app --standalone
+
+  💡 Ghi chu:
+  - Khi hoc, cu viet ro --standalone de khoa mindset Angular moi
+  - Codebase moi uu tien standalone components va app config gọn hon
+
+================================================================================
+  3. CHAY PROJECT
+================================================================================
+
+  cd my-angular-app
+
+  # Dev server:
+  ng serve
+  # -> http://localhost:4200
+
+  # Chi dinh port:
+  ng serve --port 3000
+
+  # Build production:
+  ng build --configuration production
+
+  ⚠️ So voi Flutter:
+  - feedback nhanh
+  - tu dong refresh
+  - nhung khong giu state nhu hot reload cua Flutter
+
+================================================================================
+  4. ANGULAR CLI GENERATORS
+================================================================================
+
+  # Tạo component:
+  ng g c header
+
+  # Tạo service:
+  ng g s auth
+
+  # Tạo guard:
+  ng g guard auth
+
+  # Tạo pipe:
+  ng g pipe currency
+
+  # Tạo directive:
+  ng g d tooltip
+
+  💡 Trong lo trinh cap toc:
+  - dung generator de theo convention nhanh
+  - khong can tu tao tay tung file neu chua quen codebase
+
+================================================================================
+  ✅ SAU BAI NAY BAN CAN BIET:
+  - ng new, ng serve, ng build, ng test la bo lenh toi thieu
+  - standalone la default mindset can dung cho lo trinh nay
+  - ng lint khong phai workspace nao cung co san neu chua them angular-eslint
+================================================================================

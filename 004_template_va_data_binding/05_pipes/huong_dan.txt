@@ -1,0 +1,104 @@
+================================================================================
+  TEMPLATE - PIPES (BIẾN ĐỔI DỮ LIỆU HIỂN THỊ)
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 15-20 phut
+
+📌 MỤC TIÊU:
+  - Hiểu pipes = format hiển thị (KHÔNG thay đổi data gốc)
+  - Pipes có sẵn và custom pipes
+  - So sánh: Flutter dùng intl, NumberFormat, DateFormat
+
+================================================================================
+  1. PIPES CÓ SẴN
+================================================================================
+
+  // ──── FLUTTER ────
+  Text(DateFormat('dd/MM/yyyy').format(date))
+  Text(NumberFormat.currency(locale: 'vi').format(price))
+  Text(name.toUpperCase())
+
+  // ──── ANGULAR ────
+  {{ date | date:'dd/MM/yyyy' }}
+  {{ price | currency:'VND' }}
+  {{ name | uppercase }}
+
+  // Các pipes có sẵn:
+  {{ value | uppercase }}                    // ABC
+  {{ value | lowercase }}                    // abc
+  {{ value | titlecase }}                    // Abc Def
+  {{ value | date:'short' }}                 // 1/1/24, 12:00 AM
+  {{ value | date:'fullDate' }}              // Monday, January 1, 2024
+  {{ value | currency:'USD' }}               // $1,234.56
+  {{ value | currency:'VND':'symbol' }}      // ₫1,234
+  {{ value | number:'1.0-2' }}               // 1234.57
+  {{ value | percent }}                      // 75%
+  {{ value | json }}                         // debug: in JSON
+  {{ value | slice:0:10 }}                   // substring(0, 10)
+  {{ value | async }}                        // unwrap Observable! (QUAN TRỌNG!)
+
+================================================================================
+  2. CHAINING PIPES
+================================================================================
+
+  {{ birthday | date:'fullDate' | uppercase }}
+  // → MONDAY, JANUARY 1, 2024
+
+  {{ price | currency:'VND' | slice:0:10 }}
+
+================================================================================
+  3. ASYNC PIPE (CỰC QUAN TRỌNG!)
+================================================================================
+
+  // Tự động subscribe/unsubscribe Observable!
+  // ≈ StreamBuilder trong Flutter
+
+  // Flutter:
+  // StreamBuilder<User>(
+  //   stream: userStream,
+  //   builder: (context, snapshot) {
+  //     if (snapshot.hasData) return Text(snapshot.data!.name);
+  //     return CircularProgressIndicator();
+  //   },
+  // )
+
+  // Angular:
+  <p>{{ user$ | async }}</p>
+  <div *ngIf="user$ | async as user">
+    {{ user.name }}
+  </div>
+
+  // KHÔNG cần subscribe/unsubscribe thủ công!
+
+================================================================================
+  4. CUSTOM PIPE
+================================================================================
+
+  // Tạo: ng g pipe pipes/truncate
+
+  import { Pipe, PipeTransform } from '@angular/core';
+
+  @Pipe({ name: 'truncate', standalone: true })
+  export class TruncatePipe implements PipeTransform {
+    transform(value: string, limit: number = 50): string {
+      return value.length > limit
+        ? value.substring(0, limit) + '...'
+        : value;
+    }
+  }
+
+  // Sử dụng:
+  {{ longText | truncate:100 }}
+
+  // Flutter tương đương:
+  // String truncate(String text, {int limit = 50}) {
+  //   return text.length > limit ? '${text.substring(0, limit)}...' : text;
+  // }
+
+================================================================================
+  ✅ SAU BÀI NÀY:
+  - Pipes = format helpers (date, currency, uppercase, ...)
+  - async pipe = StreamBuilder (tự quản lý subscription!)
+  - Custom pipe cho logic format riêng
+================================================================================

@@ -1,0 +1,48 @@
+================================================================================
+  SERVICES - INJECTION TOKENS VÀ HIERARCHICAL INJECTION
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 10-15 phut
+
+📌 Injection Tokens = Cách inject giá trị không phải class
+================================================================================
+
+  // Inject config, API URL, constants:
+  import { InjectionToken } from '@angular/core';
+
+  export const API_URL = new InjectionToken<string>('API_URL');
+
+  // Provide:
+  // providers: [{ provide: API_URL, useValue: 'https://api.example.com' }]
+
+  // Sử dụng:
+  constructor(@Inject(API_URL) private apiUrl: string) {}
+  // hoặc: private apiUrl = inject(API_URL);
+
+================================================================================
+
+📌 Hierarchical Injection = Scope service theo component tree
+================================================================================
+
+  // providedIn: 'root' → singleton toàn app
+  // providers: [...] trong @Component → instance per component
+
+  @Component({
+    providers: [CartService]    // Mỗi component = CartService riêng
+  })
+  export class ShopComponent {
+    constructor(private cart: CartService) {}
+  }
+
+  // Giống Flutter:
+  // MultiProvider(providers: [
+  //   Provider<CartService>(create: (_) => CartService()),
+  // ], child: ShopWidget())
+
+================================================================================
+  ✅ TỔNG KẾT:
+  - providedIn: 'root' = global singleton
+  - InjectionToken = inject non-class values
+  - Component providers = scoped instances
+================================================================================

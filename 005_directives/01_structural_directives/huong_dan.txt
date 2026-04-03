@@ -1,0 +1,116 @@
+================================================================================
+  DIRECTIVES - STRUCTURAL DIRECTIVES
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 25-35 phut
+
+📌 MỤC TIÊU:
+  - *ngIf = Visibility/if-else trong Flutter
+  - *ngFor = ListView.builder
+  - *ngSwitch = switch widget
+  - @if, @for (new control flow syntax - Angular 17+)
+
+================================================================================
+  1. *NGIF (HIỂN THỊ CÓ ĐIỀU KIỆN)
+================================================================================
+
+  // ──── FLUTTER ────
+  if (isLoggedIn) Text('Welcome')
+  // hoặc:
+  Visibility(visible: isLoggedIn, child: Text('Welcome'))
+
+  // ──── ANGULAR (cũ - vẫn hoạt động) ────
+  <p *ngIf="isLoggedIn">Welcome!</p>
+  <p *ngIf="!isLoggedIn">Please login</p>
+
+  // Với else:
+  <p *ngIf="isLoggedIn; else loginPrompt">Welcome!</p>
+  <ng-template #loginPrompt>
+    <p>Please login</p>
+  </ng-template>
+
+  // ──── ANGULAR 17+ (MỚI - NÊN DÙNG!) ────
+  @if (isLoggedIn) {
+    <p>Welcome!</p>
+  } @else {
+    <p>Please login</p>
+  }
+
+  // Giống Dart if-else hơn!
+
+================================================================================
+  2. *NGFOR (DANH SÁCH)
+================================================================================
+
+  // ──── FLUTTER ────
+  ListView.builder(
+    itemCount: items.length,
+    itemBuilder: (ctx, i) => ListTile(title: Text(items[i].name)),
+  )
+
+  // ──── ANGULAR (cũ) ────
+  <ul>
+    <li *ngFor="let item of items; let i = index; trackBy: trackById">
+      {{ i + 1 }}. {{ item.name }}
+    </li>
+  </ul>
+
+  // ──── ANGULAR 17+ (MỚI) ────
+  <ul>
+    @for (item of items; track item.id) {
+      <li>{{ item.name }}</li>
+    } @empty {
+      <li>Không có dữ liệu</li>
+    }
+  </ul>
+
+  // trackBy / track = key trong Flutter (tối ưu render)
+  // @empty = khi danh sách rỗng
+
+================================================================================
+  3. *NGSWITCH
+================================================================================
+
+  // ──── FLUTTER ────
+  switch (status) {
+    case 'active': return Icon(Icons.check, color: Colors.green);
+    case 'inactive': return Icon(Icons.close, color: Colors.red);
+    default: return Icon(Icons.help);
+  }
+
+  // ──── ANGULAR (cũ) ────
+  <div [ngSwitch]="status">
+    <p *ngSwitchCase="'active'">✅ Active</p>
+    <p *ngSwitchCase="'inactive'">❌ Inactive</p>
+    <p *ngSwitchDefault>❓ Unknown</p>
+  </div>
+
+  // ──── ANGULAR 17+ (MỚI) ────
+  @switch (status) {
+    @case ('active') { <p>✅ Active</p> }
+    @case ('inactive') { <p>❌ Inactive</p> }
+    @default { <p>❓ Unknown</p> }
+  }
+
+================================================================================
+  4. SO SÁNH TỔNG HỢP
+================================================================================
+
+  ┌──────────────────────┬─────────────────┬──────────────────┐
+  │ Flutter              │ Angular (cũ)    │ Angular 17+      │
+  ├──────────────────────┼─────────────────┼──────────────────┤
+  │ if (condition)       │ *ngIf           │ @if              │
+  │ ListView.builder     │ *ngFor          │ @for             │
+  │ switch               │ [ngSwitch]      │ @switch          │
+  │ (empty state)        │ (tự handle)     │ @empty           │
+  └──────────────────────┴─────────────────┴──────────────────┘
+
+  💡 Angular 17+ control flow syntax giống Dart hơn → dễ chuyển đổi!
+
+================================================================================
+  ✅ SAU BÀI NÀY:
+  - @if/@for/@switch (Angular 17+) giống Dart syntax
+  - track = key (tối ưu performance)
+  - @empty = xử lý danh sách rỗng
+================================================================================

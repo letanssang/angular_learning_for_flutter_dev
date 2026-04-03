@@ -1,0 +1,91 @@
+================================================================================
+  BÀI THỰC HÀNH: TẠO COMPONENT
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 30-40 phut
+
+📌 BÀI 1: PROFILE CARD COMPONENT
+================================================================================
+
+  Tạo component hiển thị thông tin profile (giống Flutter Card widget):
+
+  1. ng g c components/profile-card
+
+  2. profile-card.component.ts:
+     - name: string = 'Nguyễn Văn A'
+     - role: string = 'Flutter Developer'
+     - skills: string[] = ['Dart', 'Flutter', 'Angular']
+     - isOnline: boolean = true
+
+  3. profile-card.component.html:
+     - Hiển thị avatar (placeholder)
+     - Hiển thị name, role
+     - Hiển thị danh sách skills
+     - Badge online/offline dựa trên isOnline
+
+  4. profile-card.component.css:
+     - Style card đẹp với border-radius, shadow
+     - Style badge online (xanh) / offline (xám)
+
+  5. Sử dụng trong app.component.html:
+     <app-profile-card></app-profile-card>
+
+================================================================================
+
+📌 BÀI 2: COUNTER COMPONENT (SO SÁNH VỚI FLUTTER)
+================================================================================
+
+  Flutter code gốc:
+  ─────────────────────────────
+  class CounterWidget extends StatefulWidget {
+    @override
+    _CounterState createState() => _CounterState();
+  }
+  class _CounterState extends State<CounterWidget> {
+    int count = 0;
+    void increment() => setState(() => count++);
+    void decrement() => setState(() => count--);
+    void reset() => setState(() => count = 0);
+
+    @override
+    Widget build(BuildContext context) {
+      return Column(children: [
+        Text('$count', style: TextStyle(fontSize: 48)),
+        Row(children: [
+          IconButton(icon: Icon(Icons.remove), onPressed: decrement),
+          IconButton(icon: Icon(Icons.refresh), onPressed: reset),
+          IconButton(icon: Icon(Icons.add), onPressed: increment),
+        ]),
+      ]);
+    }
+  }
+  ─────────────────────────────
+
+  → Viết lại bằng Angular component
+  → Lưu ý: Angular KHÔNG cần setState()!
+  → Thay đổi property → tự động update UI (Zone.js)
+
+================================================================================
+
+📌 BÀI 3: COMPONENT VỚI INLINE TEMPLATE
+================================================================================
+
+  Tạo component nhỏ bằng inline template:
+
+  1. app-badge: hiển thị text với background color
+  2. app-divider: đường kẻ ngang với text ở giữa
+  3. app-avatar: hình tròn với chữ cái đầu
+
+  Dùng cho mỗi component:
+  - inline template (không tạo file HTML riêng)
+  - inline styles
+
+================================================================================
+
+  ✅ TIÊU CHÍ HOÀN THÀNH:
+  - Tạo component bằng CLI thành thạo
+  - Hiểu {{ }} interpolation
+  - Hiểu (click) event binding
+  - So sánh được với Flutter Widget tương đương
+================================================================================

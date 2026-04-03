@@ -1,0 +1,63 @@
+================================================================================
+  HTTP - INTERCEPTORS (MIDDLEWARE CHO HTTP)
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 15-20 phut
+
+📌 MỤC TIÊU:
+  - Interceptor = Dio interceptor trong Flutter
+  - Thêm token, logging, error handling tự động
+
+================================================================================
+  1. INTERCEPTOR LÀ GÌ?
+================================================================================
+
+  // Flutter (Dio):
+  // dio.interceptors.add(InterceptorsWrapper(
+  //   onRequest: (options, handler) {
+  //     options.headers['Authorization'] = 'Bearer $token';
+  //     handler.next(options);
+  //   },
+  // ));
+
+  // Angular (Functional interceptor - mới):
+  import { HttpInterceptorFn } from '@angular/common/http';
+
+  export const authInterceptor: HttpInterceptorFn = (req, next) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const authReq = req.clone({
+        setHeaders: { Authorization: `Bearer ${token}` }
+      });
+      return next(authReq);
+    }
+    return next(req);
+  };
+
+  // Đăng ký:
+  // app.config.ts:
+  provideHttpClient(withInterceptors([authInterceptor]))
+
+================================================================================
+  2. LOGGING INTERCEPTOR
+================================================================================
+
+  export const loggingInterceptor: HttpInterceptorFn = (req, next) => {
+    console.log(`[${req.method}] ${req.url}`);
+    const started = Date.now();
+
+    return next(req).pipe(
+      tap(event => {
+        if (event.type === HttpEventType.Response) {
+          console.log(`✅ ${req.url} - ${Date.now() - started}ms`);
+        }
+      })
+    );
+  };
+
+================================================================================
+  ✅ SAU BÀI NÀY:
+  - Interceptor = middleware cho HTTP (giống Dio interceptor)
+  - Auth token, logging, error handling tự động
+================================================================================

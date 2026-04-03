@@ -1,0 +1,81 @@
+================================================================================
+  TEMPLATE - EVENT BINDING
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 15-20 phut
+
+📌 MỤC TIÊU:
+  - Xử lý sự kiện user trong Angular
+  - So sánh với GestureDetector, onPressed trong Flutter
+
+================================================================================
+  1. EVENT BINDING (event)
+================================================================================
+
+  // ──── FLUTTER ────
+  ElevatedButton(onPressed: handleClick, child: Text('Click'))
+  GestureDetector(onTap: handleTap, child: ...)
+  TextField(onChanged: handleChange)
+
+  // ──── ANGULAR ────
+  <button (click)="handleClick()">Click</button>
+  <div (click)="handleTap()">...</div>
+  <input (input)="handleChange($event)">
+
+  // Các events phổ biến:
+  <button (click)="onClick()">              // onPressed / onTap
+  <input (input)="onInput($event)">         // onChanged
+  <input (keyup)="onKeyUp($event)">         // onKey
+  <input (keyup.enter)="onSubmit()">        // Enter key!
+  <div (mouseenter)="onHover()">            // onHover
+  <div (mouseleave)="onLeave()">
+  <form (submit)="onSubmit($event)">        // form submit
+
+================================================================================
+  2. $EVENT OBJECT
+================================================================================
+
+  // $event chứa thông tin sự kiện:
+
+  // Click event:
+  <button (click)="onClick($event)">
+
+  onClick(event: MouseEvent): void {
+    console.log(event.clientX, event.clientY);  // vị trí click
+  }
+
+  // Input event:
+  <input (input)="onInput($event)">
+
+  onInput(event: Event): void {
+    const value = (event.target as HTMLInputElement).value;
+    console.log('User typed:', value);
+  }
+
+  // Keyboard event:
+  <input (keyup)="onKeyUp($event)">
+
+  onKeyUp(event: KeyboardEvent): void {
+    console.log('Key:', event.key);
+  }
+
+================================================================================
+  3. KEY EVENT FILTERS (TIỆN LỢI!)
+================================================================================
+
+  // Angular hỗ trợ filter key events:
+  <input (keyup.enter)="search()">          // chỉ Enter
+  <input (keyup.escape)="cancel()">         // chỉ Escape
+  <input (keyup.arrowDown)="nextItem()">    // Arrow Down
+  <input (keydown.control.s)="save()">      // Ctrl+S
+
+  // Flutter phải dùng RawKeyboardListener hoặc Focus:
+  // Focus(onKeyEvent: (node, event) { ... })
+
+================================================================================
+  ✅ SAU BÀI NÀY:
+  - (event)="handler()" cho event binding
+  - $event = event data
+  - Key filters (keyup.enter) rất tiện
+================================================================================

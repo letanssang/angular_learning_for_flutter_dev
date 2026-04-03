@@ -1,0 +1,59 @@
+================================================================================
+  COMPONENT CƠ BẢN - VIEW ENCAPSULATION
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 10-15 phut
+
+📌 MỤC TIÊU:
+  - Hiểu CSS scope trong Angular (giống Theme scope Flutter)
+  - 3 chế độ encapsulation
+  - Shadow DOM concept
+
+================================================================================
+  1. VIEW ENCAPSULATION LÀ GÌ?
+================================================================================
+
+  Trong Flutter: Theme.of(context) áp dụng styles theo widget tree
+  Trong Angular: CSS mặc định được SCOPE cho component
+
+  // Component A có CSS:
+  // h1 { color: red; }
+
+  // Component B cũng có CSS:
+  // h1 { color: blue; }
+
+  // → Không conflict! Vì CSS được scoped tự động
+
+================================================================================
+  2. CÁC CHẾ ĐỘ ENCAPSULATION
+================================================================================
+
+  import { ViewEncapsulation } from '@angular/core';
+
+  @Component({
+    encapsulation: ViewEncapsulation.Emulated   // MẶC ĐỊNH
+    // Angular thêm attribute đặc biệt vào HTML elements
+    // → CSS chỉ match với elements có attribute đó
+  })
+
+  @Component({
+    encapsulation: ViewEncapsulation.None
+    // CSS trở thành global (KHÔNG scope)
+    // Giống viết trong styles.css global
+    // ⚠️ Cẩn thận CSS conflict!
+  })
+
+  @Component({
+    encapsulation: ViewEncapsulation.ShadowDom
+    // Dùng Shadow DOM thực sự
+    // Isolation mạnh nhất
+    // Nhưng có thể gây vấn đề với 3rd party CSS
+  })
+
+================================================================================
+  ✅ SAU BÀI NÀY:
+  - Emulated (default) = scoped CSS, an toàn nhất
+  - None = global CSS, dùng cho shared styles
+  - ShadowDom = browser native, isolation mạnh
+================================================================================

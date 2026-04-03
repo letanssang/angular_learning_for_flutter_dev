@@ -1,0 +1,146 @@
+================================================================================
+  HTTP VÀ API - HTTP CLIENT
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 30-40 phut
+
+📌 MỤC TIÊU:
+  - HttpClient = package http/dio trong Flutter
+  - GET, POST, PUT, DELETE
+  - Xử lý response
+
+================================================================================
+  1. SETUP HTTP CLIENT
+================================================================================
+
+  // ──── FLUTTER ────
+  // pubspec.yaml: http: ^1.0.0 hoặc dio: ^5.0.0
+  // import 'package:http/http.dart' as http;
+
+  // ──── ANGULAR ────
+  // HttpClient có sẵn! Không cần cài thêm package!
+
+  // app.config.ts:
+  import { provideHttpClient } from '@angular/common/http';
+
+  export const appConfig = {
+    providers: [
+      provideRouter(routes),
+      provideHttpClient(),         // Enable HttpClient
+    ]
+  };
+
+================================================================================
+  2. SỬ DỤNG HTTP CLIENT
+================================================================================
+
+  import { HttpClient } from '@angular/common/http';
+
+  @Injectable({ providedIn: 'root' })
+  export class ProductService {
+    private apiUrl = 'https://api.example.com/products';
+
+    constructor(private http: HttpClient) {}
+
+    // GET - Lấy danh sách
+    getProducts(): Observable<Product[]> {
+      return this.http.get<Product[]>(this.apiUrl);
+    }
+    // Flutter: Future<List<Product>> getProducts() async {
+    //   final res = await http.get(Uri.parse(apiUrl));
+    //   return (jsonDecode(res.body) as List).map(...).toList();
+    // }
+
+    // GET by ID
+    getProduct(id: string): Observable<Product> {
+      return this.http.get<Product>(`${this.apiUrl}/${id}`);
+    }
+
+    // POST - Tạo mới
+    createProduct(product: Partial<Product>): Observable<Product> {
+      return this.http.post<Product>(this.apiUrl, product);
+    }
+    // Flutter: Future<Product> createProduct(Product p) async {
+    //   final res = await http.post(Uri.parse(apiUrl),
+    //     body: jsonEncode(p.toJson()),
+    //     headers: {'Content-Type': 'application/json'});
+    //   return Product.fromJson(jsonDecode(res.body));
+    // }
+
+    // PUT - Cập nhật
+    updateProduct(id: string, product: Partial<Product>): Observable<Product> {
+      return this.http.put<Product>(`${this.apiUrl}/${id}`, product);
+    }
+
+    // DELETE - Xóa
+    deleteProduct(id: string): Observable<void> {
+      return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    }
+  }
+
+================================================================================
+  3. GỌI TRONG COMPONENT
+================================================================================
+
+  export class ProductListComponent implements OnInit {
+    products: Product[] = [];
+    isLoading = true;
+
+    constructor(private productService: ProductService) {}
+
+    ngOnInit(): void {
+      this.productService.getProducts().subscribe({
+        next: (products) => {
+          this.products = products;
+          this.isLoading = false;
+        },
+        error: (err) => {
+          console.error('Error:', err);
+          this.isLoading = false;
+        }
+      });
+    }
+  }
+
+  // Flutter tương đương:
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _loadProducts();
+  // }
+  // Future<void> _loadProducts() async {
+  //   try {
+  //     setState(() => isLoading = true);
+  //     products = await productService.getProducts();
+  //   } catch (e) { ... }
+  //   finally { setState(() => isLoading = false); }
+  // }
+
+================================================================================
+  4. SO SÁNH QUAN TRỌNG
+================================================================================
+
+  ┌──────────────────────────┬──────────────────────────────┐
+  │ Flutter (http/dio)       │ Angular (HttpClient)         │
+  ├──────────────────────────┼──────────────────────────────┤
+  │ Future<T>                │ Observable<T>                │
+  │ await http.get()         │ http.get().subscribe()       │
+  │ try-catch                │ error callback / catchError  │
+  │ Phải parse JSON thủ công │ TỰ ĐỘNG parse JSON!         │
+  │ Phải thêm headers thủ công│ Tự thêm Content-Type       │
+  │ Phải cài package         │ Có sẵn trong framework      │
+  └──────────────────────────┴──────────────────────────────┘
+
+  💡 Angular HttpClient tự động:
+  - Serialize/Deserialize JSON
+  - Thêm Content-Type header
+  - Return Observable (có thể cancel, retry, combine, ...)
+
+================================================================================
+  ✅ SAU BÀI NÀY:
+  - HttpClient có sẵn, không cần package
+  - Trả về Observable (không phải Future)
+  - Subscribe thay vì await
+  - JSON tự động parse!
+================================================================================

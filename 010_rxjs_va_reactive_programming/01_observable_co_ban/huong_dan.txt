@@ -1,0 +1,109 @@
+================================================================================
+  RXJS - OBSERVABLE CO BAN
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 25-35 phut
+
+📌 MUC TIEU:
+  - Observable = Stream trong Dart
+  - Hieu subscribe, async pipe, unsubscribe
+  - Biet RxJS du de doc HTTP/UI flow trong Angular
+
+  ⚠️ Dinh huong trong lo trinh 2 tuan:
+  - RxJS rat quan trong cho async flows
+  - Nhung khong can hoc no truoc component/template/signals
+  - Muc tieu la "du dung", khong phai hoc het he sinh thai RxJS
+
+================================================================================
+  1. OBSERVABLE VS STREAM (DART)
+================================================================================
+
+  ┌──────────────────────────┬──────────────────────────────┐
+  │ Dart Stream              │ RxJS Observable              │
+  ├──────────────────────────┼──────────────────────────────┤
+  │ Stream<T>                │ Observable<T>                │
+  │ StreamController<T>      │ Subject<T>                   │
+  │ stream.listen()          │ observable.subscribe()       │
+  │ StreamSubscription       │ Subscription                 │
+  │ subscription.cancel()    │ subscription.unsubscribe()   │
+  │ stream.map()             │ pipe(map())                  │
+  │ stream.where()           │ pipe(filter())               │
+  └──────────────────────────┴──────────────────────────────┘
+
+================================================================================
+  2. TAO OBSERVABLE
+================================================================================
+
+  import { Observable, of, from, interval } from 'rxjs';
+
+  const obs1 = of(1, 2, 3);
+  const obs2 = from([1, 2, 3]);
+  const obs3 = interval(1000);
+
+  const custom = new Observable(subscriber => {
+    subscriber.next('hello');
+    subscriber.complete();
+  });
+
+================================================================================
+  3. SUBSCRIBE VA ASYNC PIPE
+================================================================================
+
+  // Subscribe:
+  const sub = observable.subscribe({
+    next: value => console.log(value),
+    error: err => console.error(err),
+    complete: () => console.log('done'),
+  });
+
+  sub.unsubscribe();
+
+  // Template:
+  // {{ user$ | async }}
+
+  Quy tac thuc te:
+  - Neu data chi de render template -> uu tien async pipe
+  - Neu can side effect / imperative flow -> subscribe co kiem soat
+
+================================================================================
+  4. UNSUBSCRIBE PATTERNS
+================================================================================
+
+  // Cách 1: async pipe
+  // {{ data$ | async }}
+
+  // Cách 2: takeUntilDestroyed()
+  import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+  export class MyComponent {
+    constructor() {
+      this.service.getData()
+        .pipe(takeUntilDestroyed())
+        .subscribe(data => console.log(data));
+    }
+  }
+
+  ⚠️ Khong mac dinh subscribe o moi noi roi quen cleanup.
+
+================================================================================
+  5. KHI NAO DUNG OBSERVABLE, KHI NAO DUNG SIGNAL?
+================================================================================
+
+  Observable phu hop cho:
+  - HTTP calls
+  - search/debounce
+  - route params
+  - event streams va combine flows
+
+  Signal phu hop cho:
+  - local UI state
+  - service-level state don gian
+  - derived state trong component
+
+================================================================================
+  ✅ SAU BAI NAY:
+  - Observable = Stream, subscribe = listen
+  - Biet uu tien async pipe va takeUntilDestroyed
+  - Xem RxJS la cong cu xu ly async flows, khong phai buc tuong ly thuyet
+================================================================================

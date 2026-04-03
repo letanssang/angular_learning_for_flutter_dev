@@ -1,0 +1,107 @@
+================================================================================
+  RXJS - OPERATORS THƯỜNG DÙNG
+================================================================================
+
+THOI LUONG UOC TINH:
+  - 30-40 phut
+
+📌 Operators = Stream transformers trong Dart (nhưng SỐ LƯỢNG LỚN hơn!)
+================================================================================
+
+  import { map, filter, tap, switchMap, mergeMap, debounceTime,
+           distinctUntilChanged, catchError, retry, take,
+           takeUntil, combineLatest, forkJoin } from 'rxjs/operators';
+
+================================================================================
+  1. TRANSFORMATION OPERATORS
+================================================================================
+
+  // map - biến đổi giá trị (giống Stream.map):
+  source$.pipe(
+    map(user => user.name)
+  )
+
+  // filter - lọc (giống Stream.where):
+  source$.pipe(
+    filter(num => num > 10)
+  )
+
+  // tap - side effect, không đổi data (giống Stream.tap):
+  source$.pipe(
+    tap(value => console.log('Debug:', value))
+  )
+
+================================================================================
+  2. FLATTENING OPERATORS (QUAN TRỌNG!)
+================================================================================
+
+  // switchMap - cancel request cũ khi có cái mới (SEARCH!)
+  searchInput$.pipe(
+    debounceTime(300),                  // đợi 300ms
+    distinctUntilChanged(),             // chỉ emit khi thay đổi
+    switchMap(query => this.http.get(`/search?q=${query}`))
+    // Cancel API call cũ nếu user gõ tiếp!
+  )
+  // Flutter: phải dùng CancelableOperation thủ công
+
+  // mergeMap - chạy song song tất cả:
+  ids$.pipe(
+    mergeMap(id => this.http.get(`/api/items/${id}`))
+  )
+
+  // concatMap - chạy tuần tự:
+  actions$.pipe(
+    concatMap(action => this.http.post('/api/actions', action))
+  )
+
+================================================================================
+  3. COMBINATION OPERATORS
+================================================================================
+
+  // combineLatest - kết hợp nhiều streams:
+  combineLatest([filter$, sort$, page$]).pipe(
+    switchMap(([filter, sort, page]) =>
+      this.http.get(`/api/products?filter=${filter}&sort=${sort}&page=${page}`)
+    )
+  )
+  // Flutter: Rx.combineLatest3(stream1, stream2, stream3, (a,b,c) => ...)
+
+  // forkJoin - đợi tất cả hoàn thành:
+  forkJoin([
+    this.http.get('/api/users'),
+    this.http.get('/api/products'),
+    this.http.get('/api/orders'),
+  ]).subscribe(([users, products, orders]) => {
+    // Tất cả đã xong
+  });
+  // Flutter: Future.wait([...])
+
+================================================================================
+  4. THỰC TẾ: SEARCH AUTOCOMPLETE
+================================================================================
+
+  // Pattern phổ biến nhất trong Angular:
+
+  searchControl = new FormControl('');
+
+  results$ = this.searchControl.valueChanges.pipe(
+    debounceTime(300),            // đợi user ngừng gõ 300ms
+    distinctUntilChanged(),       // bỏ qua nếu giống giá trị trước
+    filter(q => q!.length >= 2),  // ít nhất 2 ký tự
+    switchMap(q =>                // cancel request cũ
+      this.searchService.search(q!).pipe(
+        catchError(() => of([]))  // lỗi → trả mảng rỗng
+      )
+    )
+  );
+
+  // Template:
+  // <div *ngFor="let result of results$ | async">{{ result }}</div>
+
+================================================================================
+  ✅ SAU BÀI NÀY:
+  - map/filter/tap = cơ bản
+  - switchMap = QUAN TRỌNG NHẤT (search, autocomplete)
+  - debounceTime + distinctUntilChanged = pattern search
+  - combineLatest/forkJoin = kết hợp nhiều sources
+================================================================================
